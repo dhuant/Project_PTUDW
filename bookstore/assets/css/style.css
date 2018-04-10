@@ -59,9 +59,16 @@ Table OF Contents
 /*----------------------------*\
 	Typography
 \*----------------------------*/
-
+@font-face {
+  font-family:font_strong;
+  src:url(‘./../../fonts/ATViCE.ttf’) format(‘truetype’);
+  font-weight:normal;
+   font-style:normal;
+  }
+  title{
+    font-family:font_strong;
+  }
 body {
-  font-family: 'Hind', sans-serif;
   color: #4A4E5A;
   overflow-x: hidden;
 }
@@ -211,7 +218,7 @@ textarea.input {
 .list-links li>a {
   position: relative;
   display: inline-block;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   padding: 2px 0px;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
@@ -241,6 +248,22 @@ textarea.input {
 .list-links li>a:hover:before, .list-links li>a:focus:before, .list-links li.active>a:before {
   opacity: 1;
   visibility: visible;
+}
+.list-links1 li:hover img{
+  transform: scale(.5);
+}
+.list-links1 li img:hover{
+  transform: scale(1.25);
+}
+.list-links1 li img{
+  float: left;
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  border: 1px solid rgb(180, 180, 180);
+  text-align: center;
+  margin: 2px;
+  transition: transform .25s ease;
 }
 
 /*----------------------------*\
@@ -364,8 +387,8 @@ textarea.input {
 }
 
 .header-search>form .search-input {
-  padding-left: 150px;
-  padding-right: 45px;
+  padding-left: 15px;
+  padding-right: 120px;
 }
 
 .header-search>form .search-categories {
