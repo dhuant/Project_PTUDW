@@ -910,17 +910,8 @@ textarea.input {
   z-index: 22;
 }
 
-.product .product-countdown>li {
-  display: inline-block;
-  margin-right: -4px;
-}
 
-.product .product-countdown>li+li:before {
-  content: ":";
-  color: #FFF;
-  background: #30323A;
-  padding: 2px;
-}
+
 
 .product .product-countdown>li>span {
   display: inline-block;
@@ -952,10 +943,13 @@ textarea.input {
 .product.product-single .product-thumb {
   position: relative;
   margin-bottom: 15px;
+  width: 250px;
 }
 
 .product.product-single .product-thumb>img {
-  width: 100%;
+  width: 175px;
+  height: 236px;
+  margin: 0 auto;
 }
 
 .product.product-single .product-thumb:after {
@@ -974,47 +968,25 @@ textarea.input {
 }
 
 .product.product-single:hover .product-thumb:after {
-  opacity: 0.7;
-  visibility: visible;
-}
-
-.product.product-single .quick-view {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   opacity: 0;
-  visibility: hidden;
-  z-index: 20;
-}
-
-.product.product-single:hover .quick-view {
-  opacity: 1;
   visibility: visible;
 }
 
 .product.product-single .product-label {
   position: absolute;
-  left: 0;
-  top: 0;
+  width: 50px;
+  height: 30px;
+  margin-left: 35px;
 }
 
 .product.product-single .product-label>span {
   display: block;
-}
-
-.product.product-single .product-countdown {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  text-align: center;
+  font-size: 10px;
 }
 
 .product.product-single .product-body {
-  padding: 15px;
+  text-align: center;
+  width: 250px;
 }
 
 .product.product-single .product-price {
@@ -1023,26 +995,31 @@ textarea.input {
 
 .product.product-single .product-rating {
   float: right;
-  margin-top: 5px;
 }
 
 .product.product-single .product-name {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .product.product-single .product-btns {
-  margin-top: 20px;
-  opacity: 0;
+  margin-top: 10px;
+  opacity: 0.1;
   visibility: hidden;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
 }
 
 .product.product-single:hover .product-btns {
+  width: 250px;
+  padding-top: 10px;
   opacity: 1;
   visibility: visible;
 }
-
+.product-btns button{
+  width: 150px;
+  height: 40px;
+  font-size: 14px;
+}
 /*-- hot product --*/
 
 .product.product-single.product-hot {
@@ -1115,6 +1092,7 @@ textarea.input {
 .product-slick .slick-slide {
   margin-right: 15px;
   margin-left: 15px;
+  width: 250px !important;
 }
 
 /*=========================================================
