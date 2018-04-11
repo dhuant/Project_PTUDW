@@ -249,22 +249,38 @@ textarea.input {
   opacity: 1;
   visibility: visible;
 }
-.list-links1 li:hover img{
-  transform: scale(.5);
+.list-links1 li figure {
+  float: left;
+	width: 110px;
+	height: 110px;
+  margin: 2px;
+  border: 1px solid rgb(180, 180, 180);
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
 }
-.list-links1 li img:hover{
-  transform: scale(1.25);
+.list-links1 li figure:hover{
+	bottom: -36px;
+	opacity: 1;
 }
-.list-links1 li img{
+.list-links1 li figure img {
   float: left;
   overflow: hidden;
-  width: 150px;
-  height: 150px;
-  border: 1px solid rgb(180, 180, 180);
+  width: 110px;
+  height: 110px;
   text-align: center;
   margin: 2px;
-  transition: transform .25s ease;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
+.list-links1 li figure:hover img {
+	-webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+
 
 /*----------------------------*\
 	Sections
