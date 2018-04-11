@@ -222,6 +222,8 @@ textarea.input {
   padding: 2px 0px;
   -webkit-transition: 0.3s all;
   transition: 0.3s all;
+  margin: 4px;
+  font-size: 14px;
 }
 
 .list-links li>a:before {
@@ -280,7 +282,12 @@ textarea.input {
 	transform: scale(1.3);
 }
 
-
+.list-links2 li img {
+  float: left;
+  height: 249px;
+  width: 147px;
+  margin: 8px;
+}
 
 /*----------------------------*\
 	Sections
@@ -591,7 +598,7 @@ textarea.input {
   display: none;
   padding: 15px;
   text-transform: uppercase;
-  background: #30323A;
+  background: #eee;
   color: #FFF;
   font-weight: 700;
 }
@@ -824,6 +831,10 @@ textarea.input {
 }
 
 .banner>img {
+  width: 915px;
+  height: 423px;
+}
+.banner1>img {
   width: 100%;
 }
 
