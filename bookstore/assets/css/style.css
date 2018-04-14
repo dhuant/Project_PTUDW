@@ -299,7 +299,7 @@ textarea.input {
 }
 
 .section-grey {
-  background: #F6F7F8;
+  background: #F9F9F9;
 }
 
 .section-title {
@@ -1640,7 +1640,7 @@ textarea.input {
 
 .footer-logo .logo>img {
   width: 100%;
-  max-height: 70px;
+  max-height: 60px;
 }
 
 .footer-social>li {
