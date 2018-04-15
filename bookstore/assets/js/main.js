@@ -8,6 +8,22 @@
     menuToggle = $('#responsive-nav .menu-nav .menu-header'),
     menuList = $('#responsive-nav .menu-nav .menu-list');
 
+  /* Huy them vao bat dau */
+  // Hover qua menu side-dropdown
+  $('.dropdown.side-dropdown').hover(function(){
+    $(this).toggleClass('open');},
+    function(){
+    $(this).removeClass('open');
+  })
+
+  // Hover qua menu mega-dropdown
+  $('.dropdown.mega-dropdown').hover(function(){
+    $(this).toggleClass('open');},
+    function(){
+    $(this).removeClass('open');
+  })
+  /* Huy them vao ket thuc */
+
   catToggle.on('click', function() {
     menuList.removeClass('open');
     catList.toggleClass('open');
@@ -45,7 +61,7 @@
 
   // PRODUCTS SLICK
   $('#product-slick-1').slick({
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 2,
     autoplay: true,
     infinite: true,
@@ -99,15 +115,16 @@
       },
     ]
   });
-  $('#product-slick-3').slick({
-    slidesToShow: 3,
+
+$('#product-slick-3').slick({
+    slidesToShow: 4,
     slidesToScroll: 2,
     autoplay: true,
     infinite: true,
     speed: 300,
     dots: true,
     arrows: false,
-    appendDots: '.product-slick-dots-1',
+    appendDots: '.product-slick-dots-3',
     responsive: [{
         breakpoint: 991,
         settings: {
