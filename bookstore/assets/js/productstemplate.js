@@ -1,5 +1,26 @@
-$(function(){
+function priceToStr(price) {
+    var i;
+    var strPrice = price.toString();
+    var strRet = "";
+    var strRet2 = "";
+    var count = 0;
+    for (i=0; i<strPrice.length; i++) {
+    	if (count===3) {
+    		count = 0;
+    		strRet += '.';
+    	}
+    	strRet += strPrice.charAt(strPrice.length-1-i);
+    	count += 1;
+    }
 
+    for (i=0; i<strRet.length; i++) {
+    	strRet2 += strRet.charAt(strRet.length-1-i);
+    }
+
+    return strRet2;
+}
+
+$(function(){
 
    // Link ảnh, tên sách, giá , giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán
    var nxb = "Kim Đồng";
@@ -40,10 +61,13 @@ $(function(){
 					<div class='product-body'>\
 		";
 
+		
 		// Nếu có giảm giá thì hiển thị giá mới và giá cũ, không giảm giá thì chỉ hiển thị giá
+		var newPrice = priceToStr(item[index][2]);
+		var oldPrice = priceToStr(item[index][3]);
 		if(item[index][3]!==0){
 			divStr+="\
-						<h3 class='product-price'><a>"+item[index][2]+"đ </a><del class='product-old-price'>"+item[index][3]+"đ</del></h3>\
+						<h3 class='product-price'><a>"+newPrice+"đ </a><del class='product-old-price'>"+oldPrice+"đ</del></h3>\
 			";
 		} else {
 			divStr+="\
@@ -89,4 +113,7 @@ $(function(){
 	}
    });
 
+   
 });
+
+
