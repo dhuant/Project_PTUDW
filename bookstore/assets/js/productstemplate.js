@@ -29,7 +29,7 @@ $(function(){
    $("#breadcrumb .container .breadcrumb").append("<li class='active'>"+nxb+"</li>");
 
    $.each(item,function(index){
-   	if (item[index][7]===nxb){
+   	if (item[index].nxb===nxb){
 	   	var divStr = "";
 	   	divStr += "\
 		   	<div class='col-md-4 col-sm-6 col-xs-6'>\
@@ -39,16 +39,16 @@ $(function(){
 		";
 
 		// Thêm vào tình trạng nếu có
-		if(item[index][5]!==""){
+		if(item[index].status!==""){
 			divStr+="\
-							<span>"+item[index][5]+"</span>\
+							<span>"+item[index].status+"</span>\
 			";
 		}
 
 		// Thêm vào sale nếu có
-		if(item[index][6]!==0){
+		if(item[index].sale!==0){
 			divStr+="\
-							<span class='sale'>-"+item[index][6]+"%</span>\
+							<span class='sale'>-"+item[index].sale+"%</span>\
 			";
 		}
 
@@ -56,22 +56,22 @@ $(function(){
 		divStr+="\
 		   				</div>\
 						<button class='main-btn quick-view'><i class='fa fa-search-plus'></i> View</button>\
-						<img src='"+imgUrl+item[index][0]+"' alt=''>\
+						<img src='"+imgUrl+item[index].url+"' alt=''>\
 					</div>\
 					<div class='product-body'>\
 		";
 
 		
 		// Nếu có giảm giá thì hiển thị giá mới và giá cũ, không giảm giá thì chỉ hiển thị giá
-		var newPrice = priceToStr(item[index][2]);
-		var oldPrice = priceToStr(item[index][3]);
-		if(item[index][3]!==0){
+		var oldPrice = priceToStr(item[index].price);
+		var newPrice = priceToStr(item[index].price * (100-item[index].sale)/100);
+		if(item[index].sale!==0){
 			divStr+="\
 						<h3 class='product-price'><a>"+newPrice+"đ </a><del class='product-old-price'>"+oldPrice+"đ</del></h3>\
 			";
 		} else {
 			divStr+="\
-						<h3 class='product-price'><a>"+item[index][2]+"đ </a></h3>\
+						<h3 class='product-price'><a>"+item[index].price+"đ </a></h3>\
 			";
 		}
 
@@ -83,7 +83,7 @@ $(function(){
 		// Chạy vòng lặp tạo sao
 		var i;
 		for (i=0; i<5; i++) {
-			if (i<item[index][4]) {
+			if (i<item[index].star) {
 				divStr+="\
 		   				<i class='fa fa-star'></i>\
 				";
@@ -97,7 +97,7 @@ $(function(){
 		// Thêm vào tên của sách, các nút phía dưới và đóng lại thẻ <div>
 		divStr+="\
 					</div>\
-		 			<h2 class='product-name'><a href='#''>"+item[index][1]+"</a></h2>\
+		 			<h2 class='product-name'><a href='#''>"+item[index].name+"</a></h2>\
 		 			<div class='product-btns'>\
 		 				<button class='main-btn icon-btn'><i class='fa fa-heart'></i></button>\
 		 				<button class='main-btn icon-btn'><i class='fa fa-exchange'></i></button>\

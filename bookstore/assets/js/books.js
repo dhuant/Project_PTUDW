@@ -1,13 +1,14 @@
-var item = [];
 var imgUrl = "../../assets/img/books/";
 
-// Link ảnh, tên sách, giá , giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán
-item.push(["01.jpg","Không Gia Đình (Ấn Bản Kỉ Niệm 60 Năm Thành Lập NXB Kim Đồng)",74000,110000,5,"",32, "Kim Đồng", "Văn Học",0,0]);
-item.push(["02.jpg","33 Bài Thực Hành Theo Phương Pháp Shichida",37950,55000,4,"",31, "Kim Đồng", "Khác",0,0]);
-item.push(["03.jpg","Truyện Kể Về Danh Nhân Thế Giới - Ludwig Van Beethoven",31050,45000,4,"",31, "Kim Đồng", "Văn Học",0,0]);
-item.push(["04.jpg","Danh Nhân Thế Giới - Napôlêông (2014)",17500,25000,4,"",30, "Kim Đồng", "Văn Học",0,0]);
-item.push(["05.jpg","Danh Nhân Thế Giới - Anhxtanh (2014)",17500,25000,4,"",30, "Kim Đồng", "Văn Học",0,0]);
-item.push(["06.jpg","Mẹ Do Thái Dạy Con Tư Duy",38760,57000,4,"",32, "Kim Đồng", "Khác",0,0]);
-item.push(["07.jpg","Cẩm Nang Sinh Hoạt Bằng Tranh Cho Bé - Kĩ Năng Trong Sinh Hoạt Thường Ngày",21440,32000,4,"",33, "Kim Đồng", "Khác",0,0]);
-item.push(["08.jpg","Pony Kí Sự - Hiểu Để Yêu Con Trọn Vẹn - Làm Bạn Với Con Từ 1-3 Tuổi",24150,35000,4,"",31, "Kim Đồng", "Khác",0,0]);
-item.push(["09.jpg","Cánh Buồm Đỏ Thắm (Tái Bản 2014)",14520,22000,4,"",34, "Kim Đồng", "Văn Học",0,0]);
+// Link ảnh, tên sách, giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán
+var item = [
+	{'url': '01.jpg', 'name': 'Không Gia Đình (Ấn Bản Kỉ Niệm 60 Năm Thành Lập NXB Kim Đồng)', 'price': 110000, 'star': 5, 'status': '', 'sale': 32, 'nxb': 'Kim Đồng', 'category': 'Văn Học', 'view': 0, 'amount': 0},
+	{'url': '02.jpg', 'name': '33 Bài Thực Hành Theo Phương Pháp Shichida', 'price': 55000, 'star': 4, 'status': '', 'sale': 31, 'nxb': 'Kim Đồng', 'category': 'Khác', 'view': 0, 'amount': 0},
+	{'url': '03.jpg', 'name': 'Truyện Kể Về Danh Nhân Thế Giới - Ludwig Van Beethoven', 'price': 45000, 'star': 4, 'status': '', 'sale': 31, 'nxb': 'Kim Đồng', 'category': 'Văn Học', 'view': 0, 'amount': 0},
+	{'url': '04.jpg', 'name': 'Danh Nhân Thế Giới - Napôlêông (2014)', 'price': 25000, 'star': 4, 'status': '', 'sale': 30, 'nxb': 'Kim Đồng', 'category': 'Văn Học', 'view': 0, 'amount': 0},
+	{'url': '05.jpg', 'name': 'Danh Nhân Thế Giới - Anhxtanh (2014)', 'price': 25000, 'star': 4, 'status': '', 'sale': 30, 'nxb': 'Kim Đồng', 'category': 'Văn Học', 'view': 0, 'amount': 0},
+	{'url': '06.jpg', 'name': 'Mẹ Do Thái Dạy Con Tư Duy', 'price': 57000, 'star': 4, 'status': '', 'sale': 32, 'nxb': 'Kim Đồng', 'category': 'Khác', 'view': 0, 'amount': 0},
+	{'url': '07.jpg', 'name': 'Cẩm Nang Sinh Hoạt Bằng Tranh Cho Bé - Kĩ Năng Trong Sinh Hoạt Thường Ngày', 'price': 32000, 'star': 4, 'status': '', 'sale': 33, 'nxb': 'Kim Đồng', 'category': 'Khác', 'view': 0, 'amount': 0},
+	{'url': '08.jpg', 'name': 'Pony Kí Sự - Hiểu Để Yêu Con Trọn Vẹn - Làm Bạn Với Con Từ 1-3 Tuổi', 'price': 35000, 'star': 4, 'status': '', 'sale': 31, 'nxb': 'Kim Đồng', 'category': 'Khác', 'view': 0, 'amount': 0},
+	{'url': '09.jpg', 'name': 'Cánh Buồm Đỏ Thắm (Tái Bản 2014)', 'price': 22000, 'star': 4, 'status': '', 'sale': 34, 'nxb': 'Kim Đồng', 'category': 'Văn Học', 'view': 0, 'amount': 0},
+];
