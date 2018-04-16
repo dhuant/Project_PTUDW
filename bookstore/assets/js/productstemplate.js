@@ -1,25 +1,3 @@
-function priceToStr(price) {
-    var i;
-    var strPrice = price.toString();
-    var strRet = "";
-    var strRet2 = "";
-    var count = 0;
-    for (i=0; i<strPrice.length; i++) {
-    	if (count===3) {
-    		count = 0;
-    		strRet += '.';
-    	}
-    	strRet += strPrice.charAt(strPrice.length-1-i);
-    	count += 1;
-    }
-
-    for (i=0; i<strRet.length; i++) {
-    	strRet2 += strRet.charAt(strRet.length-1-i);
-    }
-
-    return strRet2;
-}
-
 $(function(){
 
    // Link ảnh, tên sách, giá , giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán
@@ -63,8 +41,8 @@ $(function(){
 
 		
 		// Nếu có giảm giá thì hiển thị giá mới và giá cũ, không giảm giá thì chỉ hiển thị giá
-		var oldPrice = priceToStr(item[index].price);
-		var newPrice = priceToStr(item[index].price * (100-item[index].sale)/100);
+		var oldPrice = item[index].price.toLocaleString('de-DE');
+		var newPrice = (item[index].price * (100-item[index].sale)/100).toLocaleString('de-DE');
 		if(item[index].sale!==0){
 			divStr+="\
 						<h3 class='product-price'><a>"+newPrice+"đ </a><del class='product-old-price'>"+oldPrice+"đ</del></h3>\
@@ -112,8 +90,6 @@ $(function(){
 		$(".section .container .row #main #store .row").append(divStr);
 	}
    });
-
-   
 });
 
 
