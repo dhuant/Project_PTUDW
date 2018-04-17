@@ -617,4 +617,52 @@ var item = [
 		'view': 0,
 		'amount': 0
 	},
+	{
+		'url': 'kt7.jpg',
+		'name': 'Quản lý',
+		'price': 70000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'NXB Trẻ',
+		'category': 'Kinh Tế',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'kt8.jpg',
+		'name': 'Để thế giới biết bạn là ai',
+		'price': 80000,
+		'star': 5,
+		'status': '',
+		'sale': 35,
+		'nxb': 'NXB Trẻ',
+		'category': 'Kinh Tế',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'kt9.jpg',
+		'name': 'Giải pháp bán hàng 4.0',
+		'price': 75000,
+		'star': 4,
+		'status': '',
+		'sale': 32,
+		'nxb': 'NXB Trẻ',
+		'category': 'Kinh Tế',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'kt10.jpg',
+		'name': 'Think and grow rich',
+		'price': 100000,
+		'star': 4,
+		'status': '',
+		'sale': 35,
+		'nxb': 'NXB Trẻ',
+		'category': 'Kinh Tế',
+		'view': 0,
+		'amount': 0
+	},
 ];
