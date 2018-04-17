@@ -1,161 +1,19 @@
 
-.list-links li>a {
-    position: relative;
-    display: inline-block;
-    /*text-transform: uppercase;*/
-    padding: 2px 0px;
-    -webkit-transition: 0.3s all;
-    transition: 0.3s all;
-  
-    /*Them vao bat dau */
-    margin: 4px;
-    font-size: 14px;
-    /*Them vao ket thuc*/
-  }
+
   
   .list-links li>a:before {
-    content: "\f105";
-    position: absolute;
-    left: 0px;
-    font-family: FontAwesome;
-    -webkit-transform: translateX(-10px);
-    -ms-transform: translateX(-10px);
-    transform: translateX(-10px);
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transition: .7s ease-in-out !important;
-    transition: .7s ease-in-out !important;
+    -webkit-transition: .9s ease-in-out !important;
+    transition: .9s ease-in-out !important;
   }
   
-  .list-links li>a:hover, .list-links li>a:focus, .list-links li.active>a {
-    color: #F8694A;
-    -webkit-transform: translateX(10px);
-    -ms-transform: translateX(10px);
-    transform: translateX(10px);
-  }
-  
-  .list-links li>a:hover:before, .list-links li>a:focus:before, .list-links li.active>a:before {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /*--------------------------------------------*\
-    list-links1 và list-links2 của Linh thêm vào
-  \*--------------------------------------------*/
-  .list-links1 li figure {
-      float: left;
-      width: 110px;
-      height: 110px;
-      margin: 2px;
-      border: 1px solid rgb(180, 180, 180);
-      padding: 0;
-      background: #fff;
-      overflow: hidden;
-    }
-    .list-links1 li figure:hover{
-      bottom: -36px;
-      opacity: 1;
-    }
+ 
     .list-links1 li figure img {
-      float: left;
-      overflow: hidden;
-      width: 110px;
-      height: 110px;
-      text-align: center;
-      margin: 2px;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      -webkit-transition: .7s ease-in-out !important;
-      transition: .7s ease-in-out !important;
+      -webkit-transition: .9s ease-in-out !important;
+      transition: .9s ease-in-out !important;
     }
-    .list-links1 li figure:hover img {
-      -webkit-transform: scale(1.3);
-      transform: scale(1.3);
-    }
-    
-    .list-links2 li img {
-      float: left;
-      height: 249px;
-      width: 147px;
-      margin: 8px;
-    }
-  
-  /*------------------------------*\
-    list-links3 của Linh thêm vào
-  \*------------------------------*/
-  
-  .list-links3 li figure {
-    float: left;
-    width: 176px;
-    height: 176px;
-    margin: 3px;
-    border: 1px solid rgb(180, 180, 180);
-    padding: 0;
-    background: #fff;
-    overflow: hidden;
-  }
-  .list-links3 li figure:hover{
-    bottom: -36px;
-    opacity: 1;
-    
-  }
   .list-links3 li figure img {
-    float: left;
-    overflow: hidden;
-    width: 176px;
-    height: 176px;
-    text-align: center;
-    margin: 2px;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    -webkit-transition: .7s ease-in-out !important;
-    transition: .7s ease-in-out !important;
-  }
-  .list-links3 li figure:hover img {
-    -webkit-transform: scale(1.3);
-    transform: scale(1.3);
-  }
-  .product-slick .slick-slide {
-    margin-right: 15px;
-    margin-left: 15px;
-    width: 250px !important;
-  }
-  .product.product-single .product-thumb {
-    position: relative;
-    width: 250px;
-    text-align: center;
-  }
-  .product.product-single .product-thumb>img {
-    width: 175px !important;
-    height: 236px !important;
-    margin: 0 auto;
-  }
-  .product.product-single .product-label {
-    position: absolute;
-    width: 50px !important;
-    height: 30px !important;
-    margin-left: 35px;
+    -webkit-transition: .9s ease-in-out !important;
+    transition: .9s ease-in-out !important;
   }
 
-  .product.product-single .product-body {
-    text-align: center !important;
-    width: 250px !important;
-  }
-  .product.product-single .product-name {
-    font-size: 14px !important;
-  }
-  .product.product-single .product-rating {
-    padding-left: 20px !important;
-  }
-  .product.product-single:hover .product-btns {
-    width: 250px !important;
-    padding-top: 10px !important;
-    opacity: 1;
-    visibility: visible;
-  }
-  .product-btns button{
-    width: 150px;
-    height: 40px;
-    font-size: 14px;
-  }
   
