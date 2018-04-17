@@ -119,7 +119,7 @@ var item = [
 		'status': '',
 		'sale': 34,
 		'nxb': 'Kim Đồng',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -131,7 +131,7 @@ var item = [
 		'status': '',
 		'sale': 34,
 		'nxb': 'Kim Đồng',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -143,7 +143,7 @@ var item = [
 		'status': '',
 		'sale': 34,
 		'nxb': 'Kim Đồng',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -384,7 +384,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'Bách Việt',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -396,7 +396,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'Bách Việt',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -408,7 +408,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'Bách Việt',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -492,7 +492,7 @@ var item = [
 		'status': '',
 		'sale': 0,
 		'nxb': 'NXB Trẻ',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -504,7 +504,7 @@ var item = [
 		'status': '',
 		'sale': 0,
 		'nxb': 'NXB Trẻ',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -516,7 +516,7 @@ var item = [
 		'status': '',
 		'sale': 0,
 		'nxb': 'NXB Trẻ',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -528,7 +528,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -541,7 +541,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Tiếng Anh',
+		'category': 'Ngoại Ngữ',
 		'view': 0,
 		'amount': 0
 	},
@@ -553,7 +553,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Kinh tế',
+		'category': 'Kinh Tế',
 		'view': 0,
 		'amount': 0
 	},
@@ -565,7 +565,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Kinh tế',
+		'category': 'Kinh Tế',
 		'view': 0,
 		'amount': 0
 	},
@@ -577,7 +577,7 @@ var item = [
 		'status': '',
 		'sale': 0,
 		'nxb': 'NXB Trẻ',
-		'category': 'Kinh tế',
+		'category': 'Kinh Tế',
 		'view': 0,
 		'amount': 0
 	},
@@ -589,7 +589,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Kinh tế',
+		'category': 'Kinh Tế',
 		'view': 0,
 		'amount': 0
 	},
@@ -601,7 +601,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Kinh tế',
+		'category': 'Kinh Tế',
 		'view': 0,
 		'amount': 0
 	},
@@ -613,7 +613,7 @@ var item = [
 		'status': '',
 		'sale': 30,
 		'nxb': 'NXB Trẻ',
-		'category': 'Kinh tế',
+		'category': 'Kinh Tế',
 		'view': 0,
 		'amount': 0
 	},

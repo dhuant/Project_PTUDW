@@ -1,7 +1,7 @@
 $(function(){
 
     // Tên loại sách
-    var cate = "Văn Học";
+    var cate = "Ngoại Ngữ";
 
 
     var row = $(".section .container .row #main #store .row"),
