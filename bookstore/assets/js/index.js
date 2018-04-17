@@ -5,7 +5,7 @@ var newBook = [
         'price': 75000,
         'star': 5,
         'status': 'new',
-        'sale': 35,
+        'sale': 0,
         'nxb': '',
         'category': 'newbook',
         'view': 0,
@@ -29,7 +29,7 @@ var newBook = [
         'price': 86000,
         'star': 4,
         'status': 'new',
-        'sale': 35,
+        'sale': 0,
         'nxb': '',
         'category': 'newbook',
         'view': 0,
@@ -41,7 +41,7 @@ var newBook = [
         'price': 82000,
         'star': 3,
         'status': 'new',
-        'sale': 36,
+        'sale': 0,
         'nxb': '',
         'category': 'newbook',
         'view': 0,
@@ -53,7 +53,7 @@ var newBook = [
         'price': 86000,
         'star': 5,
         'status': 'new',
-        'sale': 37,
+        'sale': 0,
         'nxb': '',
         'category': 'newbook',
         'view': 0,
@@ -89,7 +89,7 @@ var newBook = [
         'price': 88000,
         'star': 4,
         'status': 'new',
-        'sale': 30,
+        'sale': 0,
         'nxb': '',
         'category': 'newbook',
         'view': 0,
@@ -287,7 +287,7 @@ var bestView = [
         'price': 92000,
         'star': 4,
         'status': 'new',
-        'sale': 32,
+        'sale': 0,
         'nxb': '',
         'category': '',
         'view': 0,
@@ -466,6 +466,19 @@ var NXB = [
 
 for (var i = 0; i < newBook.length; i++) {
     var strStar = '';
+    var strPrice = '';
+    var strSale = '';
+    if(newBook[i].sale===0){
+        strPrice = `<h3 class="product-price"><a>${(newBook[i].price).toLocaleString('de-DE')}đ </a>
+        </h3>`;
+    }
+    else{
+        strPrice = `<h3 class="product-price"><a>${(newBook[i].price * (100 - newBook[i].sale) / 100).toLocaleString('de-DE')}đ </a>
+        <del class="product-old-price">${(newBook[i].price).toLocaleString('de-DE')}đ</del>
+        </h3>
+        `;
+        strSale = `<span class="sale">-${newBook[i].sale}%</span>`;
+    }
     for (var j = 0; j < 5; j++) {
         if (j < newBook[i].star) {
             strStar += '<i class="fa fa-star"></i>';
@@ -478,13 +491,15 @@ for (var i = 0; i < newBook.length; i++) {
 	<div class="product product-single">
 		<div class="product-thumb">
                                     <div class="product-label">
-										<span class="sale">-${newBook[i].sale}%</span>
+                                    ${strSale}
                                         <span>New</span>
-									</div>
+                                    </div>
+                                    <button class='main-btn quick-view'>
+                                    <i class='fa fa-search-plus'></i> View</button>
 									<img src="../assets/img/new-book/${newBook[i].url}" alt="">
 								</div>
 								<div class="product-body">
-									<h3 class="product-price"><a>${(newBook[i].price * (100 - newBook[i].sale) / 100).toLocaleString('de-DE')}đ </a><del class="product-old-price">${(newBook[i].price).toLocaleString('de-DE')}đ</del></h3>
+                                ${strPrice}
 									<div class="product-rating">${strStar}</div>
 									<h2 class="product-name"><a href="#">${newBook[i].name}</a></h2>
 									<div class="product-btns">
@@ -500,6 +515,19 @@ for (var i = 0; i < newBook.length; i++) {
 for (var i = 0; i < bestSell.length; i++) {
     var strStar = '';
     var strNew = '';
+    var strPrice = '';
+    var strSale = '';
+    if(bestSell[i].sale===0){
+        strPrice = `<h3 class="product-price"><a>${(bestSell[i].price).toLocaleString('de-DE')}đ </a>
+        </h3>`;
+    }
+    else{
+        strPrice = `<h3 class="product-price"><a>${(bestSell[i].price * (100 - bestSell[i].sale) / 100).toLocaleString('de-DE')}đ </a>
+        <del class="product-old-price">${(bestSell[i].price).toLocaleString('de-DE')}đ</del>
+        </h3>
+        `;
+        strSale = `<span class="sale">-${bestSell[i].sale}%</span>`;
+    }
     for (var j = 0; j < 5; j++) {
         if (j < bestSell[i].star) {
             strStar += '<i class="fa fa-star"></i>';
@@ -515,13 +543,14 @@ for (var i = 0; i < bestSell.length; i++) {
 	<div class="product product-single">
 		<div class="product-thumb">
                                     <div class="product-label">
-                                        <span class="sale">-${bestSell[i].sale}%</span>
+                                    ${strSale}
                                         ${strNew}
-									</div>
+                                    </div>
+                                    <button class='main-btn quick-view'><i class='fa fa-search-plus'></i> View</button>
 									<img src="../assets/img/best-sell/${bestSell[i].url}" alt="">
 								</div>
 								<div class="product-body">
-									<h3 class="product-price"><a>${(bestSell[i].price * (100 - bestSell[i].sale) / 100).toLocaleString('de-DE')}đ </a><del class="product-old-price">${(bestSell[i].price).toLocaleString('de-DE')}đ</del></h3>
+                                ${strPrice}
 									<div class="product-rating">${strStar}</div>
 									<h2 class="product-name"><a href="#">${bestSell[i].name}</a></h2>
 									<div class="product-btns">
@@ -536,8 +565,22 @@ for (var i = 0; i < bestSell.length; i++) {
 
 
 for (var i = 0; i < bestView.length; i++) {
+    
     var strStar = '';
     var strNew = '';
+    var strPrice = '';
+    var strSale = '';
+    if(bestView[i].sale===0){
+        strPrice = `<h3 class="product-price"><a>${(bestView[i].price).toLocaleString('de-DE')}đ </a>
+        </h3>`;
+    }
+    else{
+        strPrice = `<h3 class="product-price"><a>${(bestView[i].price * (100 - bestView[i].sale) / 100).toLocaleString('de-DE')}đ </a>
+        <del class="product-old-price">${(bestView[i].price).toLocaleString('de-DE')}đ</del>
+        </h3>
+        `;
+        strSale = `<span class="sale">-${bestView[i].sale}%</span>`;
+    }
     for (var j = 0; j < 5; j++) {
         if (j < bestView[i].star) {
             strStar += '<i class="fa fa-star"></i>';
@@ -553,13 +596,14 @@ for (var i = 0; i < bestView.length; i++) {
 	<div class="product product-single">
 		<div class="product-thumb">
                                     <div class="product-label">
-										<span class="sale">-${bestView[i].sale}%</span>
+										${strSale}
                                         ${strNew}
-									</div>
+                                    </div>
+                                    <button class='main-btn quick-view'><i class='fa fa-search-plus'></i> View</button>
 									<img src="../assets/img/best-view/${bestView[i].url}" alt="">
 								</div>
 								<div class="product-body">
-									<h3 class="product-price"><a>${(bestView[i].price * (100 - bestView[i].sale) / 100).toLocaleString('de-DE')}đ </a><del class="product-old-price">${(bestView[i].price).toLocaleString('de-DE')}đ</del></h3>
+                                    ${strPrice}
 									<div class="product-rating">${strStar}</div>
 									<h2 class="product-name"><a href="#">${bestView[i].name}</a></h2>
 									<div class="product-btns">
