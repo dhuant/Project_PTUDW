@@ -1,5 +1,6 @@
 var imgUrl = "../../assets/img/books/";
 
+
 // Link ảnh, tên sách, giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán
 var item = [
 	{
@@ -107,6 +108,187 @@ var item = [
 		'sale': 34,
 		'nxb': 'Kim Đồng',
 		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	
+	{
+		'url': 'nhanam-01.jpg',
+		'name': 'Việt Nam danh tác - Bỉ Võ',
+		'price': 65000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-02.jpg',
+		'name': 'Việt Nam danh tác - Ngày Xưa',
+		'price': 42000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-03.jpg',
+		'name': 'Việt Nam danh tác - Tinh Huyết',
+		'price': 58000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-04.jpg',
+		'name': 'Để con được ốm',
+		'price': 80000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Thiếu Nhi',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-05.jpg',
+		'name': 'Sống như người Paris',
+		'price': 90000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-06.jpg',
+		'name': 'Nhật ký Đặng Thùy Trâm - Tái bản (2016)',
+		'price': 69000,
+		'star': 3,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-07.jpg',
+		'name': 'Hãy đi đặt người canh gác',
+		'price': 110000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-08.jpg',
+		'name': 'Sau lưng gió bấc',
+		'price': 90000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-09.jpg',
+		'name': 'Thân gửi sở thú - Tái bản (2017)',
+		'price': 60000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Thiếu Nhi',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-10.jpg',
+		'name': 'Đời về cơ bản là buồn cười',
+		'price': 50000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-11.jpg',
+		'name': 'Tuổi trẻ đáng giá bao nhiêu',
+		'price': 70000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-12.jpg',
+		'name': 'Về nhà - Bất hạnh là một tài sản',
+		'price': 99000,
+		'star': 4,
+		'status': '',	
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-13.jpg',
+		'name': 'Nước Mỹ, nước Mỹ và những truyện ngắn mới',
+		'price': 80000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-14.jpg',
+		'name': 'Trọn vẹn con người tôi',
+		'price': 75000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Văn Học',
+		'view': 0,
+		'amount': 0
+	},
+	{
+		'url': 'nhanam-15.jpg',
+		'name': 'Thiên văn bất tận',
+		'price': 60000,
+		'star': 4,
+		'status': '',
+		'sale': 30,
+		'nxb': 'Nhã Nam',
+		'category': 'Thiếu Nhi',
 		'view': 0,
 		'amount': 0
 	},
