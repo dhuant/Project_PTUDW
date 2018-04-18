@@ -1,7 +1,7 @@
 var imgUrl = "../../assets/img/books/";
 
 
-// Link ảnh, tên sách, giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán
+// Link ảnh, tên sách, giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán, số lượng tồn, xuất xứ, mô tả, tên file html
 var item = [
 	{
 		'url': '01.jpg',
@@ -13,7 +13,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Pháp',
+		'description': "Không Gia Đình kể chuyện em bé không cha không mẹ, không họ hàng thân thích, đi theo một đoàn xiếc thú rồi cầm đầu đoàn ấy đi lưu lạc khắp nước Pháp.",
+		'html': '01.html',
 	},
 	{
 		'url': '02.jpg',
@@ -25,7 +29,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Nhật',
+		'description': 'Lorem Ipsum',
+		'html': '02.html',
 	},
 	{
 		'url': '03.jpg',
@@ -37,7 +45,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Anh',
+		'description': 'Lorem Ipsum',
+		'html': '03.html',
 	},
 	{
 		'url': '04.jpg',
@@ -49,7 +61,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Anh',
+		'description': 'Lorem Ipsum',
+		'html': '04.html',
 	},
 	{
 		'url': '05.jpg',
@@ -61,7 +77,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Anh',
+		'description': 'Lorem Ipsum',
+		'html': '05.html',
 	},
 	{
 		'url': '06.jpg',
@@ -73,7 +93,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Trung Quốc',
+		'description': 'Lorem Ipsum',
+		'html': '06.html',
 	},
 	{
 		'url': '07.jpg',
@@ -85,7 +109,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': '07.html',
 	},
 	{
 		'url': '08.jpg',
@@ -97,7 +125,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': '08.html',
 	},
 	{
 		'url': '09.jpg',
@@ -109,7 +141,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Nga',
+		'description': 'Lorem Ipsum',
+		'html': '09.html',
 	},
 	{
 		'url': '10.jpg',
@@ -121,7 +157,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': '10.html',
 	},
 	{
 		'url': '11.jpg',
@@ -133,7 +173,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': '11.html',
 	},
 	{
 		'url': '12.jpg',
@@ -145,7 +189,11 @@ var item = [
 		'nxb': 'Kim Đồng',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': '12.html',
 	},
 	
 	{
@@ -158,7 +206,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-01.html',
 	},
 	{
 		'url': 'nhanam-02.jpg',
@@ -170,7 +222,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-02.html',
 	},
 	{
 		'url': 'nhanam-03.jpg',
@@ -182,7 +238,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-03.html',
 	},
 	{
 		'url': 'nhanam-04.jpg',
@@ -194,7 +254,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Thiếu Nhi',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-04.html',
 	},
 	{
 		'url': 'nhanam-05.jpg',
@@ -206,7 +270,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Pháp',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-05.html',
 	},
 	{
 		'url': 'nhanam-06.jpg',
@@ -218,7 +286,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-06.html',
 	},
 	{
 		'url': 'nhanam-07.jpg',
@@ -230,7 +302,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-07.html',
 	},
 	{
 		'url': 'nhanam-08.jpg',
@@ -242,7 +318,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-08.html',
 	},
 	{
 		'url': 'nhanam-09.jpg',
@@ -254,7 +334,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Thiếu Nhi',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Anh',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-09.html',
 	},
 	{
 		'url': 'nhanam-10.jpg',
@@ -266,7 +350,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-10.html',
 	},
 	{
 		'url': 'nhanam-11.jpg',
@@ -278,7 +366,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-11.html',
 	},
 	{
 		'url': 'nhanam-12.jpg',
@@ -290,7 +382,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-12.html',
 	},
 	{
 		'url': 'nhanam-13.jpg',
@@ -302,7 +398,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Văn Học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-13.html',
 	},
 	{
 		'url': 'nhanam-14.jpg',
@@ -314,7 +414,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-14.html',
 	},
 	{
 		'url': 'nhanam-15.jpg',
@@ -326,7 +430,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Thiếu Nhi',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Anh',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-15.html',
 	},
 	{
 		'url': 'nhanam-16.jpg',
@@ -338,19 +446,11 @@ var item = [
 		'nxb': 'Nhã Nam',
 		'category': 'Thiếu Nhi',
 		'view': 0,
-		'amount': 0
-	},
-	{
-		'url': 'nhanam-16.jpg',
-		'name': 'Muncle Trogg Và Con Lừa Biết Bay',
-		'price': 67000,
-		'star': 4,
-		'status': '',
-		'sale': 30,
-		'nxb': 'Nhã Nam',
-		'category': 'Thiếu Nhi',
-		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Nga',
+		'description': 'Lorem Ipsum',
+		'html': 'nhanam-16.html',
 	},
 	{
 		'url': 'bv1.jpg',
@@ -362,7 +462,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Việt Nam',
+		'description': 'Lorem Ipsum',
+		'html': 'bv1.html',
 	},
 	{
 		'url': 'bv2.jpg',
@@ -374,7 +478,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Pháp',
+		'description': 'Lorem Ipsum',
+		'html': 'bv2.html',
 	},
 	{
 		'url': 'bv3.jpg',
@@ -386,7 +494,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv3.html',
 	},
 	{
 		'url': 'bv4.jpg',
@@ -398,7 +510,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv4.html',
 	},
 	{
 		'url': 'bv5.jpg',
@@ -410,7 +526,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv5.html',
 	},
 	{
 		'url': 'bv6.jpg',
@@ -422,7 +542,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Văn học',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv6.html',
 	},
 	{
 		'url': 'bv7.jpg',
@@ -434,7 +558,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Đức',
+		'description': 'Lorem Ipsum',
+		'html': 'bv7.html',
 	},
 	{
 		'url': 'bv8.jpg',
@@ -446,7 +574,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Thụy Sĩ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv8.html',
 	},
 	{
 		'url': 'bv9.jpg',
@@ -458,7 +590,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Thiếu nhi',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv9.html',
 	},
 	{
 		'url': 'bv10.jpg',
@@ -470,7 +606,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv10.html',
 	},
 	{
 		'url': 'bv11.jpg',
@@ -482,7 +622,11 @@ var item = [
 		'nxb': 'Bách Việt',
 		'category': 'Khác',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'bv11.html',
 	},
 	{
 		'url': 'ta-01.jpg',
@@ -494,7 +638,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'ta-01.html',
 	},
 	{
 		'url': 'ta-02.jpg',
@@ -506,7 +654,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'ta-02.html',
 	},
 	{
 		'url': 'ta-03.jpg',
@@ -518,7 +670,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'ta-03.html',
 	},
 	{
 		'url': 'ta-04.jpg',
@@ -530,7 +686,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'ta-04.html',
 	},
 
 	{
@@ -543,7 +703,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Ngoại Ngữ',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'ta-04.html',
 	},
 	{
 		'url': 'kt1.jpg',
@@ -555,7 +719,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Singapore',
+		'description': 'Lorem Ipsum',
+		'html': 'kt1.html',
 	},
 	{
 		'url': 'kt2.jpg',
@@ -567,7 +735,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt2.html',
 	},
 	{
 		'url': 'kt3.jpg',
@@ -579,7 +751,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt3.html',
 	},
 	{
 		'url': 'kt4.jpg',
@@ -591,7 +767,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt4.html',
 	},
 	{
 		'url': 'kt5.jpg',
@@ -603,7 +783,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt5.html',
 	},
 	{
 		'url': 'kt6.jpg',
@@ -615,7 +799,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt6.html',
 	},
 	{
 		'url': 'kt7.jpg',
@@ -627,7 +815,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt7.html',
 	},
 	{
 		'url': 'kt8.jpg',
@@ -639,7 +831,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Đức',
+		'description': 'Lorem Ipsum',
+		'html': 'kt8.html',
 	},
 	{
 		'url': 'kt9.jpg',
@@ -651,7 +847,11 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt9.html',
 	},
 	{
 		'url': 'kt10.jpg',
@@ -663,6 +863,10 @@ var item = [
 		'nxb': 'NXB Trẻ',
 		'category': 'Kinh Tế',
 		'view': 0,
-		'amount': 0
+		'sell-amount': 0,
+		'stock': 5,
+		'origin': 'Mỹ',
+		'description': 'Lorem Ipsum',
+		'html': 'kt10.html',
 	},
 ];
