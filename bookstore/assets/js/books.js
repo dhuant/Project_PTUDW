@@ -694,7 +694,7 @@ var item = [
 	},
 
 	{
-		'url': 'ta-04.jpg',
+		'url': 'ta-05.jpg',
 		'name': 'Oxford Learner’s Pocket Word Skill',
 		'price': 73000,
 		'star': 4,
@@ -707,7 +707,7 @@ var item = [
 		'stock': 5,
 		'origin': 'Mỹ',
 		'description': 'Lorem Ipsum',
-		'html': 'ta-04.html',
+		'html': 'ta-05.html',
 	},
 	{
 		'url': 'kt1.jpg',

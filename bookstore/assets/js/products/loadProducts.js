@@ -494,7 +494,7 @@ $(function () {
 													<div class="product-label">`
 														+ str1 + 
 													`</div>
-													<a href='../index.html'><img src="`+ imgUrl + item[index].url + `" alt=''></a>
+													<a href='` + urlToIndex + `index.html'><img src="`+ imgUrl + item[index].url + `" alt=''></a>
 												</div>
 												<div class="product-body">`
 													+ str2 +
