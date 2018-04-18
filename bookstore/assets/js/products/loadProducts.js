@@ -494,17 +494,15 @@ $(function () {
 													<div class="product-label">`
 														+ str1 + 
 													`</div>
-													<a href='` + urlToIndex + `index.html'><img src="`+ imgUrl + item[index].url + `" alt=''></a>
+													<a href='` + urlToIndex + `product-page/` + item[index].html + `'><img src="`+ imgUrl + item[index].url + `" alt=''></a>
 												</div>
 												<div class="product-body">`
 													+ str2 +
 													`<div class="product-rating">`
 														+ str3 +
 													`</div>
-													<h2 class="product-name"><a href="#">` + item[index].name + `</a></h2>
-													<div class="product-btns">
-														<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-														<button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+													<h2 class="product-name"><a href="` + urlToIndex + `product-page/` + item[index].html + `">` + item[index].name + `</a></h2>
+													<div class="product-btns" style="text-align: right">
 														<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 													</div>
 												</div>
