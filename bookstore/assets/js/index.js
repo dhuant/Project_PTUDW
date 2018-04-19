@@ -780,6 +780,7 @@ function totalCost(cart) {
 
 if (cart.length === 0) {
     $('#totalcost').append(`<span id="cost">0đ</span>`);
+    $('#qty').append(`<span d="notification" class="qty">${cart.length}</span>`);
 }
 for (var i = 0; i < listProduct.length; i++) {
 
@@ -835,6 +836,8 @@ for (var i = 0; i < listProduct.length; i++) {
             var total = totalCost(cart).toLocaleString('de-DE');
             $('#cost').remove();
             $('#totalcost').append(`<span id="cost">${total}đ</span>`);
+            $('#notification').remove();
+            $('#qty').append(`<span id="notification" class="qty">${cart.length}</span>`);
         }
         /*end append lại danh sách hiện có trong cart[] */
         /* sự kiện click nút delete trong cart */
@@ -851,6 +854,8 @@ for (var i = 0; i < listProduct.length; i++) {
                         var total = totalCost(cart).toLocaleString('de-DE');
                         $('#cost').remove();
                         $('#totalcost').append(`<span id="cost">${total}đ</span>`);
+                        $('#notification').remove();
+                        $('#qty').append(`<span id="notification" class="qty">${cart.length}</span>`);
                         break;
                     }
                 }
