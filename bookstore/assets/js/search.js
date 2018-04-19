@@ -37,10 +37,24 @@ $(function () {
 								<div id="aside" class="col-md-3">
 									<!-- aside widget -->
 									<div class="aside">
-										<img class="img-a" src="` + urlToIndex + `../assets/img/aside/01.jpg" alt="">
+										<h3 class="aside-title">LỌC THEO GIÁ</h3>
+									</div>
+									<div class="aside" style="text-align: center">
+										<input class="input" style="width: 45%" type="text" id="first-price">
+										<span> - <span>
+										<input class="input" style="width: 45%" type="text" id="second-price">
+									</div>
+									<div class="aside" style="text-align: center">
+										<button class="primary-btn" id="price-filter-btn">LỌC</button>
+									</div>
+									<!-- /aside widget -->
+									<!-- aside widget -->
+									<div class="aside">
+										<h3 class="aside-title"></h3>
+										<img style="max-width: 100%" class="img-a" src="` + urlToIndex + `../assets/img/aside/01.jpg" alt="">
 									</div>
 									<div class="aside">
-										<img class="img-a" src="` + urlToIndex + `../assets/img/aside/02.jpg" alt="">
+										<img style="max-width: 100%" class="img-a" src="` + urlToIndex + `../assets/img/aside/02.jpg" alt="">
 									</div>
 
 								</div>
@@ -55,7 +69,6 @@ $(function () {
 												<span class="text-uppercase">TÌM KIẾM THEO: </span>
 												<select class="input">
 													<option value="name">Tên</option>
-													<option value="price">Giá</option>
 													<option value="category">Loại</option>
 													<option value="nxb">NXB</option>
 													<option value="origin">Xuất Xứ</option>
@@ -99,7 +112,6 @@ $(function () {
 												<span class="text-uppercase">TÌM KIẾM THEO: </span>
 												<select class="input">
 													<option value="name">Tên</option>
-													<option value="price">Giá</option>
 													<option value="category">Loại</option>
 													<option value="nxb">NXB</option>
 													<option value="origin">Xuất Xứ</option>
@@ -355,6 +367,7 @@ $(function () {
 	    word = word.trim();
 	    return word;
 	}
+	// ===============================================================================
 
 
 
@@ -483,7 +496,7 @@ $(function () {
 
 
 
-
+	// =============== BẮT SỰ KIỆN THAY ĐỔI SORT FILTER ===============
 	sortFilter.change(function(){
 		var iType = $(this).val();
 		sortFilter.val($(this).val());
@@ -503,6 +516,115 @@ $(function () {
 		updatePageNumber(pageFilter.val());
 		RefreshSomeEventListener();
 	});
+	// =================================================================
+
+
+
+	// =============== HÀM CẬP NHẬT LẠI SÁCH THEO GIÁ ===============
+	function priceFilterarrBook(type, word, firstVal, secondVal){
+		var newArrBook = [];
+		$.each(item, function (index) {
+			var firstStr = item[index][type].toString().toLowerCase();
+			var secondStr = word.toLowerCase();
+			if (firstStr.includes(secondStr))
+			{
+				var itemVal =(item[index].price * (100 - item[index].sale) / 100);
+				var intFirstVal = parseInt(firstVal);
+				var intSecondVal = parseInt(secondVal);
+				var intItemVal = parseInt(itemVal);
+				if ((intFirstVal <= intItemVal) && (intItemVal <= intSecondVal)) 
+				{
+					var str1 = "", 
+						str2 = "", 
+						str3 = "";
+
+					// Thêm vào tình trạng nếu có
+					if (item[index].status !== "") {
+						str1 += "<span>"+ item[index].status + "</span>";
+					}
+
+					// Thêm vào sale nếu có
+					if (item[index].sale !== 0) {
+						str1 += "<span class='sale'>-"+ item[index].sale + "%</span>";
+					}
+
+
+					// Nếu có giảm giá thì hiển thị giá mới và giá cũ, không giảm giá thì chỉ hiển thị giá
+					var oldPrice = item[index].price.toLocaleString('de-DE');
+					var newPrice = (item[index].price * (100 - item[index].sale) / 100).toLocaleString('de-DE');
+					if (item[index].sale !== 0) {
+						str2 += "<h3 class='product-price'><a>"+ newPrice + "đ </a><del class='product-old-price'>" + oldPrice + "đ</del></h3>";
+					} else {
+						str2 += "<h3 class='product-price'><a>"+ oldPrice + "đ </a></h3>";
+					}
+
+					// Chạy vòng lặp tạo sao
+					var i;
+					for (i = 0; i < 5; i++) {
+						if (i < item[index].star) {
+							str3 += "<i class='fa fa-star'></i>";
+						} else {
+							str3 += "<i class='fa fa-star-o empty'></i>";
+						}
+					}
+
+					var productSingle = `	<!-- Product Single -->
+												<div class="col-md-4 col-sm-6 col-xs-6">
+													<div class="product product-single">
+														<div class="product-thumb">
+															<div class="product-label">`
+																+ str1 + 
+															`</div>
+															<a href='` + urlToIndex + `product-page/` + item[index].html + `'><img src="`+ urlToIndex + `../assets/img/books/` + item[index].url + `" alt=''></a>
+														</div>
+														<div class="product-body">`
+															+ str2 +
+															`<div class="product-rating">`
+																+ str3 +
+															`</div>
+															<h2 class="product-name"><a href="` + urlToIndex + `product-page/` + item[index].html + `">` + item[index].name + `</a></h2>
+															<div class="product-btns" style="text-align: right">
+																<button class="primary-btn add-to-cart" id="` + item[index].id + `"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!-- /Product Single -->`;
+
+					// Thêm vào mảng arrBook
+					newArrBook.push(productSingle);
+				}
+			}
+		});
+		arrBook = newArrBook;
+	}
+	// ==============================================================
+
+
+
+	// =============== XỬ LÝ KHI NGƯỜI DÙNG NHẤN NÚT LỌC THEO GIÁ ===============
+	$('#price-filter-btn').on('click',function(){
+		var firstVal = $('#first-price').val();
+		var secondVal = $('#second-price').val();
+		var iType = sortFilter.val();
+		sortFilter.val(sortFilter.val());
+		var iNumProduct = pageFilter.val();
+		priceFilterarrBook(iType, searchWord, firstVal, secondVal);
+		row.empty();
+		if (arrBook.length == 0){
+			$('.result-text').empty();
+			$('.result-text').append('Không tìm thấy kết quả');
+		} else {
+			$('.result-text').empty();
+			$('.result-text').append('Tìm thấy ' + arrBook.length + ' sản phấm')
+		}
+		for (var i = 0; i < numProduct[iNumProduct]; i++) {
+			row.append(arrBook[i]);
+		}
+		updatePageNumber(pageFilter.val());
+		RefreshSomeEventListener();
+	});
+	// ==========================================================================
 
 
 
