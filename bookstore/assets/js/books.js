@@ -4,6 +4,7 @@ var imgUrl = "../../assets/img/books/";
 // Link ảnh, tên sách, giá cũ, rate (sao), tình trạng (new), sale, nhà xuất bản, loại sách, view, số lượng bán, số lượng tồn, xuất xứ, mô tả, tên file html
 var item = [
 	{
+		'id': '01',
 		'url': '01.jpg',
 		'name': 'Không Gia Đình (Ấn Bản Kỉ Niệm 60 Năm Thành Lập NXB Kim Đồng)',
 		'price': 110000,
@@ -20,6 +21,7 @@ var item = [
 		'html': '01.html',
 	},
 	{
+		'id': '02',
 		'url': '02.jpg',
 		'name': '33 Bài Thực Hành Theo Phương Pháp Shichida',
 		'price': 55000,
@@ -36,6 +38,7 @@ var item = [
 		'html': '02.html',
 	},
 	{
+		'id': '03',
 		'url': '03.jpg',
 		'name': 'Truyện Kể Về Danh Nhân Thế Giới - Ludwig Van Beethoven',
 		'price': 45000,
@@ -52,6 +55,7 @@ var item = [
 		'html': '03.html',
 	},
 	{
+		'id': '04',
 		'url': '04.jpg',
 		'name': 'Danh Nhân Thế Giới - Napôlêông (2014)',
 		'price': 25000,
@@ -68,6 +72,7 @@ var item = [
 		'html': '04.html',
 	},
 	{
+		'id': '05',
 		'url': '05.jpg',
 		'name': 'Danh Nhân Thế Giới - Anhxtanh (2014)',
 		'price': 25000,
@@ -84,6 +89,7 @@ var item = [
 		'html': '05.html',
 	},
 	{
+		'id': '06',
 		'url': '06.jpg',
 		'name': 'Mẹ Do Thái Dạy Con Tư Duy',
 		'price': 57000,
@@ -100,6 +106,7 @@ var item = [
 		'html': '06.html',
 	},
 	{
+		'id': '07',
 		'url': '07.jpg',
 		'name': 'Cẩm Nang Sinh Hoạt Bằng Tranh Cho Bé - Kĩ Năng Trong Sinh Hoạt Thường Ngày',
 		'price': 32000,
@@ -116,6 +123,7 @@ var item = [
 		'html': '07.html',
 	},
 	{
+		'id': '08',
 		'url': '08.jpg',
 		'name': 'Pony Kí Sự - Hiểu Để Yêu Con Trọn Vẹn - Làm Bạn Với Con Từ 1-3 Tuổi',
 		'price': 35000,
@@ -132,6 +140,7 @@ var item = [
 		'html': '08.html',
 	},
 	{
+		'id': '09',
 		'url': '09.jpg',
 		'name': 'Cánh Buồm Đỏ Thắm (Tái Bản 2014)',
 		'price': 22000,
@@ -148,6 +157,7 @@ var item = [
 		'html': '09.html',
 	},
 	{
+		'id': '10',
 		'url': '10.jpg',
 		'name': 'Straightforward Elementary SB & WEBCODE, 2ed',
 		'price': 297000,
@@ -164,6 +174,7 @@ var item = [
 		'html': '10.html',
 	},
 	{
+		'id': '11',
 		'url': '11.jpg',
 		'name': 'Straightforward Pre SB & WEBCODE, 2ed',
 		'price': 297000,
@@ -180,6 +191,7 @@ var item = [
 		'html': '11.html',
 	},
 	{
+		'id': '12',
 		'url': '12.jpg',
 		'name': 'Straightforward Upp Int + EBook SB Pk, 2ed',
 		'price': 297000,
@@ -197,6 +209,7 @@ var item = [
 	},
 	
 	{
+		'id': 'nhanam-01',
 		'url': 'nhanam-01.jpg',
 		'name': 'Việt Nam danh tác - Bỉ Võ',
 		'price': 65000,
@@ -213,6 +226,7 @@ var item = [
 		'html': 'nhanam-01.html',
 	},
 	{
+		'id': 'nhanam-02',
 		'url': 'nhanam-02.jpg',
 		'name': 'Việt Nam danh tác - Ngày Xưa',
 		'price': 42000,
@@ -229,6 +243,7 @@ var item = [
 		'html': 'nhanam-02.html',
 	},
 	{
+		'id': 'nhanam-03',
 		'url': 'nhanam-03.jpg',
 		'name': 'Việt Nam danh tác - Tinh Huyết',
 		'price': 58000,
@@ -245,6 +260,7 @@ var item = [
 		'html': 'nhanam-03.html',
 	},
 	{
+		'id': 'nhanam-04',
 		'url': 'nhanam-04.jpg',
 		'name': 'Để con được ốm',
 		'price': 80000,
@@ -261,6 +277,7 @@ var item = [
 		'html': 'nhanam-04.html',
 	},
 	{
+		'id': 'nhanam-05',
 		'url': 'nhanam-05.jpg',
 		'name': 'Sống như người Paris',
 		'price': 90000,
@@ -277,6 +294,7 @@ var item = [
 		'html': 'nhanam-05.html',
 	},
 	{
+		'id': 'nhanam-06',
 		'url': 'nhanam-06.jpg',
 		'name': 'Nhật ký Đặng Thùy Trâm - Tái bản (2016)',
 		'price': 69000,
@@ -293,6 +311,7 @@ var item = [
 		'html': 'nhanam-06.html',
 	},
 	{
+		'id': 'nhanam-07',
 		'url': 'nhanam-07.jpg',
 		'name': 'Hãy đi đặt người canh gác',
 		'price': 110000,
@@ -309,6 +328,7 @@ var item = [
 		'html': 'nhanam-07.html',
 	},
 	{
+		'id': 'nhanam-08',
 		'url': 'nhanam-08.jpg',
 		'name': 'Sau lưng gió bấc',
 		'price': 90000,
@@ -325,6 +345,7 @@ var item = [
 		'html': 'nhanam-08.html',
 	},
 	{
+		'id': 'nhanam-09',
 		'url': 'nhanam-09.jpg',
 		'name': 'Thân gửi sở thú - Tái bản (2017)',
 		'price': 60000,
@@ -341,6 +362,7 @@ var item = [
 		'html': 'nhanam-09.html',
 	},
 	{
+		'id': 'nhanam-10',
 		'url': 'nhanam-10.jpg',
 		'name': 'Đời về cơ bản là buồn cười',
 		'price': 50000,
@@ -357,6 +379,7 @@ var item = [
 		'html': 'nhanam-10.html',
 	},
 	{
+		'id': 'nhanam-11',
 		'url': 'nhanam-11.jpg',
 		'name': 'Tuổi trẻ đáng giá bao nhiêu',
 		'price': 70000,
@@ -373,6 +396,7 @@ var item = [
 		'html': 'nhanam-11.html',
 	},
 	{
+		'id': 'nhanam-12',
 		'url': 'nhanam-12.jpg',
 		'name': 'Về nhà - Bất hạnh là một tài sản',
 		'price': 99000,
@@ -389,6 +413,7 @@ var item = [
 		'html': 'nhanam-12.html',
 	},
 	{
+		'id': 'nhanam-13',
 		'url': 'nhanam-13.jpg',
 		'name': 'Nước Mỹ, nước Mỹ và những truyện ngắn mới',
 		'price': 80000,
@@ -405,6 +430,7 @@ var item = [
 		'html': 'nhanam-13.html',
 	},
 	{
+		'id': 'nhanam-14',
 		'url': 'nhanam-14.jpg',
 		'name': 'Trọn vẹn con người tôi',
 		'price': 75000,
@@ -421,6 +447,7 @@ var item = [
 		'html': 'nhanam-14.html',
 	},
 	{
+		'id': 'nhanam-15',
 		'url': 'nhanam-15.jpg',
 		'name': 'Thiên văn bất tận',
 		'price': 60000,
@@ -437,6 +464,7 @@ var item = [
 		'html': 'nhanam-15.html',
 	},
 	{
+		'id': 'nhanam-16',
 		'url': 'nhanam-16.jpg',
 		'name': 'Muncle Trogg Và Con Lừa Biết Bay',
 		'price': 67000,
@@ -453,6 +481,7 @@ var item = [
 		'html': 'nhanam-16.html',
 	},
 	{
+		'id': 'bv1',
 		'url': 'bv1.jpg',
 		'name': 'Ti mệnh',
 		'price': 135000,
@@ -469,6 +498,7 @@ var item = [
 		'html': 'bv1.html',
 	},
 	{
+		'id': 'bv2',
 		'url': 'bv2.jpg',
 		'name': 'Sự trỗi dậy và suy tàn của đế chế thứ 3',
 		'price': 150000,
@@ -485,6 +515,7 @@ var item = [
 		'html': 'bv2.html',
 	},
 	{
+		'id': 'bv3',
 		'url': 'bv3.jpg',
 		'name': 'Academy start 6 WB',
 		'price': 140000,
@@ -501,6 +532,7 @@ var item = [
 		'html': 'bv3.html',
 	},
 	{
+		'id': 'bv4',
 		'url': 'bv4.jpg',
 		'name': 'Academy start 5 PB',
 		'price': 140000,
@@ -517,6 +549,7 @@ var item = [
 		'html': 'bv4.html',
 	},
 	{
+		'id': 'bv5',
 		'url': 'bv5.jpg',
 		'name': 'Academy start 5 WB',
 		'price': 140000,
@@ -533,6 +566,7 @@ var item = [
 		'html': 'bv5.html',
 	},
 	{
+		'id': 'bv6',
 		'url': 'bv6.jpg',
 		'name': 'Thời thơ ngây (Tái bản 2017)',
 		'price': 109000,
@@ -549,6 +583,7 @@ var item = [
 		'html': 'bv6.html',
 	},
 	{
+		'id': 'bv7',
 		'url': 'bv7.jpg',
 		'name': 'Sát nhân mạng',
 		'price': 145000,
@@ -565,6 +600,7 @@ var item = [
 		'html': 'bv7.html',
 	},
 	{
+		'id': 'bv8',
 		'url': 'bv8.jpg',
 		'name': 'Kế thừa hay chuyển giao',
 		'price': 80000,
@@ -581,6 +617,7 @@ var item = [
 		'html': 'bv8.html',
 	},
 	{
+		'id': 'bv9',
 		'url': 'bv9.jpg',
 		'name': 'Khoa học cực ngầu',
 		'price': 70000,
@@ -597,6 +634,7 @@ var item = [
 		'html': 'bv9.html',
 	},
 	{
+		'id': 'bv10',
 		'url': 'bv10.jpg',
 		'name': 'Lính bắn tỉa Mỹ',
 		'price': 125000,
@@ -613,6 +651,7 @@ var item = [
 		'html': 'bv10.html',
 	},
 	{
+		'id': 'bv11',
 		'url': 'bv11.jpg',
 		'name': 'Toeic Premier With 4 Practice Tests : Online + Book + CD',
 		'price': 456000,
@@ -629,6 +668,7 @@ var item = [
 		'html': 'bv11.html',
 	},
 	{
+		'id': 'ta-01',
 		'url': 'ta-01.jpg',
 		'name': 'Oxford Learner’s Pocket Dictionary Of Business English',
 		'price': 86000,
@@ -645,6 +685,7 @@ var item = [
 		'html': 'ta-01.html',
 	},
 	{
+		'id': 'ta-02',
 		'url': 'ta-02.jpg',
 		'name': 'Oxford Learner’s Pocket Verbs And Tenses',
 		'price': 153000,
@@ -661,6 +702,7 @@ var item = [
 		'html': 'ta-02.html',
 	},
 	{
+		'id': 'ta-03',
 		'url': 'ta-03.jpg',
 		'name': 'Oxford Learner’s Pocket Grammar',
 		'price': 98000,
@@ -677,6 +719,7 @@ var item = [
 		'html': 'ta-03.html',
 	},
 	{
+		'id': 'ta-04',
 		'url': 'ta-04.jpg',
 		'name': 'Oxford Learner’s Pocket Dictionary',
 		'price': 67000,
@@ -692,8 +735,8 @@ var item = [
 		'description': 'Lorem Ipsum',
 		'html': 'ta-04.html',
 	},
-
 	{
+		'id': 'ta-05',
 		'url': 'ta-05.jpg',
 		'name': 'Oxford Learner’s Pocket Word Skill',
 		'price': 73000,
@@ -710,6 +753,7 @@ var item = [
 		'html': 'ta-05.html',
 	},
 	{
+		'id': 'kt1',
 		'url': 'kt1.jpg',
 		'name': 'Năng đoạn kim cương',
 		'price': 95000,
@@ -726,6 +770,7 @@ var item = [
 		'html': 'kt1.html',
 	},
 	{
+		'id': 'kt2',
 		'url': 'kt2.jpg',
 		'name': 'Mật mã phái đẹp',
 		'price': 75000,
@@ -742,6 +787,7 @@ var item = [
 		'html': 'kt2.html',
 	},
 	{
+		'id': 'kt3',
 		'url': 'kt3.jpg',
 		'name': 'Những chú chó bán hàng',
 		'price': 105000,
@@ -758,6 +804,7 @@ var item = [
 		'html': 'kt3.html',
 	},
 	{
+		'id': 'kt4',
 		'url': 'kt4.jpg',
 		'name': 'Hãy đến hiệu thuốc yunkil',
 		'price': 73000,
@@ -774,6 +821,7 @@ var item = [
 		'html': 'kt4.html',
 	},
 	{
+		'id': 'kt5',
 		'url': 'kt5.jpg',
 		'name': 'Những bài học đầu tư từ Warren Buffett',
 		'price': 120000,
@@ -790,6 +838,7 @@ var item = [
 		'html': 'kt5.html',
 	},
 	{
+		'id': 'kt6',
 		'url': 'kt6.jpg',
 		'name': 'Ý tưởng đột phá trong kinh doanh',
 		'price': 90000,
@@ -806,6 +855,7 @@ var item = [
 		'html': 'kt6.html',
 	},
 	{
+		'id': 'kt7',
 		'url': 'kt7.jpg',
 		'name': 'Quản lý',
 		'price': 70000,
@@ -822,6 +872,7 @@ var item = [
 		'html': 'kt7.html',
 	},
 	{
+		'id': 'kt8',
 		'url': 'kt8.jpg',
 		'name': 'Để thế giới biết bạn là ai',
 		'price': 80000,
@@ -838,6 +889,7 @@ var item = [
 		'html': 'kt8.html',
 	},
 	{
+		'id': 'kt9',
 		'url': 'kt9.jpg',
 		'name': 'Giải pháp bán hàng 4.0',
 		'price': 75000,
@@ -854,6 +906,7 @@ var item = [
 		'html': 'kt9.html',
 	},
 	{
+		'id': 'kt10',
 		'url': 'kt10.jpg',
 		'name': 'Think and grow rich',
 		'price': 100000,

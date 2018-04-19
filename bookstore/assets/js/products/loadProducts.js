@@ -32,6 +32,13 @@ $(function () {
 						.col-md-4.col-sm-6.col-xs-6 {
 							height: 544px;
 						}
+						.product.product-widget .product-thumb>img {
+							max-height: 60px;
+							width: auto;
+						}
+						.product.product-widget .product-thumb {
+							text-align: center;
+						}
 					</style>`;
 	$('head').append(htmlStyle);
 	// ================================================================
@@ -96,26 +103,6 @@ $(function () {
 											<div class="custom-menu">
 												<div id="shopping-cart">
 													<div class="shopping-cart-list">
-														<div class="product product-widget">
-															<div class="product-thumb">
-																<img src="../assets/img/thumb-product01.jpg" alt="">
-															</div>
-															<div class="product-body">
-																<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-																<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-															</div>
-															<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-														</div>
-														<div class="product product-widget">
-															<div class="product-thumb">
-																<img src="../assets/img/thumb-product01.jpg" alt="">
-															</div>
-															<div class="product-body">
-																<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-																<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-															</div>
-															<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-														</div>
 													</div>
 													<div class="shopping-cart-btns">
 														<button class="main-btn">View Cart</button>
@@ -474,7 +461,7 @@ $(function () {
 			if (item[index].sale !== 0) {
 				str2 += "<h3 class='product-price'><a>"+ newPrice + "đ </a><del class='product-old-price'>" + oldPrice + "đ</del></h3>";
 			} else {
-				str2 += "<h3 class='product-price'><a>"+ item[index].price + "đ </a></h3>";
+				str2 += "<h3 class='product-price'><a>"+ oldPrice + "đ </a></h3>";
 			}
 
 			// Chạy vòng lặp tạo sao
@@ -503,7 +490,7 @@ $(function () {
 													`</div>
 													<h2 class="product-name"><a href="` + urlToIndex + `product-page/` + item[index].html + `">` + item[index].name + `</a></h2>
 													<div class="product-btns" style="text-align: right">
-														<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+														<button class="primary-btn add-to-cart" id="` + item[index].id + `"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 													</div>
 												</div>
 											</div>
@@ -556,6 +543,7 @@ $(function () {
 		for (var i = 0; i < numProduct[iNumProduct]; i++) {
 			row.append(arrBook[i]);
 		}
+		RefreshSomeEventListener();
 	});
 	// =====================================================================================================================
 
@@ -585,6 +573,7 @@ $(function () {
 		for (var i = startIndex; i < endIndex; i++) {
 			row.append(arrBook[i]);
 		}
+		RefreshSomeEventListener();
 	})
 	// ===========================================================================================
 
@@ -608,5 +597,136 @@ $(function () {
 	});
 	// ===========================================================================================
 
-	
+
+
+	// =============== HÀM THÊM SÁCH VÀO GIỎ HÀNG ===============
+	function addToCart(book){
+		var newPrice = (book.price * (100 - book.sale) / 100).toLocaleString('de-DE');
+		var htmlProductWidget = `	<div class="product product-widget" id="` + book.id + `">
+										<div class="product-thumb">
+											<img src="`+ urlToIndex + `../assets/img/books/`+ book.url + `" alt="">
+										</div>
+										<div class="product-body">
+											<h3 class="product-price">` + newPrice +`đ <span class="qty">x1</span></h3>
+											<h2 class="product-name"><a href="` + urlToIndex + `product-page/` + book.html + `">` + book.name + `</a></h2>
+										</div>
+										<button class="cancel-btn" id="` + book.id + `"><i class="fa fa-trash"></i></button>
+									</div>`;
+		$('.shopping-cart-list').append(htmlProductWidget);
+		RefreshSomeEventListener();
+	} // function addToCart
+	// ==========================================================
+
+
+
+	// =============== HÀM CẬP NHẬT GIỎ HÀNG (KHI KHÁCH CHỌN THÊM SẢN PHẨM CÓ SẴN TRONG GIỎ HÀNG) ===============
+	function updateCart(book, quantity){
+		var path = "#"+ book.id + " .product-body .product-price .qty";
+		$(path).empty();
+		$(path).append("x" + quantity);
+	}
+	// ==========================================================================================================
+
+
+
+	// =============== BẮT SỰ KIỆN ADD TO CART ===============
+	var cartBooks = [];
+	var cartBooksAmount = [];
+	$('.primary-btn.add-to-cart').on('click',function(){
+		var curID = $(this).attr('id');
+		$.each(item,function(i){
+			if (item[i].id === curID)
+			{	
+				if ($.inArray(item[i], cartBooks) == -1)
+				{
+				  cartBooks.push(item[i]);
+				  cartBooksAmount.push(1);
+				  addToCart(item[i]);
+				} else {
+					cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
+					updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
+				}
+				
+				return false;
+			}
+		});
+	});
+	// =======================================================
+
+
+
+	// =============== BẮT CỰ KIỆN XÓA SÁCH KHỎI GIỎ HÀNG ===============
+	$('.product.product-widget').on('click','.cancel-btn',function(){
+	    	var thisID = $(this).attr('id');
+			var path = "#"+ thisID + ".product.product-widget";
+			$(path).remove();
+
+			var removeIndex;
+			var newCartBooks = [];
+			var newCartBooksAmount = [];
+			$.each(cartBooks, function(i){
+				if (cartBooks[i].id === thisID)
+				{
+					removeIndex = i;
+				} else {
+					newCartBooks.push(cartBooks[i]);
+					newCartBooksAmount.push(cartBooksAmount[i]);
+				}
+			});
+			
+			cartBooks = newCartBooks;
+			cartBooksAmount = newCartBooksAmount;
+		});
+	// ==================================================================
+
+
+	// =============== REFRESH MỘT SỐ EVENT BẮT SỰ KIỆN ===============
+	function RefreshSomeEventListener() {
+	    $('.product.product-widget').off();
+	    $('.product.product-widget').on('click','.cancel-btn',function(){
+	    	var thisID = $(this).attr('id');
+			var path = "#"+ thisID + ".product.product-widget";
+			$(path).remove();
+
+			var removeIndex;
+			var newCartBooks = [];
+			var newCartBooksAmount = [];
+			$.each(cartBooks, function(i){
+				if (cartBooks[i].id === thisID)
+				{
+					removeIndex = i;
+				} else {
+					newCartBooks.push(cartBooks[i]);
+					newCartBooksAmount.push(cartBooksAmount[i]);
+				}
+			});
+			
+			cartBooks = newCartBooks;
+			cartBooksAmount = newCartBooksAmount;
+		});
+
+	    $('.primary-btn.add-to-cart').off();
+		$('.primary-btn.add-to-cart').on('click',function(){
+			var curID = $(this).attr('id');
+			$.each(item,function(i){
+				if (item[i].id === curID)
+				{	
+					if ($.inArray(item[i], cartBooks) == -1)
+					{
+					  cartBooks.push(item[i]);
+					  cartBooksAmount.push(1);
+					  addToCart(item[i]);
+					  RefreshSomeEventListener();
+					} else {
+						cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
+						updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
+					}
+					
+					return false;
+				}
+			});
+		});
+	}
+	// ================================================================
+
 });
