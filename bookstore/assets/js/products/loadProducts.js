@@ -60,9 +60,9 @@ $(function () {
 
 									<!-- Search -->
 									<div class="header-search">
-										<form>
-											<input class="input search-input" type="text" placeholder="Search entire store here...">
-											<button class="search-btn"><i class="fa fa-search"></i></button>
+										<form action="` + urlToIndex + `search.html">
+											<input class="input search-input" type="text" name="searchWord" placeholder="Search entire store here...">
+											<button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
 										</form>
 									</div>
 									<!-- /Search -->
