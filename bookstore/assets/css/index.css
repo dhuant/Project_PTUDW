@@ -16,4 +16,6 @@
     transition: .9s ease-in-out !important;
   }
 
-  
+  .product.product-single:hover .product-thumb:after {
+    opacity: 0.0;
+  }

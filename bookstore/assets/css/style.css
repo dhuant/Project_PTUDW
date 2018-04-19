@@ -1034,8 +1034,7 @@ textarea.input {
 }
 
 .product.product-single:hover .product-thumb:after {
-  opacity: 0.7;
-  visibility: visible;
+  opacity: 0.0;
 }
 
 .product.product-single .quick-view {
