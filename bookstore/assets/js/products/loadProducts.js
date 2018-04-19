@@ -94,7 +94,6 @@ $(function () {
 											<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 												<div class="header-btns-icon">
 													<i class="fa fa-shopping-cart"></i>
-													<!-- <span class="qty">3</span> -->
 												</div>
 												<strong class="text-uppercase">My Cart:</strong>
 												<br>
@@ -194,10 +193,10 @@ $(function () {
 								<div id="aside" class="col-md-3">
 									<!-- aside widget -->
 									<div class="aside">
-										<img class="img-a" src="` + urlToIndex + `../assets/img/aside/01.jpg" alt="">
+										<img style="max-width: 100%" class="img-a" src="` + urlToIndex + `../assets/img/aside/01.jpg" alt="">
 									</div>
 									<div class="aside">
-										<img class="img-a" src="` + urlToIndex + `../assets/img/aside/02.jpg" alt="">
+										<img style="max-width: 100%" class="img-a" src="` + urlToIndex + `../assets/img/aside/02.jpg" alt="">
 									</div>
 
 								</div>
@@ -628,6 +627,18 @@ $(function () {
 	// ==========================================================================================================
 
 
+	// =============== HÀM CẬP NHẬT LẠI NÚT TRÒN PHÍA TRÊN GIỎ HÀNG GHI CÓ SẢN PHẨM ĐƯỢC THÊM VÀO GIỎ HÀNG ===============
+	function updateHeaderQty(){
+		if (parseInt(cartBooks.length) < 1){
+			$('.header-cart .dropdown-toggle .header-btns-icon .qty').remove();
+		} else {
+			$('.header-cart .dropdown-toggle .header-btns-icon .qty').remove();
+			$('.header-cart .dropdown-toggle .header-btns-icon').append(`<span class="qty">`+ cartBooks.length + `</span>`);
+		}
+	}
+	// ===================================================================================================================
+
+
 
 	// =============== BẮT SỰ KIỆN ADD TO CART ===============
 	var cartBooks = [];
@@ -646,10 +657,12 @@ $(function () {
 					cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
 					updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
 				}
-				
+				updateHeaderQty();
+
 				return false;
 			}
 		});
+		updateHeaderQty()
 	});
 	// =======================================================
 
@@ -676,6 +689,7 @@ $(function () {
 			
 			cartBooks = newCartBooks;
 			cartBooksAmount = newCartBooksAmount;
+			updateHeaderQty()
 		});
 	// ==================================================================
 
@@ -703,6 +717,7 @@ $(function () {
 			
 			cartBooks = newCartBooks;
 			cartBooksAmount = newCartBooksAmount;
+			updateHeaderQty()
 		});
 
 	    $('.primary-btn.add-to-cart').off();
@@ -721,7 +736,7 @@ $(function () {
 						cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
 						updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
 					}
-					
+					updateHeaderQty()
 					return false;
 				}
 			});

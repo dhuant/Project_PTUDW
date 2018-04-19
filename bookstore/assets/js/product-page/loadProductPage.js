@@ -689,6 +689,18 @@ $(function () {
 
 
 
+	// =============== HÀM CẬP NHẬT LẠI NÚT TRÒN PHÍA TRÊN GIỎ HÀNG GHI CÓ SẢN PHẨM ĐƯỢC THÊM VÀO GIỎ HÀNG ===============
+	function updateHeaderQty(){
+		if (parseInt(cartBooks.length) < 1){
+			$('.header-cart .dropdown-toggle .header-btns-icon .qty').remove();
+		} else {
+			$('.header-cart .dropdown-toggle .header-btns-icon .qty').remove();
+			$('.header-cart .dropdown-toggle .header-btns-icon').append(`<span class="qty">`+ cartBooks.length + `</span>`);
+		}
+	}
+	// ===================================================================================================================
+
+
 	// =============== BẮT SỰ KIỆN ADD TO CART ===============
 	var cartBooks = [];
 	var cartBooksAmount = [];
@@ -706,7 +718,7 @@ $(function () {
 					cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
 					updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
 				}
-				
+				updateHeaderQty();
 				return false;
 			}
 		});
@@ -736,8 +748,10 @@ $(function () {
 			
 			cartBooks = newCartBooks;
 			cartBooksAmount = newCartBooksAmount;
+			updateHeaderQty();
 		});
 	// ==================================================================
+
 
 
 
@@ -764,6 +778,7 @@ $(function () {
 			
 			cartBooks = newCartBooks;
 			cartBooksAmount = newCartBooksAmount;
+			updateHeaderQty();
 		});
 
 	    $('.primary-btn.add-to-cart').off();
@@ -782,7 +797,7 @@ $(function () {
 						cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
 						updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
 					}
-					
+					updateHeaderQty();
 					return false;
 				}
 			});
