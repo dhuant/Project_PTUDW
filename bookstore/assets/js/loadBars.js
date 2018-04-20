@@ -70,12 +70,10 @@ $(function () {
 											</div>
 											<a href="` + urlToIndex + `login.html" class="text-uppercase">Login</a> / <a href="`+ urlToIndex +`register.html" class="text-uppercase">Join</a>
 											<ul class="custom-menu">
-												<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-												<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-												<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-												<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-												<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-												<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+												<li><a href="`+ urlToIndex + `account/info.html"><i style="width: 14px" class="fa fa-user-o"></i>THÔNG TIN</a></li>
+												<li><a href="#"><i style="width: 14px" class="fa fa-shopping-cart"></i>QUẢN LÝ GIỎ HÀNG</a></li>
+												<li><a href="#"><i style="width: 14px" class="fa fa-check"></i>THANH TOÁN</a></li>
+												<li><a href="#"><i style="width: 14px" class="fa fa-history"></i>LỊCH SỬ MUA HÀNG</a></li>
 											</ul>
 										</li>
 										<!-- /Account -->
