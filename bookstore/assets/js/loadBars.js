@@ -71,8 +71,8 @@ $(function () {
 											<a href="` + urlToIndex + `login.html" class="text-uppercase">Login</a> / <a href="`+ urlToIndex +`register.html" class="text-uppercase">Join</a>
 											<ul class="custom-menu">
 												<li><a href="`+ urlToIndex + `account/info.html"><i style="width: 14px" class="fa fa-user-o"></i>THÔNG TIN</a></li>
-												<li><a href="#"><i style="width: 14px" class="fa fa-shopping-cart"></i>QUẢN LÝ GIỎ HÀNG</a></li>
-												<li><a href="#"><i style="width: 14px" class="fa fa-check"></i>THANH TOÁN</a></li>
+												<li><a href="`+ urlToIndex + `checkout.html"><i style="width: 14px" class="fa fa-shopping-cart"></i>QUẢN LÝ GIỎ HÀNG</a></li>
+												<li><a href="`+ urlToIndex + `checkout.html"><i style="width: 14px" class="fa fa-check"></i>THANH TOÁN</a></li>
 												<li><a href="#"><i style="width: 14px" class="fa fa-history"></i>LỊCH SỬ MUA HÀNG</a></li>
 											</ul>
 										</li>
@@ -93,8 +93,8 @@ $(function () {
 													<div class="shopping-cart-list">
 													</div>
 													<div class="shopping-cart-btns">
-														<button class="main-btn">View Cart</button>
-														<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
+														<button class="main-btn" onclick="location.href='` + urlToIndex + `checkout.html` + `'">View Cart</button>
+														<button class="primary-btn" onclick="location.href='` + urlToIndex + `checkout.html` + `'">Checkout <i class="fa fa-arrow-circle-right"></i></button>
 													</div>
 												</div>
 											</div>
@@ -305,5 +305,9 @@ $(function () {
 	});
 	// ====================================================================
 
+
+	$('#view-cart-btn').on('click',function(){
+
+	})
 
 });

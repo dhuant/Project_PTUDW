@@ -188,6 +188,7 @@ $(function () {
 	// =================================================================
 
 
+
 	// TẠM THỜI LOAD RANDOM 3 QUYỂN SÁCH
 	// =============== LOAD SÁCH TRONG GIỎ HÀNG NGƯỜI DÙNG ===============
 	var checkoutBooks = [];
@@ -233,7 +234,7 @@ $(function () {
 								` + str1 + `
 								<td id="` + item[randomIndex].id + `" class="qty text-center"><input id="` + item[randomIndex].id + `" class="input" type="number" value="1"></td>
 								<td id="` + item[randomIndex].id + `" class="total text-center"><strong id="total-price" class="primary-color">` + newPrice.toLocaleString('de-DE') + `</strong><b class="primary-color">đ</b></td>
-								<td class="text-right"><button id="` + item[randomIndex].id + `" class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>
+								<td id="` + item[randomIndex].id + `" class="text-right"><button id="` + item[randomIndex].id + `" class="main-btn icon-btn delete-item"><i class="fa fa-close"></i></button></td>
 							</tr>`;
 		$('.shopping-cart-table.table tbody').append(htmlAddItem);
 	}
@@ -255,7 +256,7 @@ $(function () {
 	    });
 
 	    var path = '#' + thisID + ' .total .primary-color#total-price';
-	    var newTotal = (thisBook.price * (100 - thisBook.sale) / 100)* thisQty;
+	    var newTotal = (thisBook.price * ((100 - thisBook.sale) / 100)) * thisQty;
 	    $(path).empty();
 	    $(path).append(newTotal.toLocaleString('de-DE'));
 
@@ -283,5 +284,28 @@ $(function () {
 	}
 	updateFinalTotal();
 	// =============================================================================
+
+
+
+	// =============== XỬ LÝ SỰ KIỆN CLICK NÚT DELETE SẢN PHẨM TRONG GIỎ HÀNG ===============
+	$('.main-btn.icon-btn.delete-item').on('click',function(){
+		event.preventDefault();
+		var thisID = $(this).attr('id');
+
+		var path = 'tr#' + thisID;
+		$(path).remove();
+
+		var newCheckoutBooks = [];
+		var newCheckoutBooksAmount = [];
+		$.each(checkoutBooks, function(i){
+			if (checkoutBooks[i].id !== thisID){
+				newCheckoutBooks.push(checkoutBooks[i]);
+				newCheckoutBooksAmount.push(checkoutBooksAmount[i]);
+			}
+		})
+		checkoutBooks = newCheckoutBooks;
+		checkoutBooksAmount = newCheckoutBooksAmount;
+	})
+	// ======================================================================================
 
 });
