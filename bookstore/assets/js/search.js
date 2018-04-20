@@ -668,38 +668,49 @@ $(function () {
 
 
 
-	// =============== HÀM CẬP NHẬT GIỎ HÀNG (KHI KHÁCH CHỌN THÊM SẢN PHẨM CÓ SẴN TRONG GIỎ HÀNG) ===============
-	function updateCart(book, quantity){
-		var path = "#"+ book.id + " .product-body .product-price .qty";
-		$(path).empty();
-		$(path).append("x" + quantity);
+	// =============== HÀM CẬP NHẬT LẠI NÚT TRÒN PHÍA TRÊN GIỎ HÀNG GHI CÓ SẢN PHẨM ĐƯỢC THÊM VÀO GIỎ HÀNG ===============
+	function updateHeaderQty(){
+		if (parseInt(cartBooks.length) < 1){
+			$('.header-cart .dropdown-toggle .header-btns-icon .qty').remove();
+			$('#total-price').empty();
+			$('#total-price').append('0đ');
+		} else {
+			$('.header-cart .dropdown-toggle .header-btns-icon .qty').remove();
+			$('.header-cart .dropdown-toggle .header-btns-icon').append(`<span class="qty">`+ cartBooks.length + `</span>`);
+			$('#total-price').empty();
+			var sum = 0;
+			$.each(cartBooks, function(i){
+				sum += (cartBooks[i].price * (100 - cartBooks[i].sale) / 100)*cartBooksAmount[i];
+			});
+			$('#total-price').append(sum.toLocaleString('de-DE') + 'đ');
+		}
 	}
-	// ==========================================================================================================
+	// ===================================================================================================================
 
 
 
 	// =============== BẮT SỰ KIỆN ADD TO CART ===============
 	var cartBooks = [];
 	var cartBooksAmount = [];
-	$('.primary-btn.add-to-cart').on('click',function(){
-		var curID = $(this).attr('id');
-		$.each(item,function(i){
-			if (item[i].id === curID)
-			{	
-				if ($.inArray(item[i], cartBooks) == -1)
-				{
-				  cartBooks.push(item[i]);
-				  cartBooksAmount.push(1);
-				  addToCart(item[i]);
-				} else {
-					cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
-					updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
-				}
-				updateHeaderQty();
-				return false;
-			}
-		});
-	});
+	// $('.primary-btn.add-to-cart').on('click',function(){
+	// 	var curID = $(this).attr('id');
+	// 	$.each(item,function(i){
+	// 		if (item[i].id === curID)
+	// 		{	
+	// 			if ($.inArray(item[i], cartBooks) == -1)
+	// 			{
+	// 			  cartBooks.push(item[i]);
+	// 			  cartBooksAmount.push(1);
+	// 			  addToCart(item[i]);
+	// 			} else {
+	// 				cartBooksAmount[$.inArray(item[i], cartBooks)] += 1;
+	// 				updateCart(item[i],cartBooksAmount[$.inArray(item[i],cartBooks)]);
+	// 			}
+	// 			updateHeaderQty();
+	// 			return false;
+	// 		}
+	// 	});
+	// });
 	// =======================================================
 
 
@@ -730,7 +741,7 @@ $(function () {
 	// ==================================================================
 
 
-	// =============== REFRESH MỘT SỐ EVENT BẮT SỰ KIỆN ===============
+	// // =============== REFRESH MỘT SỐ EVENT BẮT SỰ KIỆN ===============
 	function RefreshSomeEventListener() {
 	    $('.product.product-widget').off();
 	    $('.product.product-widget').on('click','.cancel-btn',function(){
@@ -778,6 +789,6 @@ $(function () {
 			});
 		});
 	}
-	// ================================================================
+	// // ================================================================
 
 });

@@ -1,6 +1,5 @@
 $(function () {
 
-	var urlToIndex = './';
 
 	/*=============================================================================================================================================
 
@@ -86,11 +85,10 @@ $(function () {
 											<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 												<div class="header-btns-icon">
 													<i class="fa fa-shopping-cart"></i>
-													<!-- <span class="qty">3</span> -->
 												</div>
 												<strong class="text-uppercase">My Cart:</strong>
 												<br>
-												<span>0.00$</span>
+												<span id="total-price">0đ</span>
 											</a>
 											<div class="custom-menu">
 												<div id="shopping-cart">
@@ -308,9 +306,6 @@ $(function () {
 	    menuList.toggleClass('open');
 	});
 	// ====================================================================
-
-
-
 
 
 });
