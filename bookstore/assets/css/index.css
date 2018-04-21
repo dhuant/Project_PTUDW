@@ -19,3 +19,8 @@
   .product.product-single:hover .product-thumb:after {
     opacity: 0.0;
   }
+  #imgCart{
+    width: 65px !important;
+    height: 80px !important;
+  }
+  

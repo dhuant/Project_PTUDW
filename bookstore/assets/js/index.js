@@ -685,15 +685,13 @@ for (var i = 0; i < listProduct.length; i++) {
                                     ${strSale}
                                         ${strNew}
                                     </div>
-									<a href="#"><img src="${url}${listProduct[i].url}" alt=""></a>
+									<a href="javascript:;"><img src="${url}${listProduct[i].url}" alt=""></a>
 								</div>
 								<div class="product-body">
                                 ${strPrice}
 									<div class="product-rating">${strStar}</div>
-									<h2 class="product-name"><a href="#">${listProduct[i].name}</a></h2>
-									<div class="product-btns">
-										<button class="main-btn icon-btn" title="Yêu thích"><i class="fa fa-heart"></i></button>
-										<button class="main-btn icon-btn" title="Compare"><i class="fa fa-exchange"></i></button>
+									<h2 class="product-name"><a href="javascript:;">${listProduct[i].name}</a></h2>
+									<div style="text-align: right;" class="product-btns">
 										<button id="${listProduct[i].id}" class="primary-btn add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 									</div>
 								</div>
@@ -817,15 +815,15 @@ for (var i = 0; i < listProduct.length; i++) {
             var idDiv = `div${cart[h].id}`;
             $('#cart').append(`
                                         <div id="${idDiv}" class="product product-widget">
-        									<div class="product-thumb">
-        										<img src="${cart[h].url}${cart[h].nameImg}" alt="">
+                                            <div class="product-thumb">
+        										<img id="imgCart" src="${cart[h].url}${cart[h].nameImg}" alt="">
         									</div>
         									<div class="product-body">
         										<h3 class="product-price">${cart[h].price.toLocaleString('de-DE')}đ
         											<span class="qty">x${cart[h].count}</span>
         										</h3>
         										<h2 class="product-name">
-        											<a href="#">${cart[h].name}</a>
+        											<a href="../app/product-page/04.html">${cart[h].name}</a>
         										</h2>
         									</div>
         									<button id="${idDel}" class="cancel-btn">
