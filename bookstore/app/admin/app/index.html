@@ -4,7 +4,7 @@
 <head>
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
-    <title>BOOKSTORE.COM</title>
+    <title>Alliance - A Responsive Bootstrap 3 Admin Dashboard Template</title>
     <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
     <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
     <meta name="author" content="ThemeREX">
@@ -34,14 +34,16 @@
     <!-- -------------- Favicon -------------- -->
     <link rel="shortcut icon" href="../assets/img/favicon.ico">
 
+    <!-- -------------- IE8 HTML5 support  -------------- -->
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 
 <body class="dashboard-page">
 
-<!-- -------------- Customizer -------------- -->
-
-<!-- -------------- /Customizer -------------- -->
 
 <!-- -------------- Body Wrap  -------------- -->
 <div id="main">
@@ -49,8 +51,8 @@
     <!-- -------------- Header  -------------- -->
     <header class="navbar navbar-fixed-top bg-dark">
         <div class="navbar-logo-wrapper">
-            <a class="navbar-logo-text" href="dashboard1.html">
-                <b>BOOKSTORE</b>
+            <a class="navbar-logo-text" href="./index.html">
+                <b>BOOKSTORE.COM</b>
             </a>
             <span id="sidebar_left_toggle" class="ad ad-lines"></span>
         </div>
@@ -73,17 +75,54 @@
                 </a>
             </li>
         </ul>
-        <form class="navbar-form navbar-left search-form square" role="search">
+        <div class="navbar-form navbar-left search-form square" role="search">
             <div class="input-group add-on">
+
                 <input type="text" class="form-control" placeholder="Search..." onfocus="this.placeholder=''"
                        onblur="this.placeholder='Search...'">
+
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
 
             </div>
-        </form>
-        
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            
+            <li class="dropdown dropdown-fuse">
+                <a href="#" class="dropdown-toggle fw600" data-toggle="dropdown">
+                    <span class="hidden-xs"><name>Doug Adams</name> </span>
+                    <span class="fa fa-caret-down hidden-xs mr15"></span>
+                    <img src="../assets/img/avatars/profile_avatar.jpg" alt="avatar" class="mw55">
+                </a>
+                <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
+                    <li class="list-group-item">
+                        <a href="#" class="animated animated-short fadeInUp">
+                            <span class="fa fa-envelope-o"></span> Messages
+                            <span class="label label-warning">54</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#" class="animated animated-short fadeInUp">
+                            <span class="fa fa-users"></span> Friends
+                            <span class="label label-warning">6</span>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#" class="animated animated-short fadeInUp">
+                            <span class="fa fa-bell"></span> Notifications </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#" class="animated animated-short fadeInUp">
+                            <span class="fa fa-cogs"></span> Settings </a>
+                    </li>
+                    <li class="dropdown-footer text-center">
+                        <a href="#" class="btn btn-primary btn-sm btn-bordered">
+                            <span class="fa fa-power-off pr5"></span> Logout </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </header>
     <!-- -------------- /Header  -------------- -->
 
@@ -96,8 +135,7 @@
             <!-- -------------- Sidebar Header -------------- -->
             <header class="sidebar-header">
 
-                <!-- -------------- Sidebar - Author -------------- -->
-               
+                
 
                 <!-- -------------- Sidebar - Author Menu  -------------- -->
                 <div class="sidebar-widget menu-widget">
@@ -149,7 +187,7 @@
                 <li class="sidebar-label pt30">Menu</li>
 
                 <li class="active">
-                    <a class="accordion-toggle menu" href="#">
+                    <a class="accordion-toggle" href="#">
                         <span class="fa fa-dashboard"></span>
                         <span class="sidebar-title">Dashboard</span>
                         <span class="caret"></span>
@@ -684,7 +722,6 @@
                     </a>
                 </li>
 
-                
             </ul>
             <!-- -------------- /Sidebar Menu  -------------- -->
 
@@ -748,23 +785,101 @@
         </div>
         <!-- -------------- /Topbar Menu Wrapper -------------- -->
 
-        <!-- -------------- Topbar -------------- -->
         
-        <!-- -------------- /Topbar -------------- -->
 
         <!-- -------------- Content -------------- -->
         <section id="content" class="table-layout animated fadeIn">
+
+            
+            
 
         </section>
         <!-- -------------- /Content -------------- -->
 
         
-        <!-- -------------- /Page Footer -------------- -->
 
     </section>
     <!-- -------------- /Main Wrapper -------------- -->
 
-    
+    <!-- -------------- Sidebar Right -------------- -->
+    <aside id="sidebar_right" class="nano affix">
+
+        <!-- -------------- Sidebar Right Content -------------- -->
+        <div class="sidebar-right-wrapper nano-content">
+
+            <div class="sidebar-block br-n p15">
+
+                <h6 class="title-divider text-muted mb20"> Visitors Stats
+                <span class="pull-right"> 2015
+                  <i class="fa fa-caret-down ml5"></i>
+                </span>
+                </h6>
+
+                <div class="progress mh5">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="34"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: 34%">
+                        <span class="fs11">New visitors</span>
+                    </div>
+                </div>
+                <div class="progress mh5">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="66"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: 66%">
+                        <span class="fs11 text-left">Returnig visitors</span>
+                    </div>
+                </div>
+                <div class="progress mh5">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45"
+                         aria-valuemin="0"
+                         aria-valuemax="100" style="width: 45%">
+                        <span class="fs11 text-left">Orders</span>
+                    </div>
+                </div>
+
+                <h6 class="title-divider text-muted mt30 mb10">New visitors</h6>
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <h3 class="text-primary mn pl5">350</h3>
+                    </div>
+                    <div class="col-xs-7 text-right">
+                        <h3 class="text-warning mn">
+                            <i class="fa fa-caret-down"></i> 15.7% </h3>
+                    </div>
+                </div>
+
+                <h6 class="title-divider text-muted mt25 mb10">Returnig visitors</h6>
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <h3 class="text-primary mn pl5">660</h3>
+                    </div>
+                    <div class="col-xs-7 text-right">
+                        <h3 class="text-success-dark mn">
+                            <i class="fa fa-caret-up"></i> 20.2% </h3>
+                    </div>
+                </div>
+
+                <h6 class="title-divider text-muted mt25 mb10">Orders</h6>
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <h3 class="text-primary mn pl5">153</h3>
+                    </div>
+                    <div class="col-xs-7 text-right">
+                        <h3 class="text-success mn">
+                            <i class="fa fa-caret-up"></i> 5.3% </h3>
+                    </div>
+                </div>
+
+                <h6 class="title-divider text-muted mt40 mb20"> Site Statistics
+                    <span class="pull-right text-primary fw600">Today</span>
+                </h6>
+            </div>
+        </div>
+    </aside>
+    <!-- -------------- /Sidebar Right -------------- -->
 
 </div>
 <!-- -------------- /Body Wrap  -------------- -->
