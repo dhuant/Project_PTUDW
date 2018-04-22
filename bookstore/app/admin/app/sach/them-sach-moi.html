@@ -226,15 +226,15 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="./loai-sach.html">
+                                <a href="javascript:;">
                                     <span class="glyphicon glyphicon-tags"></span> Loại Sách </a>
                             </li>
                             <li>
-                                <a href="./sach.html">
+                                <a href="javascript:;">
                                     <span class="glyphicon glyphicon-tags"></span> Sách </a>
                             </li>
                             <li>
-                                <a href="./nxb.html">
+                                <a href="javascript:;l">
                                     <span class="fa fa-money"></span> Nhà Xuất Bản </a>
                             </li>
                         </ul>
@@ -242,7 +242,7 @@
 
 
                     <li>
-                        <a class="active" href="./../khach-hang/ds-khach-hang.html">
+                        <a class="accordion-toggle" href="#">
                             <span class="fa fa-users"></span>
                             <span class="sidebar-title">QUẢN LÝ KHÁCH HÀNG</span>
                             <!-- <span class="caret"></span> -->
@@ -418,7 +418,7 @@
                     </ul> -->
                     </li>
                     <li>
-                        <a class="active" href="#">
+                        <a class="accordion-toggle" href="#">
                             <span class="fa fa-shopping-cart"></span>
                             <span class="sidebar-title">QUẢN LÝ ĐƠN HÀNG</span>
                             <!-- <span class="caret"></span> -->
@@ -786,81 +786,138 @@
 
             <!-- -------------- Content -------------- -->
             <section id="content" class="table-layout animated fadeIn">
-                <div class="chute chute-center">
 
-                    <div class="panel" id="spy5">
+                <div class="allcp-form theme-primary tab-pane mw600" id="register" role="tabpanel">
+                    <div class="panel">
                         <div class="panel-heading">
-                            <span class="panel-title">Loại Sách</span>
-
+                            <span class="panel-title">
+                                BẠN ĐANG THÊM MỘT SÁCH MỚI
+                            </span>
                         </div>
-                        <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
-                            <a href="./them-loai-sach.html" class="btn btn-primary">Thêm
-                                <i class="fa fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="panel-body pn">
-                            <div class="table-responsive">
+                        <!-- -------------- /Panel Heading -------------- -->
 
-                                <div class="bs-component">
-                                    <table class="table table-bordered mbn">
-                                        <colgroup>
-                                            <col width="60px" />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                        </colgroup>
-                                        <thead>
-                                            <tr class="bg-primary">
-                                                <th>STT</th>
-                                                <th>Mã Số</th>
-                                                <th>Tên</th>
-                                                <th>Địa Chỉ</th>
-                                                <th>Điện Thoại</th>
-                                                <th>Mô Tả</th>
-                                                <th>
-                                                    <i class="fa fa-pencil"></i>
-                                                </th>
-                                                <th>
-                                                    <i class="fa fa-trash"></i>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>kd001</td>
-                                                <td>Kim Đồng</td>
-                                                <td>227 Nguyễn Văn Cừ, Q5 TP HCM</td>
-                                                <td>19001000</td>
-                                                <td>Nhà xuất bản Kim Đồng</td>
-                                                <td>
-                                                    <div class="hidden-sm hidden-xs btn-group">
-                                                        <button class="btn btn-xs btn-info">
-                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="hidden-sm hidden-xs btn-group">
-                                                        <button class="btn btn-xs btn-danger">
-                                                            <i class="ace-icon fa fa-trash bigger-120"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                        <div method="post" action="/" id="form-register">
 
-                                        </tbody>
-                                    </table>
+                            <div class="panel-body pn">
+                                <div class="section row">
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h6 class="card-inside-title">Loại sách</h6>
+                                                    <select class="form-control">
+                                                        <option></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h6 class="card-inside-title">Tên sách</h6>
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body pn">
+                                <div class="section row">
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h6 class="card-inside-title">Password *</h6>
+                                                    <div class="form-line">
+                                                        <input type="password" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h6 class="card-inside-title">Full Name</h6>
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" disabled="disabled" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body pn">
+                                <div class="section row">
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h6 class="card-inside-title">First Name</h6>
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <h6 class="card-inside-title">Last Name</h6>
+                                                    <div class="form-line">
+                                                        <input type="text" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="panel-body pn">
+                                <div class="section row">
+                                    <div class="col-md-6">
+                                        <div class="row clearfix">
+                                            <div class="col-sm-12">
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <h6 style="font-size: 20px;">
+                                                            <input type="checkbox" style="width: 20px; height: 20px;" checked="checked" [(ngModel)]="user.IsActived" />
+                                                            <strong>&nbsp;&nbsp;&nbsp;&nbsp;Already is Actived</strong>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-6 text-right">
+                                        <a href="./sach.html" type="button" class="btn btn-default">
+                                            <i class="fa fa-arrow-circle-left"></i>
+                                            BACK
+                                        </a>
+                                        <a href="./sach.html" class="btn btn-primary">
+                                            <i style="cursor:pointer" class="fa fa-save"></i>
+                                            SAVE
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </section>
             <!-- -------------- /Content -------------- -->
 

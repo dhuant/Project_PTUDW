@@ -1,5 +1,13 @@
 #source-button{
     display: none !important;
 }
-
+@font-face {
+  font-family:font_strong;
+  src:url(‘../../../../assets/fonts/ATViCE.ttf’) format(‘truetype’);
+  font-weight:normal;
+  font-style:normal;
+}
+title{
+  font-family:font_strong;
+}
 
