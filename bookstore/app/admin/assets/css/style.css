@@ -10,4 +10,8 @@
 title{
   font-family:font_strong;
 }
+#content th,tr{
+  text-align: center;
+}
+
 
