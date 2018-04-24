@@ -786,8 +786,64 @@
 
             <!-- -------------- Content -------------- -->
             <section id="content" class="table-layout animated fadeIn">
-                Thêm loại sách
-                
+                <!-- Thêm loại sách -->
+                <div class="row" style="padding-top: 20px;padding-left: 0px;">
+                    <div class="col-lg-12">
+                        <div class="form-horizontal">
+                            <section class="panel">
+                                <header class="panel-heading">
+                                    <h4 class="panel-title" style="padding-top: 12px;"></h4>
+                                </header>
+                                <div id="f" class="panel-body" style="padding-right:0px;">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Mã Số </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtMaSo" type="text" class="form-control" value=""  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Tên </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtTen" type="text" class="form-control" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Địa Chỉ </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtDiaChi" type="text" class="form-control"  value=""/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Điện Thoại </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtSDT" type="number" class="form-control"  value=""/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Mô Tả</label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <textarea id="txtMoTa" rows="5" class="form-control" data-ng-value=""></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <footer class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-9 col-sm-offset-3">
+                                            <a href="./loai-sach.html" id="save-them-loai-sach" class="btn btn-primary">
+                                                <i style="cursor:pointer" class="fa fa-save"></i>
+                                                SAVE
+                                            </a>
+                                            <a href="./loai-sach.html" id="abck-them-loai-sach" type="button" class="btn btn-default">
+                                                <i class="fa fa-arrow-circle-left"></i>
+                                                BACK
+                                            </a>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </section>
+                        </div>
+                    </div>
+                </div>
 
             </section>
             <!-- -------------- /Content -------------- -->
@@ -914,6 +970,7 @@
     <script src="../../assets/js/demo/widgets.js"></script>
     <script src="../../assets/js/demo/widgets_sidebar.js"></script>
     <script src="../../assets/js/pages/dashboard1.js"></script>
+    <script src="../../assets/js/sach/loai-sach.js"></script>
     <!-- -------------- /Scripts -------------- -->
 
 </body>
