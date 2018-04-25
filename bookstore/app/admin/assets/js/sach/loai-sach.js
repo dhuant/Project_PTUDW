@@ -29,14 +29,10 @@ $(document).ready(function () {
 
     /*tạo biến lưu Storege giống cookie */
     var temp;
-    var form;
-    var editBook = [];
-    if (!sessionStorage.form)
-        sessionStorage.form = JSON.stringify(editBook);
-    editBook = JSON.parse(sessionStorage.form);
+    var editTitle = [];
     if (!sessionStorage.temp)
-        sessionStorage.temp = JSON.stringify(loaiSach);
-    loaiSach = JSON.parse(sessionStorage.temp);
+        sessionStorage.temp = JSON.stringify(editTitle);
+    editTitle = JSON.parse(sessionStorage.temp);
     /*end tạo biến lưu Storege giống cookie */
 
     /*append ds vào trong loại sách */
@@ -84,9 +80,6 @@ $(document).ready(function () {
                 if (idBtnDel1 === id) {
                     var idtr1 = `#tr${loaiSach[k].maso}`;
                     $(idtr1).remove();
-                    loaiSach.splice(k, 1);
-                    sessionStorage.temp = JSON.stringify(loaiSach);
-                    loaiSach = JSON.parse(sessionStorage.temp);
                 }
             }
         });
@@ -94,84 +87,31 @@ $(document).ready(function () {
     }
     /* end nút xóa trong loại sách */
 
-    /*push vào trong Storage */
     for (var j = 0; j < loaiSach.length; j++) {
         var jq = `#edit${loaiSach[j].maso}`;
         $(jq).on('click', function () {
+            editTitle = [];
             var id = $(this).attr('id');
             for (var k = 0; k < loaiSach.length; k++) {
                 var idEdit = `edit${loaiSach[k].maso}`;
                 if (idEdit === id) {
-                    editBook.push(loaiSach[k].maso);
-                    editBook.push(loaiSach[k].ten);
-                    editBook.push(loaiSach[k].diachi);
-                    editBook.push(loaiSach[k].dienthoai);
-                    editBook.push(loaiSach[k].mota);
-                    break;
+                    var str = 'Bạn đang chỉnh sửa một loại sách';
+                    editTitle.push(str);
                 }
             }
-            sessionStorage.form = JSON.stringify(editBook);
-            editBook = JSON.parse(sessionStorage.form);
-
+            sessionStorage.temp = JSON.stringify(editTitle);
+            editTitle = JSON.parse(sessionStorage.temp);
         });
-        $('#txtMaSo').val(editBook[0]);
-        $('#txtTen').val(editBook[1]);
-        $('#txtDiaChi').val(editBook[2]);
-        $('#txtSDT').val(editBook[3]);
-        $('#txtMoTa').val(editBook[4]);
     }
-    /*end push vào trong Storage */
-
-    /*set lại cho input bên thêm mới loại sách */
-
-    editBook = [];
-    /*end set lại cho input bên thêm mới loại sách */
     $('#add').click(function () {
-        editBook = [];
-        sessionStorage.form = JSON.stringify(editBook);
-        editBook = JSON.parse(sessionStorage.form);
-    })
-
-    /*nút save bên thêm mới sách */
-
-    var check = false;
-
-    $('#save-them-loai-sach').click(function () {
-
-        var maso = $('#txtMaSo').val();
-        var ten = $('#txtTen').val();
-        var diachi = $('#txtDiaChi').val();
-        var sdt = $('#txtSDT').val();
-        var mota = $('#txtMoTa').val();
-        if (maso === '' || ten === '' || diachi === '' || sdt === '') {
-            alert('điền đủ đi bạn ơi');
-            $('#save-them-loai-sach').attr('href', 'javascript:;');
-        }
-        else {
-            var Item = {
-                maso: maso,
-                ten: ten,
-                diachi: diachi,
-                dienthoai: sdt,
-                mota: mota
-            }
-            for (var n = 0; n < loaiSach.length; n++) {
-                if (loaiSach[n].maso === Item.maso) {
-                    loaiSach[n].ten = ten;
-                    loaiSach[n].diachi = diachi;
-                    loaiSach[n].dienthoai = sdt;
-                    loaiSach[n].mota = mota;
-                    check = true;
-                    break;
-                }
-            }
-            if (check === false)
-                loaiSach.push(Item);
-            sessionStorage.temp = JSON.stringify(loaiSach);
-            loaiSach = JSON.parse(sessionStorage.temp);
-            $('#save-them-loai-sach').attr('href', './loai-sach.html');
-        }
+        editTitle = [];
+        var str = 'Bạn đang thêm mới một loại sách';
+        editTitle.push(str);
+        sessionStorage.temp = JSON.stringify(editTitle);
+        editTitle = JSON.parse(sessionStorage.temp);
     });
-    /*end nút save bên thêm mới sách */
 
+    $('#loai-sach-title').append(`
+        <h4 class="panel-title" style="padding-top: 12px;">${editTitle[0]}</h4>
+    `);
 })

@@ -113,7 +113,6 @@
                                 <span class="fa fa-lock"></span> Đổi Mật Khẩu
                             </a>
                         </li>
-                        
                         <li class="dropdown-footer text-center">
                             <a href="../../app/admin-login.html" class="btn btn-primary btn-sm btn-bordered">
                                 <span class="fa fa-power-off pr5"></span> Logout </a>
@@ -190,11 +189,11 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="javascript:;">
+                                <a href="./role-list.html">
                                     <span class="glyphicon glyphicon-tags"></span> Role </a>
                             </li>
                             <li>
-                                <a href="javascript:;">
+                                <a href="./user-list.html">
                                     <span class="glyphicon glyphicon-tags"></span> Nhân Viên </a>
                             </li>
                         </ul>
@@ -207,15 +206,15 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="./loai-sach.html">
+                                <a href="../sach/loai-sach.html">
                                     <span class="glyphicon glyphicon-tags"></span> Loại Sách </a>
                             </li>
                             <li>
-                                <a href="./sach.html">
+                                <a href="../sach/sach.html">
                                     <span class="glyphicon glyphicon-tags"></span> Sách </a>
                             </li>
                             <li>
-                                <a href="./nxb.html">
+                                <a href="../sach/nxb.html">
                                     <span class="fa fa-money"></span> Nhà Xuất Bản </a>
                             </li>
                         </ul>
@@ -223,19 +222,20 @@
 
 
                     <li>
-                        <a class="active" href="./../khach-hang/ds-khach-hang.html">
+                        <a class="active" href="../khach-hang/ds-khach-hang.html">
                             <span class="fa fa-users"></span>
                             <span class="sidebar-title">QUẢN LÝ KHÁCH HÀNG</span>
                         </a>
-                        
+
                     </li>
                     <li>
-                        <a class="active" href="#">
+                        <a class="active" href="../don-hang/ds-don-hang.html">
                             <span class="fa fa-shopping-cart"></span>
                             <span class="sidebar-title">QUẢN LÝ ĐƠN HÀNG</span>
                         </a>
-                        
+
                     </li>
+
                 </ul>
                 <!-- -------------- /Sidebar Menu  -------------- -->
             </div>
@@ -252,68 +252,45 @@
 
                     <div class="panel" id="spy5">
                         <div class="panel-heading">
-                            <span class="panel-title">Loại Sách</span>
-
+                            <span class="panel-title">DANH SÁCH TÀI KHOẢN</span>
                         </div>
                         <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
-                            <a id="add" href="./them-loai-sach.html" class="btn btn-primary">Thêm
+                            <a id="add-new-user" href="./user-detail.html" class="btn btn-primary">Thêm
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div>
                         <div class="panel-body pn">
                             <div class="table-responsive">
-
                                 <div class="bs-component">
                                     <table class="table table-bordered mbn">
                                         <colgroup>
                                             <col width="60px" />
+                                            <col width="220px" />
                                             <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
+                                            <col width="120px" />
+                                            <col width="120px" />
+                                            <col width="170px" />
+                                            <col width="120px" />
+                                            <col width="60px" />
                                         </colgroup>
                                         <thead>
                                             <tr class="bg-primary">
                                                 <th>STT</th>
-                                                <th>Mã Số</th>
-                                                <th>Tên</th>
-                                                <th>Địa Chỉ</th>
-                                                <th>Điện Thoại</th>
-                                                <th>Mô Tả</th>
+                                                <th>tên tài khoản</th>
+                                                <th>Họ tên</th>
+                                                <th>vai trò</th>
+                                                <th>giới tính</th>
+                                                <th>năm sinh</th>
+                                                <th>
+                                                    <i class="fa fa-flag"></i>
+                                                </th>
                                                 <th>
                                                     <i class="fa fa-pencil"></i>
                                                 </th>
-                                                <th>
-                                                    <i class="fa fa-trash"></i>
-                                                </th>
                                             </tr>
                                         </thead>
-                                        <tbody id="loai-sach">
-                                            <!-- <tr>
-                                                <td>1</td>
-                                                <td>kd001</td>
-                                                <td>Kim Đồng</td>
-                                                <td>227 Nguyễn Văn Cừ, Q5 TP HCM</td>
-                                                <td>19001000</td>
-                                                <td>Nhà xuất bản Kim Đồng</td>
-                                                <td>
-                                                    <div class="hidden-sm hidden-xs btn-group">
-                                                        <button class="btn btn-xs btn-info">
-                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="hidden-sm hidden-xs btn-group">
-                                                        <button class="btn btn-xs btn-danger">
-                                                            <i class="ace-icon fa fa-trash bigger-120"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr> -->
+                                        <tbody id="ds-user">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -331,80 +308,7 @@
         <!-- -------------- /Main Wrapper -------------- -->
 
         <!-- -------------- Sidebar Right -------------- -->
-        <aside id="sidebar_right" class="nano affix">
 
-            <!-- -------------- Sidebar Right Content -------------- -->
-            <div class="sidebar-right-wrapper nano-content">
-
-                <div class="sidebar-block br-n p15">
-
-                    <h6 class="title-divider text-muted mb20"> Visitors Stats
-                        <span class="pull-right"> 2015
-                            <i class="fa fa-caret-down ml5"></i>
-                        </span>
-                    </h6>
-
-                    <div class="progress mh5">
-                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"
-                            style="width: 34%">
-                            <span class="fs11">New visitors</span>
-                        </div>
-                    </div>
-                    <div class="progress mh5">
-                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%">
-                            <span class="fs11 text-left">Returnig visitors</span>
-                        </div>
-                    </div>
-                    <div class="progress mh5">
-                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
-                            style="width: 45%">
-                            <span class="fs11 text-left">Orders</span>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt30 mb10">New visitors</h6>
-
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <h3 class="text-primary mn pl5">350</h3>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <h3 class="text-warning mn">
-                                <i class="fa fa-caret-down"></i> 15.7% </h3>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt25 mb10">Returnig visitors</h6>
-
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <h3 class="text-primary mn pl5">660</h3>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <h3 class="text-success-dark mn">
-                                <i class="fa fa-caret-up"></i> 20.2% </h3>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt25 mb10">Orders</h6>
-
-                    <div class="row">
-                        <div class="col-xs-5">
-                            <h3 class="text-primary mn pl5">153</h3>
-                        </div>
-                        <div class="col-xs-7 text-right">
-                            <h3 class="text-success mn">
-                                <i class="fa fa-caret-up"></i> 5.3% </h3>
-                        </div>
-                    </div>
-
-                    <h6 class="title-divider text-muted mt40 mb20"> Site Statistics
-                        <span class="pull-right text-primary fw600">Today</span>
-                    </h6>
-                </div>
-            </div>
-        </aside>
-        <!-- -------------- /Sidebar Right -------------- -->
 
     </div>
     <!-- -------------- /Body Wrap  -------------- -->
@@ -448,7 +352,7 @@
     <script src="../../assets/js/demo/widgets_sidebar.js"></script>
     <script src="../../assets/js/pages/dashboard1.js"></script>
     <!-- -------------- /Scripts -------------- -->
-    <script src="../../assets/js/sach/loai-sach.js"></script>
+    <script src="../../assets/js/nhan-vien/user.js"></script>
 
 </body>
 

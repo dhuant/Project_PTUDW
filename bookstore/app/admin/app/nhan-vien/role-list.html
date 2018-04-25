@@ -113,7 +113,6 @@
                                 <span class="fa fa-lock"></span> Đổi Mật Khẩu
                             </a>
                         </li>
-                        
                         <li class="dropdown-footer text-center">
                             <a href="../../app/admin-login.html" class="btn btn-primary btn-sm btn-bordered">
                                 <span class="fa fa-power-off pr5"></span> Logout </a>
@@ -190,11 +189,11 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="javascript:;">
+                                <a href="./role-list.html">
                                     <span class="glyphicon glyphicon-tags"></span> Role </a>
                             </li>
                             <li>
-                                <a href="javascript:;">
+                                <a href="./user-list.html">
                                     <span class="glyphicon glyphicon-tags"></span> Nhân Viên </a>
                             </li>
                         </ul>
@@ -207,15 +206,15 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="./loai-sach.html">
+                                <a href="../sach/loai-sach.html">
                                     <span class="glyphicon glyphicon-tags"></span> Loại Sách </a>
                             </li>
                             <li>
-                                <a href="./sach.html">
+                                <a href="../sach/sach.html">
                                     <span class="glyphicon glyphicon-tags"></span> Sách </a>
                             </li>
                             <li>
-                                <a href="./nxb.html">
+                                <a href="../sach/nxb.html">
                                     <span class="fa fa-money"></span> Nhà Xuất Bản </a>
                             </li>
                         </ul>
@@ -223,19 +222,20 @@
 
 
                     <li>
-                        <a class="active" href="./../khach-hang/ds-khach-hang.html">
+                        <a class="active" href="../khach-hang/ds-khach-hang.html">
                             <span class="fa fa-users"></span>
                             <span class="sidebar-title">QUẢN LÝ KHÁCH HÀNG</span>
                         </a>
-                        
+
                     </li>
                     <li>
-                        <a class="active" href="#">
+                        <a class="active" href="../don-hang/ds-don-hang.html">
                             <span class="fa fa-shopping-cart"></span>
                             <span class="sidebar-title">QUẢN LÝ ĐƠN HÀNG</span>
                         </a>
-                        
+
                     </li>
+
                 </ul>
                 <!-- -------------- /Sidebar Menu  -------------- -->
             </div>
@@ -252,11 +252,11 @@
 
                     <div class="panel" id="spy5">
                         <div class="panel-heading">
-                            <span class="panel-title">Loại Sách</span>
+                            <span class="panel-title">Roles</span>
 
                         </div>
                         <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
-                            <a id="add" href="./them-loai-sach.html" class="btn btn-primary">Thêm
+                            <a id="add-new-role" href="./role-detail.html" class="btn btn-primary">Thêm
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -267,21 +267,17 @@
                                     <table class="table table-bordered mbn">
                                         <colgroup>
                                             <col width="60px" />
+                                            <col width="100px" />
+                                            <col width="250px" />
                                             <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
+                                            <col width="60px" />
+                                            <col width="60px" />
                                         </colgroup>
                                         <thead>
                                             <tr class="bg-primary">
                                                 <th>STT</th>
-                                                <th>Mã Số</th>
-                                                <th>Tên</th>
-                                                <th>Địa Chỉ</th>
-                                                <th>Điện Thoại</th>
+                                                <th>Mã Role</th>
+                                                <th>Tên Role</th>
                                                 <th>Mô Tả</th>
                                                 <th>
                                                     <i class="fa fa-pencil"></i>
@@ -291,14 +287,12 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody id="loai-sach">
+                                        <tbody id="ds-role">
                                             <!-- <tr>
                                                 <td>1</td>
-                                                <td>kd001</td>
-                                                <td>Kim Đồng</td>
-                                                <td>227 Nguyễn Văn Cừ, Q5 TP HCM</td>
-                                                <td>19001000</td>
-                                                <td>Nhà xuất bản Kim Đồng</td>
+                                                <td>ad</td>
+                                                <td>Admin</td>
+                                                <td>quan ly</td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <button class="btn btn-xs btn-info">
@@ -448,7 +442,7 @@
     <script src="../../assets/js/demo/widgets_sidebar.js"></script>
     <script src="../../assets/js/pages/dashboard1.js"></script>
     <!-- -------------- /Scripts -------------- -->
-    <script src="../../assets/js/sach/loai-sach.js"></script>
+    <script src="../../assets/js/nhan-vien/role.js"></script>
 
 </body>
 
