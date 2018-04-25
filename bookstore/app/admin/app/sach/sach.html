@@ -189,11 +189,11 @@
                         </a>
                         <ul class="nav sub-nav">
                             <li>
-                                <a href="javascript:;">
+                                <a href="./../nhan-vien/role-list.html">
                                     <span class="glyphicon glyphicon-tags"></span> Role </a>
                             </li>
                             <li>
-                                <a href="javascript:;">
+                                <a href="./../nhan-vien/user-list.html">
                                     <span class="glyphicon glyphicon-tags"></span> Nhân Viên </a>
                             </li>
                         </ul>
@@ -253,7 +253,7 @@
 
                         </div>
                         <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
-                            <a href="./them-sach-moi.html" class="btn btn-primary">Thêm
+                            <a id="add-new-book" href="./them-sach-moi.html" class="btn btn-primary">Thêm
                                 <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -263,23 +263,31 @@
                                 <div class="bs-component">
                                     <table class="table table-bordered mbn">
                                         <colgroup>
-                                            <col width="60px" />
+                                            <col width="40px" />
+                                            <col width="75px" />
                                             <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
+                                            <col width="120px"/>
+                                            <col width="120px"/>
+                                            <col width="75px"/>
+                                            <col width="80px"/>
+                                            <col width="75px"/>
+                                            <col width="85px"/>
+                                            <col width="180px"/>
+                                            <col width="40px" />
+                                            <col width="40px" />
                                         </colgroup>
                                         <thead>
                                             <tr class="bg-primary">
                                                 <th>STT</th>
-                                                <th>Mã Số</th>
-                                                <th>Tên</th>
-                                                <th>Địa Chỉ</th>
-                                                <th>Điện Thoại</th>
-                                                <th>Mô Tả</th>
+                                                <th>Mã Sách</th>
+                                                <th>Tên Sách</th>
+                                                <th>Tác Giả</th>
+                                                <th>Nhà Xuất Bản</th>
+                                                <th>Thể Loại</th>
+                                                <th>Giá Nhập</th>
+                                                <th>Giá Bán</th>
+                                                <th>Số Lượng</th>
+                                                <th>Nội Dung</th>
                                                 <th>
                                                     <i class="fa fa-pencil"></i>
                                                 </th>
@@ -288,14 +296,18 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
+                                        <tbody id="ds-sach">
+                                            <!-- <tr>
                                                 <td>1</td>
-                                                <td>kd001</td>
-                                                <td>Kim Đồng</td>
-                                                <td>227 Nguyễn Văn Cừ, Q5 TP HCM</td>
-                                                <td>19001000</td>
-                                                <td>Nhà xuất bản Kim Đồng</td>
+                                                <td>kt5</td>
+                                                <td>Những bài học đầu tư từ Warren Buffett</td>
+                                                <td>Warren Buffett</td>
+                                                <td>NXB Trẻ</td>
+                                                <td>Kinh Tế</td>
+                                                <td>50000</td>
+                                                <td>82000</td>
+                                                <td>100</td>
+                                                <th>Lorem ipsum</th>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <button class="btn btn-xs btn-info">
@@ -310,8 +322,7 @@
                                                         </button>
                                                     </div>
                                                 </td>
-                                            </tr>
-
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
@@ -370,6 +381,7 @@
     <script src="../../assets/js/demo/widgets_sidebar.js"></script>
     <script src="../../assets/js/pages/dashboard1.js"></script>
     <!-- -------------- /Scripts -------------- -->
+    <script src="../../assets/js/sach/sach.js"></script>
 
 </body>
 
