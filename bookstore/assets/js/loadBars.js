@@ -73,7 +73,7 @@ $(function () {
 												<li><a href="`+ urlToIndex + `account/info.html"><i style="width: 14px" class="fa fa-user-o"></i>THÔNG TIN</a></li>
 												<li><a href="`+ urlToIndex + `checkout.html"><i style="width: 14px" class="fa fa-shopping-cart"></i>QUẢN LÝ GIỎ HÀNG</a></li>
 												<li><a href="`+ urlToIndex + `checkout.html"><i style="width: 14px" class="fa fa-check"></i>THANH TOÁN</a></li>
-												<li><a href="#"><i style="width: 14px" class="fa fa-history"></i>LỊCH SỬ MUA HÀNG</a></li>
+												<li><a href="`+ urlToIndex + `account/history.html"><i style="width: 14px" class="fa fa-history"></i>LỊCH SỬ MUA HÀNG</a></li>
 											</ul>
 										</li>
 										<!-- /Account -->
@@ -148,7 +148,43 @@ $(function () {
 								<div class="menu-nav">
 									<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
 									<ul class="menu-list">
-										<li><a href="` + urlToIndex + `dailydeals.html">DAILY DEALS</a></li>
+										<li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">NHÀ XUẤT BẢN</a>
+											<div class="custom-menu">
+												<div class="row">
+													<div class="col-md-3">
+														<ul class="list-links">
+															<li><a href="` + urlToIndex + `products/nhanam.html` + `">Nhã Nam</a></li>
+															<li><a href="` + urlToIndex + `products/bachviet.html` + `">Bách Việt</a></li>
+															<li><a href="` + urlToIndex + `products/kimdong.html` + `">Kim Đồng</a></li>
+														</ul>
+														<hr class="hidden-md hidden-lg">
+													</div>
+													<div class="col-md-3">
+														<ul class="list-links">
+															<li><a href="` + urlToIndex + `products/nxbtre.html` + `">Trẻ</a></li>
+															<li><a href="#">Đinh Tị</a></li>
+															<li><a href="#">Minh Long</a></li>
+														</ul>
+														<hr class="hidden-md hidden-lg">
+													</div>
+													<div class="col-md-3">
+														<ul class="list-links">
+															<li><a href="#">Parragon</a></li>
+															<li><a href="#">Sterling</a></li>
+															<li><a href="#">Usborne</a></li>
+														</ul>
+														<hr class="hidden-md hidden-lg">
+													</div>
+													<div class="col-md-3">
+														<ul class="list-links">
+															<li><a href="#">Quảng Văn</a></li>
+															<li><a href="#">IPM</a></li>
+															<li><a href="#">LimBooks</a></li>
+														</ul>
+														<hr class="hidden-md hidden-lg">
+													</div>
+												</div>
+											</div>
 									</ul>
 								</div>
 								<!-- menu nav -->

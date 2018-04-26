@@ -21,7 +21,13 @@ var temp;
 var roleTitle = [];
 if (!sessionStorage.temp)
     sessionStorage.temp = JSON.stringify(roleTitle);
-    roleTitle = JSON.parse(sessionStorage.temp);
+roleTitle = JSON.parse(sessionStorage.temp);
+
+var check;
+var Status = [];
+if (!sessionStorage.check)
+    sessionStorage.check = JSON.stringify(Status);
+Status = JSON.parse(sessionStorage.check);
 for (var i = 0; i < roles.length; i++) {
     var idDel = `delete${roles[i].maRole}`;
     var idEdit = `edit${roles[i].maRole}`;
@@ -59,6 +65,24 @@ for (var j = 0; j < roles.length; j++) {
             if (idBtnDel === id) {
                 var idtr = `#tr${roles[k].maRole}`;
                 $(idtr).remove();
+                $('body').append(`
+                <div class="alert alert-success" id="delete" 
+                style="
+                         position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 99999;
+                        display: none;
+                        ">
+                        <i class="fa fa-check">
+                        </i> Delete Successfully </div>`);
+                $('#delete').fadeIn('slow');
+                setTimeout(() => {
+                    $('#delete').fadeOut(3500);
+                    setTimeout(() => {
+                        $('#delete').remove();
+                    }, 1500);
+                }, 500);
             }
         }
     });
@@ -71,6 +95,10 @@ $('#add-new-role').click(function () {
     roleTitle.push(str);
     sessionStorage.temp = JSON.stringify(roleTitle);
     roleTitle = JSON.parse(sessionStorage.temp);
+
+    Status = [];
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
 });
 
 for (var j = 0; j < roles.length; j++) {
@@ -94,3 +122,33 @@ for (var j = 0; j < roles.length; j++) {
 $('#role-title').append(`
         <h4 class="panel-title" style="padding-top: 12px;">${roleTitle[0]}</h4>
     `);
+
+$('#save-role').click(function () {
+    Status = [];
+    Status.push('save-role-user');
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
+});
+$('body').append(`
+    <div class="alert alert-success" id="${Status[0]}" 
+    style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            display: none;
+            ">
+            <i class="fa fa-check">
+            </i> Save Successfully </div>
+    `);
+$('#save-role-user').fadeIn('slow');
+setTimeout(() => {
+    $('#save-role-user').fadeOut(2500);
+    setTimeout(() => {
+        $('#save-role-user').remove();
+    }, 1500);
+}, 1000);
+
+Status = [];
+sessionStorage.check = JSON.stringify(Status);
+Status = JSON.parse(sessionStorage.check);

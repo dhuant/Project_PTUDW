@@ -33,6 +33,12 @@ $(document).ready(function () {
     if (!sessionStorage.temp)
         sessionStorage.temp = JSON.stringify(editTitle);
     editTitle = JSON.parse(sessionStorage.temp);
+
+    var check;
+    var Status = [];
+    if (!sessionStorage.check)
+        sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
     /*end tạo biến lưu Storege giống cookie */
 
     /*append ds vào trong loại sách */
@@ -80,6 +86,24 @@ $(document).ready(function () {
                 if (idBtnDel1 === id) {
                     var idtr1 = `#tr${loaiSach[k].maso}`;
                     $(idtr1).remove();
+                    $('body').append(`
+                <div class="alert alert-success" id="delete" 
+                style="
+                         position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 99999;
+                        display: none;
+                        ">
+                        <i class="fa fa-check">
+                        </i> Delete Successfully </div>`);
+                    $('#delete').fadeIn('slow');
+                    setTimeout(() => {
+                        $('#delete').fadeOut(3500);
+                        setTimeout(() => {
+                            $('#delete').remove();
+                        }, 1500);
+                    }, 500);
                 }
             }
         });
@@ -109,9 +133,42 @@ $(document).ready(function () {
         editTitle.push(str);
         sessionStorage.temp = JSON.stringify(editTitle);
         editTitle = JSON.parse(sessionStorage.temp);
+
+        Status = [];
+        sessionStorage.check = JSON.stringify(Status);
+        Status = JSON.parse(sessionStorage.check);
     });
 
     $('#loai-sach-title').append(`
         <h4 class="panel-title" style="padding-top: 12px;">${editTitle[0]}</h4>
     `);
+
+    $('#save-them-loai-sach').click(function () {
+        Status = [];
+        Status.push('save-loai-sach');
+        sessionStorage.check = JSON.stringify(Status);
+        Status = JSON.parse(sessionStorage.check);
+    });
+    $('body').append(`
+    <div class="alert alert-success" id="${Status[0]}" 
+    style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            display: none;
+            ">
+            <i class="fa fa-check">
+            </i> Save Successfully </div>
+    `);
+    $('#save-loai-sach').fadeIn('slow');
+    setTimeout(() => {
+        $('#save-loai-sach').fadeOut(2500);
+        setTimeout(() => {
+            $('#save-loai-sach').remove();
+        }, 1500);
+    }, 1000);
+    Status = [];
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
 })
