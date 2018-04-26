@@ -148,18 +148,3 @@ $('#book-title').append(`
 `);
 
 
-$('#save-them-nxb').click(function(){
-    $('body').append(`<div class="alert alert-success" id="notificationSuccess" style="position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 99999;
-    display: none;
-    "><i class="fa fa-check"></i> thành công </div>`);
-    $('#notificationSuccess').fadeIn('slow');
-    setTimeout(() => {
-      $('#notificationSuccess').fadeOut(2500);
-      setTimeout(() => {
-        $('#notificationSuccess').remove();
-      }, 1000);
-    }, 2000);
-})
