@@ -68,6 +68,24 @@ $(document).ready(function () {
                 if (idBtnDel === id) {
                     var idtr = `#tr${nxb[k].maNXB}`;
                     $(idtr).remove();
+                    $('body').append(`
+                <div class="alert alert-success" id="delete" 
+                style="
+                         position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 99999;
+                        display: none;
+                        ">
+                        <i class="fa fa-check">
+                        </i> Delete Successfully </div>`);
+                    $('#delete').fadeIn('slow');
+                    setTimeout(() => {
+                        $('#delete').fadeOut(2500);
+                        setTimeout(() => {
+                            $('#delete').remove();
+                        }, 1500);
+                    }, 1000);
                 }
             }
         });

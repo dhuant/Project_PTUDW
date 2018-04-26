@@ -67,6 +67,11 @@ if (!sessionStorage.temp)
     sessionStorage.temp = JSON.stringify(bookTitle);
 bookTitle = JSON.parse(sessionStorage.temp);
 
+var check;
+var Status = [];
+if (!sessionStorage.check)
+    sessionStorage.check = JSON.stringify(Status);
+Status = JSON.parse(sessionStorage.check);
 for (var i = 0; i < books.length; i++) {
     var idtr = `tr${books[i].maSach}`;
     var idDel = `delete${books[i].maSach}`;
@@ -110,6 +115,24 @@ for (var j = 0; j < books.length; j++) {
             if (idBtnDel === id) {
                 var idtr = `#tr${books[k].maSach}`;
                 $(idtr).remove();
+                $('body').append(`
+                <div class="alert alert-success" id="delete" 
+                style="
+                         position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 99999;
+                        display: none;
+                        ">
+                        <i class="fa fa-check">
+                        </i> Delete Successfully </div>`);
+                $('#delete').fadeIn('slow');
+                setTimeout(() => {
+                    $('#delete').fadeOut(2500);
+                    setTimeout(() => {
+                        $('#delete').remove();
+                    }, 1500);
+                }, 1000);
             }
         }
     });
@@ -122,7 +145,11 @@ $('#add-new-book').click(function () {
     bookTitle.push(str);
     sessionStorage.temp = JSON.stringify(bookTitle);
     bookTitle = JSON.parse(sessionStorage.temp);
-    
+
+    Status[0] = 0;
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
+
 });
 
 
@@ -146,5 +173,35 @@ for (var j = 0; j < books.length; j++) {
 $('#book-title').append(`
     <h4 class="panel-title" style="padding-top: 12px;">${bookTitle[0]}</h4>
 `);
+$('#save-new-book').click(function () {
+    Status = [];
+    Status.push('save-book-success');
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
+});
+$('body').append(`
+    <div class="alert alert-success" id="${Status[0]}" 
+    style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            display: none;
+            ">
+            <i class="fa fa-check">
+            </i> Save Successfully </div>
+    `);
+$('#save-book-success').fadeIn('slow');
+setTimeout(() => {
+    $('#save-book-success').fadeOut(2500);
+    setTimeout(() => {
+        $('#save-book-success').remove();
+    }, 1500);
+}, 1000);
+if (Status[0] !== 0) {
+    Status[0] = 0;
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
 
+}
 

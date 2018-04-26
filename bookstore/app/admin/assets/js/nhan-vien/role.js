@@ -21,7 +21,7 @@ var temp;
 var roleTitle = [];
 if (!sessionStorage.temp)
     sessionStorage.temp = JSON.stringify(roleTitle);
-    roleTitle = JSON.parse(sessionStorage.temp);
+roleTitle = JSON.parse(sessionStorage.temp);
 for (var i = 0; i < roles.length; i++) {
     var idDel = `delete${roles[i].maRole}`;
     var idEdit = `edit${roles[i].maRole}`;
@@ -59,6 +59,24 @@ for (var j = 0; j < roles.length; j++) {
             if (idBtnDel === id) {
                 var idtr = `#tr${roles[k].maRole}`;
                 $(idtr).remove();
+                $('body').append(`
+                <div class="alert alert-success" id="delete" 
+                style="
+                         position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        z-index: 99999;
+                        display: none;
+                        ">
+                        <i class="fa fa-check">
+                        </i> Delete Successfully </div>`);
+                $('#delete').fadeIn('slow');
+                setTimeout(() => {
+                    $('#delete').fadeOut(3500);
+                    setTimeout(() => {
+                        $('#delete').remove();
+                    }, 1500);
+                }, 500);
             }
         }
     });
