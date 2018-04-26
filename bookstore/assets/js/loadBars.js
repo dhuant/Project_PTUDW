@@ -73,7 +73,7 @@ $(function () {
 												<li><a href="`+ urlToIndex + `account/info.html"><i style="width: 14px" class="fa fa-user-o"></i>THÔNG TIN</a></li>
 												<li><a href="`+ urlToIndex + `checkout.html"><i style="width: 14px" class="fa fa-shopping-cart"></i>QUẢN LÝ GIỎ HÀNG</a></li>
 												<li><a href="`+ urlToIndex + `checkout.html"><i style="width: 14px" class="fa fa-check"></i>THANH TOÁN</a></li>
-												<li><a href="#"><i style="width: 14px" class="fa fa-history"></i>LỊCH SỬ MUA HÀNG</a></li>
+												<li><a href="`+ urlToIndex + `account/history.html"><i style="width: 14px" class="fa fa-history"></i>LỊCH SỬ MUA HÀNG</a></li>
 											</ul>
 										</li>
 										<!-- /Account -->

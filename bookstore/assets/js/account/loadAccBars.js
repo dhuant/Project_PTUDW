@@ -40,9 +40,9 @@ $(function () {
 												<h3 class="aside-title">TÀI KHOẢN</h3>
 												<ul class="list-links">
 													<li><a href="` + urlToIndex + `account/info.html">Thông tin tài khoản</a></li>
-													<li><a href="#">Quản lý giỏ hàng</a></li>
-													<li><a href="#">Thanh toán</a></li>
-													<li><a href="#">Lịch sử mua hàng</a></li>
+													<li><a href="` + urlToIndex + `checkout.html">Quản lý giỏ hàng</a></li>
+													<li><a href="` + urlToIndex + `checkout.html">Thanh toán</a></li>
+													<li><a href="` + urlToIndex + `account/history.html">Lịch sử mua hàng</a></li>
 												</ul>
 											</div>
 											<!-- /aside widget -->
