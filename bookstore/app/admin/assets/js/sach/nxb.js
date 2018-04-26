@@ -27,6 +27,12 @@ $(document).ready(function () {
     if (!sessionStorage.temp)
         sessionStorage.temp = JSON.stringify(titleHeader);
     titleHeader = JSON.parse(sessionStorage.temp);
+
+    var check;
+    var Status = [];
+    if (!sessionStorage.check)
+        sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
     /*end tạo biến lưu Storege giống cookie */
 
 
@@ -99,6 +105,10 @@ $(document).ready(function () {
         titleHeader.push(str);
         sessionStorage.temp = JSON.stringify(titleHeader);
         titleHeader = JSON.parse(sessionStorage.temp);
+
+        Status = [];
+        sessionStorage.check = JSON.stringify(Status);
+        Status = JSON.parse(sessionStorage.check);
     });
 
 
@@ -127,7 +137,34 @@ $(document).ready(function () {
 
     /*end set lại cho input bên thêm mới nxb */
 
-
+    $('#save-them-nxb').click(function () {
+        Status = [];
+        Status.push('save-nxb-success');
+        sessionStorage.check = JSON.stringify(Status);
+        Status = JSON.parse(sessionStorage.check);
+    });
+    $('body').append(`
+    <div class="alert alert-success" id="${Status[0]}" 
+    style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            display: none;
+            ">
+            <i class="fa fa-check">
+            </i> Save Successfully </div>
+    `);
+    $('#save-nxb-success').fadeIn('slow');
+    setTimeout(() => {
+        $('#save-nxb-success').fadeOut(2500);
+        setTimeout(() => {
+            $('#save-nxb-success').remove();
+        }, 1500);
+    }, 1000);
+    Status = [];
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
 });
 
 

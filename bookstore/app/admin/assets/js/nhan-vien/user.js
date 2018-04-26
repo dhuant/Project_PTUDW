@@ -32,20 +32,26 @@ var temp;
 var userDetailTitle = [];
 if (!sessionStorage.temp)
     sessionStorage.temp = JSON.stringify(userDetailTitle);
-    userDetailTitle = JSON.parse(sessionStorage.temp);
+userDetailTitle = JSON.parse(sessionStorage.temp);
+
+var check;
+var Status = [];
+if (!sessionStorage.check)
+    sessionStorage.check = JSON.stringify(Status);
+Status = JSON.parse(sessionStorage.check);
 for (var i = 0; i < users.length; i++) {
     var idStatus = `status${users[i].username}`;
     var idEdit = `edit${users[i].username}`;
     var btnClass;
-    if(users[i].status === 'actived'){
+    if (users[i].status === 'actived') {
         btnClass = 'btn-success';
     }
-    else{
+    else {
         btnClass = 'btn-danger';
     }
     $('#ds-user').append(`
                                             <tr id="">
-                                                <td>${i+1}</td>
+                                                <td>${i + 1}</td>
                                                 <td>${users[i].username}</td>
                                                 <td>${users[i].fullname}</td>
                                                 <td>${users[i].vaitro}</td>
@@ -75,6 +81,10 @@ $('#add-new-user').click(function () {
     userDetailTitle.push(str);
     sessionStorage.temp = JSON.stringify(userDetailTitle);
     userDetailTitle = JSON.parse(sessionStorage.temp);
+
+    Status = [];
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
 });
 
 for (var j = 0; j < users.length; j++) {
@@ -98,6 +108,36 @@ for (var j = 0; j < users.length; j++) {
 $('#user-detail-title').append(`
         <h4 class="panel-title" style="padding-top: 12px;">${userDetailTitle[0]}</h4>
     `);
+
+$('#save-add-user').click(function () {
+    Status = [];
+    Status.push('save-user');
+    sessionStorage.check = JSON.stringify(Status);
+    Status = JSON.parse(sessionStorage.check);
+});
+$('body').append(`
+        <div class="alert alert-success" id="${Status[0]}" 
+        style="
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 99999;
+                display: none;
+                ">
+                <i class="fa fa-check">
+                </i> Save Successfully </div>
+        `);
+$('#save-user').fadeIn('slow');
+setTimeout(() => {
+    $('#save-user').fadeOut(2500);
+    setTimeout(() => {
+        $('#save-user').remove();
+    }, 1500);
+}, 1000);
+
+Status = [];
+sessionStorage.check = JSON.stringify(Status);
+Status = JSON.parse(sessionStorage.check);
 
 
 
