@@ -30,7 +30,7 @@ label{
 
 input,
 input::-webkit-input-placeholder {
-   font-size: 11px;
+   font-size: 14px;
    padding-top: 3px;
 }
 
@@ -105,3 +105,5 @@ span.input-group-addon i {
 #register-btn{
     cursor: not-allowed;
 }
+
+    
