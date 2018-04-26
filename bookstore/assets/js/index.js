@@ -685,12 +685,12 @@ for (var i = 0; i < listProduct.length; i++) {
                                     ${strSale}
                                         ${strNew}
                                     </div>
-									<a href="javascript:;"><img src="${url}${listProduct[i].url}" alt=""></a>
+									<a href="./product-page/01.html"><img src="${url}${listProduct[i].url}" alt=""></a>
 								</div>
 								<div class="product-body">
                                 ${strPrice}
 									<div class="product-rating">${strStar}</div>
-									<h2 class="product-name"><a href="javascript:;">${listProduct[i].name}</a></h2>
+									<h2 class="product-name"><a href="./product-page/01.html">${listProduct[i].name}</a></h2>
 									<div style="text-align: right;" class="product-btns">
 										<button id="${listProduct[i].id}" class="primary-btn add-to-cart" title="Add to cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
 									</div>
