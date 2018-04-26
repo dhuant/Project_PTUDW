@@ -7,7 +7,7 @@ $(function () {
 	=============================================================================================================================================*/
 
 
-	// =============== THÊM VÀO .CSS CHO TRANG PRODUCTS ===============
+	// =============== THÊM VÀO .CSS CHO TRANG HISTORY ===============
 	var htmlStyle = `<style>	
 						#select-gender {
 						  width: 100%;
@@ -75,7 +75,7 @@ $(function () {
 							<td><a href="mh002.html" style="color: #F8694A">MH002</td>
 							<td>26/04/2018</td>
 							<td>Truyện Kể Về Danh Nhân Thế Giới... và 02 sản phẩm khác</td>
-							<td>66.050đ</td>
+							<td>77.700đ</td>
 							<td class="text-right">Giao hàng thành công</td>
 						</tr>`;
 	$('.shopping-cart-table.table tbody').append(htmlMH001);
