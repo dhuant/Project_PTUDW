@@ -50,6 +50,47 @@
                 <a class="navbar-logo-text" href="../admin-index.html">
                     <b>BOOKSTORE.COM</b>
                 </a>
+                <span id="sidebar_left_toggle" class="ad ad-lines"></span>
+            </div>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="dropdown dropdown-fuse hidden-xs">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
+                        <span class="fa fa-chevron-down"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Action</a>
+                        </li>
+                        <li>
+                            <a href="#">One more action</a>
+                        </li>
+                        <li>
+                            <a href="#">More actions if needed</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">Separated action</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="hidden-xs">
+                    <a class="navbar-fullscreen toggle-active" href="#">
+                        <span class="glyphicon glyphicon-fullscreen"></span>
+                    </a>
+                </li>
+            </ul>
+            <div class="navbar-form navbar-left search-form square" role="search">
+                <div class="input-group add-on">
+
+                    <input type="text" class="form-control" placeholder="Search..." onfocus="this.placeholder=''" onblur="this.placeholder='Search...'">
+
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+
+                </div>
             </div>
             <ul class="nav navbar-nav navbar-right">
 
@@ -87,9 +128,54 @@
 
             <!-- -------------- Sidebar Left Wrapper  -------------- -->
             <div class="sidebar-left-content nano-content">
+
+                <!-- -------------- Sidebar Header -------------- -->
+                <header class="sidebar-header">
+
+
+
+                    <!-- -------------- Sidebar - Author Menu  -------------- -->
+                    <div class="sidebar-widget menu-widget">
+                        <div class="row text-center mbn">
+                            <div class="col-xs-2 pln prn">
+                                <a href="javascript:;" class="text-primary" data-toggle="tooltip" data-placement="top" title="Dashboard">
+                                    <span class="fa fa-dashboard"></span>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-2 pln prn">
+                                <a href="charts-highcharts.html" class="text-info" data-toggle="tooltip" data-placement="top" title="Stats">
+                                    <span class="fa fa-bar-chart-o"></span>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-2 pln prn">
+                                <a href="sales-stats-products.html" class="text-system" data-toggle="tooltip" data-placement="top" title="Orders">
+                                    <span class="fa fa-info-circle"></span>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-2 pln prn">
+                                <a href="sales-stats-purchases.html" class="text-warning" data-toggle="tooltip" data-placement="top" title="Invoices">
+                                    <span class="fa fa-file"></span>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-2 pln prn">
+                                <a href="basic-profile.html" class="text-alert" data-toggle="tooltip" data-placement="top" title="Users">
+                                    <span class="fa fa-users"></span>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-2 pln prn">
+                                <a href="management-tools-dock.html" class="text-danger" data-toggle="tooltip" data-placement="top" title="Settings">
+                                    <span class="fa fa-cogs"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </header>
+                <!-- -------------- /Sidebar Header -------------- -->
+
                 <!-- -------------- Sidebar Menu  -------------- -->
                 <ul style="padding-top: 15px;" class="nav sidebar-menu">
-                    
+                  
                     <li>
                         <a class="active" href="../admin-index.html">
                             <span class="fa fa-dashboard"></span>
@@ -135,22 +221,22 @@
                         </ul>
                     </li>
 
-
                     <li>
                         <a class="active" href="./ds-khach-hang.html">
                             <span class="fa fa-users"></span>
                             <span class="sidebar-title">QUẢN LÝ KHÁCH HÀNG</span>
                         </a>
-                       
+                        
                     </li>
                     <li>
-                        <a class="active" href="../don-hang/ds-don-hang.html">
+                        <a class="active" href="./../don-hang/ds-don-hang.html">
                             <span class="fa fa-shopping-cart"></span>
                             <span class="sidebar-title">QUẢN LÝ ĐƠN HÀNG</span>
                         </a>
                     </li>
                 </ul>
-                <!-- -------------- /Sidebar Menu  -------------- -->
+                <!-- -------------- /Sidebar Hide Button -------------- -->
+
             </div>
             <!-- -------------- /Sidebar Left Wrapper  -------------- -->
 
@@ -161,53 +247,67 @@
         <section id="content_wrapper">
             <!-- -------------- Content -------------- -->
             <section id="content" class="table-layout animated fadeIn">
-                <div class="chute chute-center">
-                    <div class="panel" id="spy5">
-                        <div class="panel-heading">
-                            <span class="panel-title">Khách hàng</span>
-                        </div>
-                        <div class="panel-body pn">
-                            <div class="table-responsive">
-                                <div class="bs-component">
-                                    <table class="table table-bordered mbn">
-                                        <colgroup>
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                            <col />
-                                        </colgroup>
-                                        <thead>
-                                            <tr class="bg-primary">
-                                                <th>STT</th>
-                                                <th>Họ Tên</th>
-                                                <th>Email</th>
-                                                <th>Username</th>
-                                                <th>Password</th>
-                                                <th>
-                                                    <i class="fa fa-pencil"></i>
-                                                </th>
-                                                <th>
-                                                    <i class="fa fa-trash"></i>
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="kh">
-                                            
-                                        </tbody>
-                                    </table>
+                <!-- Thêm loại sách -->
+                <div class="row" style="padding-top: 20px;padding-left: 0px;">
+                    <div class="col-lg-12">
+                        <div class="form-horizontal">
+                            <section class="panel">
+                                <header id="titleHeader" class="panel-heading">
+                                    
+                                </header>
+                                <div id="f" class="panel-body" style="padding-right:0px;">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Họ Tên </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtMaNXB" type="text" class="form-control" value=""  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Email </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtTenNXB" type="text" class="form-control" value="" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">User Name </label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtWebsite" type="text" class="form-control"  value=""/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Password</label>
+                                        <div class="col-sm-9" style="width: 700px;">
+                                            <input id="txtMoTa" type="password" class="form-control"  value=""/>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <footer class="panel-footer">
+                                    <div class="row">
+                                        <div class="col-sm-9 col-sm-offset-3">
+                                            <a href="./ds-khach-hang.html" id="save-them-kh" class="btn btn-primary">
+                                                <i style="cursor:pointer" class="fa fa-save"></i>
+                                                SAVE
+                                            </a>
+                                            <a href="./ds-khach-hang.html" id="back-them-kh" type="button" class="btn btn-default">
+                                                <i class="fa fa-arrow-circle-left"></i>
+                                                BACK
+                                            </a>
+                                        </div>
+                                    </div>
+                                </footer>
+                            </section>
                         </div>
                     </div>
                 </div>
 
             </section>
             <!-- -------------- /Content -------------- -->
+
         </section>
         <!-- -------------- /Main Wrapper -------------- -->
+
+        
+
     </div>
     <!-- -------------- /Body Wrap  -------------- -->
 
@@ -249,7 +349,7 @@
     <script src="../../assets/js/demo/widgets.js"></script>
     <script src="../../assets/js/demo/widgets_sidebar.js"></script>
     <script src="../../assets/js/pages/dashboard1.js"></script>
-    <script src="./../../assets/js/khachhang/khachhang.js"></script>
+    <script src="../../assets/js/khachhang/khachhang.js"></script>
     <!-- -------------- /Scripts -------------- -->
 
 </body>
