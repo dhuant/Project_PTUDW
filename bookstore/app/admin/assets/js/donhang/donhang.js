@@ -4,44 +4,47 @@ var dh = [
     {
         madh: '0x01',
         sanpham: 'Mật mã phái đẹp',
+        ngaylap:'04/04/2018',
         dongia: '52500',
         soluong: '1',
         tongthu: '52500',
         nguoidat: 'Nguyễn Đình Tiến',
-        email: 'tien1@gmail.com',
+        //email: 'tien1@gmail.com',
         sdt: '0988111222',
         nguoinhan: 'Nguyễn Đình Tiến',
         diachi: '181 Tân Phước, phường 11, quận 10, TP.HCM',
         sdtn: '0988111222',
-        status: 'Delivered'
+        status: 'Đã giao'
     },
     {
         madh: '0x02',
         sanpham: 'Để con được ốm',
+        ngaylap:'02/02/2018',
         dongia: '56000',
         soluong: '1',
         tongthu: '56000',
         nguoidat: 'Lê Thăng',
-        email: 'thang@gmail.com',
+        //email: 'thang@gmail.com',
         sdt: '0122311411',
         nguoinhan: 'Lê Thăng',
         diachi: '42/1 Ung Văn Khiêm, phường 21, quận Tân Bình, TP.HCM',
         sdtn: '0122311411',
-        status: 'Delivered'
+        status: 'Chưa giao'
     },
     {
         madh: '0x03',
         sanpham: 'Thiên văn bất tận',
+        ngaylap:'01/01/2018',
         dongia: '42000',
         soluong: '1',
         tongthu: '56000',
         nguoidat: 'Lê An',
-        email: 'An@gmail.com',
+        //email: 'An@gmail.com',
         sdt: '01255234156',
         nguoinhan: 'Lê An',
         diachi: '227 Nguyễn Văn Cừ, phường 7, quận 5, TP.HCM',
         sdtn: '01255234156',
-        status: 'Waiting'
+        status: 'Đang giao'
     }
 ];
 
@@ -66,22 +69,26 @@ for (i = 0; i < dh.length; i++) {
     var idEdit = `edit${dh[i].madh}`;
     var idStatus = `status${dh[i].madh}`;
     var btnClass;
-    if (dh[i].status === 'Delivered') {
+    if (dh[i].status === 'Đã giao') {
         btnClass = 'btn-success';
     }
-    else {
+    else if(dh[i].status === 'Chưa giao'){
         btnClass = 'btn-danger';
+    }
+    else {
+        btnClass = 'btn-primary';
     }
     $('#dh').append(`
         <tr id="${idtr}">   
         <td>${i + 1}</td>
         <td>${dh[i].madh}</td>
         <td>${dh[i].sanpham}</td>
+        <td>${dh[i].ngaylap}</td>
         <td>${dh[i].dongia}</td>
         <td>${dh[i].soluong}</td>
         <td>${dh[i].tongthu}</td>
         <td>${dh[i].nguoidat}</td>
-        <td>${dh[i].email}</td>
+        
         <td>${dh[i].sdt}</td>
         <td>${dh[i].nguoinhan}</td>
         <td>${dh[i].diachi}</td>
@@ -94,11 +101,15 @@ for (i = 0; i < dh.length; i++) {
             </button>
             <ul class="dropdown-menu" role="menu">   
                 <li>
-                <a href="#">Delivered</a>
+                <a href="#">Đã giao</a>
                     
                 </li>
                 <li>
-                <a href="#">Waiting</a>
+                <a href="#">Đang giao</a>
+               
+                </li>
+                <li>
+                <a href="#">Chưa giao</a>
                
                 </li>
             </ul>
