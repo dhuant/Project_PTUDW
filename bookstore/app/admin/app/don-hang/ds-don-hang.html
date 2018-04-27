@@ -1,19 +1,18 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
     <!-- -------------- Meta and Title -------------- -->
     <meta charset="utf-8">
     <title>BOOKSTORE.COM</title>
-    <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme"/>
+    <meta name="keywords" content="HTML5, Bootstrap 3, Admin Template, UI Theme" />
     <meta name="description" content="Alliance - A Responsive HTML5 Admin UI Framework">
     <meta name="author" content="ThemeREX">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- -------------- Fonts -------------- -->
     <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet'
-          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
 
     <!-- -------------- Icomoon -------------- -->
     <link rel="stylesheet" type="text/css" href="../../assets/fonts/icomoon/icomoon.css">
@@ -30,7 +29,7 @@
 
     <!-- -------------- CSS - allcp forms -------------- -->
     <link rel="stylesheet" type="text/css" href="../../assets/allcp/forms/css/forms.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
 
     <!-- -------------- Favicon -------------- -->
 
@@ -42,256 +41,203 @@
 <body class="dashboard-page">
 
 
-<!-- -------------- Body Wrap  -------------- -->
-<div id="main">
+    <!-- -------------- Body Wrap  -------------- -->
+    <div id="main">
 
-    <!-- -------------- Header  -------------- -->
-    <header class="navbar navbar-fixed-top bg-dark">
-        <div class="navbar-logo-wrapper">
-            <a class="navbar-logo-text" href="../admin-index.html">
-                <b>BOOKSTORE.COM</b>
-            </a>
-            <span id="sidebar_left_toggle" class="ad ad-lines"></span>
-        </div>
-        <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown dropdown-fuse hidden-xs">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-                    <span class="fa fa-chevron-down"></span>
+        <!-- -------------- Header  -------------- -->
+        <header class="navbar navbar-fixed-top bg-dark">
+            <div class="navbar-logo-wrapper">
+                <a class="navbar-logo-text" href="../admin-index.html">
+                    <b>BOOKSTORE.COM</b>
                 </a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">One more action</a></li>
-                    <li><a href="#">More actions if needed</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated action</a></li>
-                </ul>
-            </li>
-            <li class="hidden-xs">
-                <a class="navbar-fullscreen toggle-active" href="#">
-                    <span class="glyphicon glyphicon-fullscreen"></span>
-                </a>
-            </li>
-        </ul>
-        <div class="navbar-form navbar-left search-form square" role="search">
-            <div class="input-group add-on">
-
-                <input type="text" class="form-control" placeholder="Search..." onfocus="this.placeholder=''"
-                       onblur="this.placeholder='Search...'">
-
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-
             </div>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            
-            <li class="dropdown dropdown-fuse">
-                <a href="#" class="dropdown-toggle fw600" data-toggle="dropdown">
-                    <span class="hidden-xs"><name>LINHDZ</name> </span>
-                    <span class="fa fa-caret-down hidden-xs mr15"></span>
-                    <img src="" alt="avatar" class="mw55">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dropdown-fuse">
+                    <a href="javascript:;" class="dropdown-toggle fw600" data-toggle="dropdown">
+                        <span class="hidden-xs">
+                            <name>nnlinh97</name>
+                        </span>
+                    </a>
+                </li>
+                <a href="../../app/admin-login.html" class="btn btn-primary btn-sm btn-bordered" style="margin-top: 20px;">
+                    <span class="fa fa-power-off pr5"></span>
+                    Logout
                 </a>
-                <ul class="dropdown-menu list-group keep-dropdown w250" role="menu">
-                    <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-info"></span> Chỉnh Sửa Thông Tin
+            </ul>
+        </header>
+        <!-- -------------- /Header  -------------- -->
+
+        <!-- -------------- Sidebar  -------------- -->
+        <aside id="sidebar_left" class="nano nano-light affix">
+
+            <!-- -------------- Sidebar Left Wrapper  -------------- -->
+            <div class="sidebar-left-content nano-content">
+                <!-- -------------- Sidebar Menu  -------------- -->
+                <ul style="padding-top: 15px;" class="nav sidebar-menu">
+                    
+                    <li>
+                        <a class="active" href="../admin-index.html">
+                            <span class="fa fa-dashboard"></span>
+                            <span class="sidebar-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="#" class="animated animated-short fadeInUp">
-                            <span class="fa fa-lock"></span>  Đổi Mật Khẩu
+                    <li>
+                        <a class="accordion-toggle" href="javascript:;">
+                            <span class="fa fa-user"></span>
+                            <span class="sidebar-title">QUẢN LÝ NHÂN VIÊN</span>
+                            <span class="caret"></span>
                         </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="../nhan-vien/role-list.html">
+                                    <span class="glyphicon glyphicon-tags"></span> Role </a>
+                            </li>
+                            <li>
+                                <a href="../nhan-vien/user-list.html">
+                                    <span class="glyphicon glyphicon-tags"></span> Nhân Viên </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="dropdown-footer text-center">
-                        <a href="../../app/admin-login.html" class="btn btn-primary btn-sm btn-bordered">
-                            <span class="fa fa-power-off pr5"></span> Logout </a>
+                    <li>
+                        <a class="accordion-toggle" href="javascript:;">
+                            <span class="fa fa-book"></span>
+                            <span class="sidebar-title">QUẢN LÝ SÁCH</span>
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="../sach/loai-sach.html">
+                                    <span class="glyphicon glyphicon-tags"></span> Loại Sách </a>
+                            </li>
+                            <li>
+                                <a href="../sach/sach.html">
+                                    <span class="glyphicon glyphicon-tags"></span> Sách </a>
+                            </li>
+                            <li>
+                                <a href="../sach/nxb.html">
+                                    <span class="fa fa-money"></span> Nhà Xuất Bản </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a class="active" href="../khach-hang/ds-khach-hang.html">
+                            <span class="fa fa-users"></span>
+                            <span class="sidebar-title">QUẢN LÝ KHÁCH HÀNG</span>
+                        </a>
+                       
+                    </li>
+                    <li>
+                        <a class="active" href="./ds-don-hang.html">
+                            <span class="fa fa-shopping-cart"></span>
+                            <span class="sidebar-title">QUẢN LÝ ĐƠN HÀNG</span>
+                        </a>
                     </li>
                 </ul>
-            </li>
-        </ul>
-    </header>
-    <!-- -------------- /Header  -------------- -->
+                <!-- -------------- /Sidebar Menu  -------------- -->
+            </div>
+            <!-- -------------- /Sidebar Left Wrapper  -------------- -->
 
-    <!-- -------------- Sidebar  -------------- -->
-    <aside id="sidebar_left" class="nano nano-light affix">
+        </aside>
+        <!-- -------------- /Sidebar -------------- -->
 
-        <!-- -------------- Sidebar Left Wrapper  -------------- -->
-        <div class="sidebar-left-content nano-content">
-
-            <!-- -------------- Sidebar Header -------------- -->
-            <header class="sidebar-header">
-
-                
-
-                <!-- -------------- Sidebar - Author Menu  -------------- -->
-                <div class="sidebar-widget menu-widget">
-                    <div class="row text-center mbn">
-                        <div class="col-xs-2 pln prn">
-                            <a href="javascript:;" class="text-primary" data-toggle="tooltip" data-placement="top"
-                               title="Dashboard">
-                                <span class="fa fa-dashboard"></span>
-                            </a>
+        <!-- -------------- Main Wrapper -------------- -->
+        <section id="content_wrapper">
+            <!-- -------------- Content -------------- -->
+            <section id="content" class="table-layout animated fadeIn">
+                <div class="chute chute-center">
+                    <div class="panel" id="spy5">
+                        <div class="panel-heading">
+                            <span class="panel-title">Quản Lý Đơn Hàng</span>
                         </div>
-                        <div class="col-xs-4 col-sm-2 pln prn">
-                            <a href="charts-highcharts.html" class="text-info" data-toggle="tooltip"
-                               data-placement="top" title="Stats">
-                                <span class="fa fa-bar-chart-o"></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-4 col-sm-2 pln prn">
-                            <a href="sales-stats-products.html" class="text-system" data-toggle="tooltip"
-                               data-placement="top" title="Orders">
-                                <span class="fa fa-info-circle"></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-4 col-sm-2 pln prn">
-                            <a href="sales-stats-purchases.html" class="text-warning" data-toggle="tooltip"
-                               data-placement="top" title="Invoices">
-                                <span class="fa fa-file"></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-4 col-sm-2 pln prn">
-                            <a href="basic-profile.html" class="text-alert" data-toggle="tooltip" data-placement="top"
-                               title="Users">
-                                <span class="fa fa-users"></span>
-                            </a>
-                        </div>
-                        <div class="col-xs-4 col-sm-2 pln prn">
-                            <a href="management-tools-dock.html" class="text-danger" data-toggle="tooltip"
-                               data-placement="top" title="Settings">
-                                <span class="fa fa-cogs"></span>
-                            </a>
+                        <div class="panel-body pn">
+                            <div class="table-responsive">
+                                <div class="bs-component">
+                                    <table class="table table-bordered mbn">
+                                        <colgroup>
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col />
+                                            <col />
+                                        </colgroup>
+                                        <thead>
+                                            <tr class="bg-primary">
+                                                <th>STT</th>
+                                                <th>Mã Đơn Hàng</th>
+                                                <th>Sản Phẩm</th>
+                                                <th>Đơn giá</th>
+                                                <th>Số Lượng</th>
+                                                <th>Tổng Thu</th>
+                                                <th>Người Đặt</th>
+                                                <th>Email</th>
+                                                <th>Điện Thoại</th>
+                                                <th>Người Nhận</th>
+                                                <th>Địa chỉ</th>
+                                                <th>Điện thoại người nhận</th>
+                                                <th>Tình Trạng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="dh">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-            </header>
-            <!-- -------------- /Sidebar Header -------------- -->
-
-            <!-- -------------- Sidebar Menu  -------------- -->
-            <ul style="padding-top: 15px;" class="nav sidebar-menu">
-                <li>
-                    <a class="active" href="../admin-index.html">
-                        <span class="fa fa-dashboard"></span>
-                        <span class="sidebar-title">Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="accordion-toggle" href="#">
-                        <span class="fa fa-user"></span>
-                        <span class="sidebar-title">QUẢN LÝ NHÂN VIÊN</span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="nav sub-nav">
-                        <li>
-                            <a href="../nhan-vien/role-list.html">
-                                <span class="glyphicon glyphicon-tags"></span> Role </a>
-                        </li>
-                        <li>
-                            <a href="../nhan-vien/user-list.html">
-                                <span class="glyphicon glyphicon-tags"></span> Nhân Viên </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="accordion-toggle" href="#">
-                        <span class="fa fa-book"></span>
-                        <span class="sidebar-title">QUẢN LÝ SÁCH</span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="nav sub-nav">
-                        <li>
-                            <a href="../sach/loai-sach.html">
-                                <span class="glyphicon glyphicon-tags"></span> Loại Sách </a>
-                        </li>
-                        <li>
-                            <a href="../sach/sach.html">
-                                <span class="glyphicon glyphicon-tags"></span> Sách </a>
-                        </li>
-                        <li>
-                            <a href="../sach/nxb.html">
-                                <span class="fa fa-money"></span> Nhà Xuất Bản </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <li>
-                    <a class="active" href="../khach-hang/ds-khach-hang.html">
-                        <span class="fa fa-users"></span>
-                        <span class="sidebar-title">QUẢN LÝ KHÁCH HÀNG</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="./ds-don-hang.html">
-                        <span class="fa fa-shopping-cart"></span>
-                        <span class="sidebar-title">QUẢN LÝ ĐƠN HÀNG</span>
-                    </a>
-                </li>
-            </ul>
-            <!-- -------------- /Sidebar Menu  -------------- -->
-        </div>
-        <!-- -------------- /Sidebar Left Wrapper  -------------- -->
-
-    </aside>
-    <!-- -------------- /Sidebar -------------- -->
-
-    <!-- -------------- Main Wrapper -------------- -->
-    <section id="content_wrapper">
-
-        <!-- -------------- Content -------------- -->
-        <section id="content" class="table-layout animated fadeIn">
-
-             ds đơn hàng
-            
-
+            </section>
+            <!-- -------------- /Content -------------- -->
         </section>
-        <!-- -------------- /Content -------------- -->
-    </section>
-    <!-- -------------- /Main Wrapper -------------- -->
-</div>
-<!-- -------------- /Body Wrap  -------------- -->
+        <!-- -------------- /Main Wrapper -------------- -->
+    </div>
+    <!-- -------------- /Body Wrap  -------------- -->
 
-<!-- -------------- Scripts -------------- -->
+    <!-- -------------- Scripts -------------- -->
 
-<!-- -------------- jQuery -------------- -->
-<script src="../../assets/js/jquery/jquery-1.11.3.min.js"></script>
-<script src="../../assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
+    <!-- -------------- jQuery -------------- -->
+    <script src="../../assets/js/jquery/jquery-1.11.3.min.js"></script>
+    <script src="../../assets/js/jquery/jquery_ui/jquery-ui.min.js"></script>
 
-<!-- -------------- HighCharts Plugin -------------- -->
-<script src="../../assets/js/plugins/highcharts/highcharts.js"></script>
-<script src="../../assets/js/plugins/c3charts/d3.min.js"></script>
-<script src="../../assets/js/plugins/c3charts/c3.min.js"></script>
+    <!-- -------------- HighCharts Plugin -------------- -->
+    <script src="../../assets/js/plugins/highcharts/highcharts.js"></script>
+    <script src="../../assets/js/plugins/c3charts/d3.min.js"></script>
+    <script src="../../assets/js/plugins/c3charts/c3.min.js"></script>
 
-<!-- -------------- Simple Circles Plugin -------------- -->
-<script src="../../assets/js/plugins/circles/circles.js"></script>
+    <!-- -------------- Simple Circles Plugin -------------- -->
+    <script src="../../assets/js/plugins/circles/circles.js"></script>
 
-<!-- -------------- Maps JSs -------------- -->
-<script src="../../assets/js/plugins/jvectormap/jquery.jvectormap.min.js"></script>
-<script src="../../assets/js/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script>
+    <!-- -------------- Maps JSs -------------- -->
+    <script src="../../assets/js/plugins/jvectormap/jquery.jvectormap.min.js"></script>
+    <script src="../../assets/js/plugins/jvectormap/assets/jquery-jvectormap-us-lcc-en.js"></script>
 
-<!-- -------------- FullCalendar Plugin -------------- -->
-<script src="../../assets/js/plugins/fullcalendar/lib/moment.min.js"></script>
-<script src="../../assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <!-- -------------- FullCalendar Plugin -------------- -->
+    <script src="../../assets/js/plugins/fullcalendar/lib/moment.min.js"></script>
+    <script src="../../assets/js/plugins/fullcalendar/fullcalendar.min.js"></script>
 
-<!-- -------------- Date/Month - Pickers -------------- -->
-<script src="../../assets/allcp/forms/js/jquery-ui-monthpicker.min.js"></script>
-<script src="../../assets/allcp/forms/js/jquery-ui-datepicker.min.js"></script>
+    <!-- -------------- Date/Month - Pickers -------------- -->
+    <script src="../../assets/allcp/forms/js/jquery-ui-monthpicker.min.js"></script>
+    <script src="../../assets/allcp/forms/js/jquery-ui-datepicker.min.js"></script>
 
-<!-- -------------- Magnific Popup Plugin -------------- -->
-<script src="../../assets/js/plugins/magnific/jquery.magnific-popup.js"></script>
+    <!-- -------------- Magnific Popup Plugin -------------- -->
+    <script src="../../assets/js/plugins/magnific/jquery.magnific-popup.js"></script>
 
-<!-- -------------- Theme Scripts -------------- -->
-<script src="../../assets/js/utility/utility.js"></script>
-<script src="../../assets/js/demo/demo.js"></script>
-<script src="../../assets/js/main.js"></script>
+    <!-- -------------- Theme Scripts -------------- -->
+    <script src="../../assets/js/utility/utility.js"></script>
+    <script src="../../assets/js/demo/demo.js"></script>
+    <script src="../../assets/js/main.js"></script>
 
-<!-- -------------- Widget JS -------------- -->
-<script src="../../assets/js/demo/widgets.js"></script>
-<script src="../../assets/js/demo/widgets_sidebar.js"></script>
-<script src="../../assets/js/pages/dashboard1.js"></script>
-<!-- -------------- /Scripts -------------- -->
+    <!-- -------------- Widget JS -------------- -->
+    <script src="../../assets/js/demo/widgets.js"></script>
+    <script src="../../assets/js/demo/widgets_sidebar.js"></script>
+    <script src="../../assets/js/pages/dashboard1.js"></script>
+    <script src="./../../assets/js/donhang/donhang.js"></script>
+    <!-- -------------- /Scripts -------------- -->
 
 </body>
 
