@@ -39,12 +39,12 @@ exports.update = (c) => {
 
 
 exports.loadAllbyLimit = (offset) => {
-    var sql = `select * from brands limit ${config.CATEGORIES_PER_PAGE} offset ${offset}`;
+    var sql = `select * from brands limit ${config.BRANDS_PER_PAGE} offset ${offset}`;
     return db.load(sql);
 }
 
 
-exports.countCategories = () => {
+exports.countBrands = () => {
 	var sql = `select count(*) as total from brands`;
     return db.load(sql);
 }

@@ -10,7 +10,8 @@ var userController = require('./controllers/userController'),
     dashboardController = require('./controllers/dashboardController'),
     accountController = require('./controllers/accountController'),
     categoryController = require('./controllers/categoryController'),
-    brandController = require('./controllers/brandController');
+    brandController = require('./controllers/brandController'),
+    productController = require('./controllers/productController');
 
 
 var session = require('express-session');
@@ -77,6 +78,7 @@ app.use('/admin/dashboard', dashboardController);
 app.use('/admin', accountController);
 app.use('/admin/brands', brandController);
 app.use('/admin/category', categoryController);
+app.use('/admin/products', productController);
 
 app.use(handle404);
 app.listen(3000, () => {
