@@ -1,0 +1,56 @@
+<div class="panel" id="spy5">
+    <div class="panel-heading">
+        <span class="panel-title">brands list</span>
+
+    </div>
+    <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
+        <a id="add" href="/admin/brands/add" class="btn btn-primary">Thêm
+            <i class="fa fa-plus"></i>
+        </a>
+    </div>
+    <div class="panel-body pn">
+        <div class="table-responsive">
+
+            <div class="bs-component">
+                <table class="table table-bordered mbn">
+                    <colgroup>
+                        <col width="350px" />
+                        <col />
+                        <col width="80px" />
+                        <col width="80px" />
+                    </colgroup>
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>
+                                <i class="fa fa-pencil"></i>
+                            </th>
+                            <th>
+                                <i class="fa fa-trash"></i>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each brands}}
+                        <tr>
+                            <td>{{Name}}</td>
+                            <td>{{Description}}</td>
+                            <td>
+                                <a href="/admin/brands/edit?id={{id}}" title="edit {{Name}}" class="btn btn-xs btn-info">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="" title="delete {{Name}}" class="btn btn-xs btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

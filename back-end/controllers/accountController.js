@@ -24,8 +24,15 @@ router.post('/', (req, res) => {
     userRepo.login(user).then(rows => {
         //console.log(rows);
         if (rows.length > 0) {
-            req.session.isLoged = true;
-            res.redirect('/admin/dashboard');
+            req.session.isLogged = true;
+            //res.redirect('/admin/dashboard');
+
+            req.session.user = rows[0];
+            var url = '/admin';
+            if (req.query.retUrl) {
+                url = req.query.retUrl;
+            }
+            res.redirect(url);
         }
         else {
             var vm = {

@@ -7,11 +7,11 @@ module.exports = (req, res, next) => {
 		req.session.isLogged = false;
     }
     userRepo.loadAll().then(rows => {
-        console.log(rows);
         res.locals.layoutVM = {
-            users: rows
+            users: rows,
+            isLogged: req.session.isLogged,
+            curUser: req.session.user
         };
-        // console.log(res.locals.layoutVM.curUser);
         next();
     });
 };

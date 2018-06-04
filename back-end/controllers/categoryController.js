@@ -1,15 +1,24 @@
 
-var express = require('express'),
-    moment = require('moment'),
-    SHA256 = require('crypto-js/sha256');
+
+var express = require('express');
+var categoryRepo = require('../repos/categoryRepo');
 
 var config = require('../config/config');
-var router = express.Router();
 
-var userRepo = require('../repos/userRepo');
 var restrict = require('../middle-wares/restrict');
 
-router.get('/', (req, res) => {
+var router = express.Router();
+
+// router.get('/', restrict, (req, res) => {
+//     categoryRepo.loadAll().then(rows => {
+//         var vm = {
+//             categories: rows
+//         };
+//         res.render('admin/category/index', vm);
+//     });
+// });
+
+router.get('/', restrict, (req, res) => {
 
     /*kiểm tra đang ở trang nào của phân trang */
     var page = req.query.page;
@@ -17,10 +26,10 @@ router.get('/', (req, res) => {
         page = 1;
     /*end kiểm tra */
 
-    var offset = (page - 1) * config.USERS_PER_PAGE;//tính limit có thể có trong 1 trang
+    var offset = (page - 1) * config.CATEGORIES_PER_PAGE;//tính limit có thể có trong 1 trang
 
-    var p1 = userRepo.loadAllbyLimit(offset); //load các user trong khoảng phù hợp
-    var p2 = userRepo.countUsers(); //đếm tổng số user
+    var p1 = categoryRepo.loadAllbyLimit(offset); //load các category trong khoảng phù hợp
+    var p2 = categoryRepo.countCategories(); //đếm tổng số category
 
     //vì không thể chạy lồng promise nên phải chạy song song
     Promise.all([p1, p2]).then(([pRows, countRows]) => {
@@ -28,8 +37,8 @@ router.get('/', (req, res) => {
         var total = countRows[0].total;//total là số lượng user
 
         /*tính số page cần có */
-        var nPage = Math.floor(total / config.USERS_PER_PAGE);
-        if (total % config.USERS_PER_PAGE > 0)
+        var nPage = Math.floor(total / config.CATEGORIES_PER_PAGE);
+        if (total % config.CATEGORIES_PER_PAGE > 0)
             nPage++;
         /*end tính số page */
 
@@ -78,21 +87,11 @@ router.get('/', (req, res) => {
                 }
             }
         }
-
-        /*kiểm tra Actived và convert DOB cho dễ nhìn */
-        for (let i = 0; i < pRows.length; i++) {
-            var check = true;
-            if (pRows[i].Actived === 0)
-                check = false;
-            pRows[i].check = check;
-            pRows[i].DOB = moment(pRows[i].DOB).format("DD/MM/YYYY");
-        }
-        /*end kiểm tra và convert */
         // console.log(firstPage);
         // console.log(lastPage);
         /*obj vm để đẩy ra giao diện */
         var vm = {
-            users: pRows,
+            categories: pRows,
             noUser: pRows.length === 0,
             page_numbers: numbers,
             firstPage: firstPage,
@@ -100,66 +99,58 @@ router.get('/', (req, res) => {
         }
         /*end obj vm */
 
-        res.render('admin/users/index', restrict, vm);
+        res.render('admin/category/index',  vm);
     });
 });
 
-router.post('/', (req, res) => {
-    res.redirect('/admin/dashboard');
-});
+
+
+
 router.get('/add', (req, res) => {
-    userRepo.loadAll().then(rows => {
-        var vm = {
-            alert: false
-        };
-        res.render('admin/users/add', vm);
-    });
+    var vm = {
+        alert: false
+    };
+    res.render('admin/category/add', vm);
 });
 
 router.post('/add', (req, res) => {
-    req.body.password = SHA256(req.body.password).toString();
-    userRepo.add(req.body).then(value => {
+    categoryRepo.add(req.body).then(value => {
         var vm = {
             alert: true
         };
-        res.redirect('/admin/users');
+        res.redirect('/admin/category');
     }).catch(err => {
-        console.log(err);
         res.end('fail');
     });
 });
 
+// router.get('/delete', (req, res) => {
+//     var vm = {
+//         CatId: req.query.id
+//     }
+//     res.render('category/delete', vm);
+// });
+
+// router.post('/delete', (req, res) => {
+//     categoryRepo.delete(req.body.CatId).then(value => {
+//         res.redirect('/category');
+//     });
+// });
 
 router.get('/edit', (req, res) => {
-    userRepo.single(req.query.id).then(c => {
-        if (c.Actived === 0)
-            c.check = false;
-        else c.check = true;
-        c.DOB = moment(c.DOB).format("DD/MM/YYYY");
+    categoryRepo.single(req.query.id).then(c => {
         var vm = {
-            users: c
+            Category: c
         };
-        res.render('admin/users/edit', vm);
+        res.render('admin/category/edit', vm);
     });
 });
+
 router.post('/edit', (req, res) => {
-    userRepo.update(req.body).then(value => {
-        res.redirect('/admin/users');
+    categoryRepo.update(req.body).then(value => {
+        res.redirect('/admin/category');
     });
 });
 
 
-router.get('/resetpassword', (req, res) => {
-    userRepo.single(req.query.id).then(c => {
-        var vm = {
-            users: c
-        };
-        res.render('admin/users/resetpassword', vm);
-    });
-});
-router.post('/resetpassword', (req, res) => {
-    userRepo.resetpassword(req.body).then(value => {
-        res.redirect('/admin/users');
-    });
-});
 module.exports = router;

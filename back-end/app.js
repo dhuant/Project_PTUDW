@@ -8,7 +8,9 @@ var wnumb = require('wnumb');
 
 var userController = require('./controllers/userController'),
     dashboardController = require('./controllers/dashboardController'),
-    accountController = require('./controllers/accountController');
+    accountController = require('./controllers/accountController'),
+    categoryController = require('./controllers/categoryController'),
+    brandController = require('./controllers/brandController');
 
 
 var session = require('express-session');
@@ -32,6 +34,14 @@ app.engine('hbs', exphbs({
             return nf.to(n);
         }
     }
+}));
+
+app.set('view engine', 'hbs');
+app.use(express.static(path.resolve(__dirname, 'public')));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
 }));
 
 // session
@@ -60,20 +70,13 @@ app.use(session({
     saveUninitialized: false
 }));
 
-
-//
-app.set('view engine', 'hbs');
-app.use(express.static(path.resolve(__dirname, 'public')));
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
-
 app.use(handleLayout);
+
 app.use('/admin/users', userController);
 app.use('/admin/dashboard', dashboardController);
 app.use('/admin', accountController);
+app.use('/admin/brands', brandController);
+app.use('/admin/category', categoryController);
 
 app.use(handle404);
 app.listen(3000, () => {
