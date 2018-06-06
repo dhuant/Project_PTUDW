@@ -48,26 +48,48 @@ exports.update = (c) => {
     return db.save(sql);
 }
 
+
+exports.updateinfo = (c) => {
+    c.dob = moment(c.dob,"DD/MM/YYYY").format("YYYY-MM-DD");
+    var sql = `update users set Fullname='${c.fullname}',  CMND='${c.cmnd}',
+                DOB='${c.dob}', Sex ='${c.sex}', Address='${c.address}', Phone='${c.phone}',
+                Email='${c.email}'  where id = ${c.id}`;
+    return db.save(sql);
+}
 exports.resetpassword = (c) => {
     var newPassword = SHA256('00000').toString();
     var sql = `update users set Password='${newPassword}'where id = ${c.id}`;
     return db.save(sql);
 }
 
+exports.updatepassword = (c) => {
+    var newPassword = SHA256(c.newPassword).toString();
+    var sql = `update users set Password='${newPassword}'where id = ${c.id}`;
+    return db.save(sql);
+}
+
 
 exports.loadAllbyLimit = (offset) => {
-    var sql = `select * from users limit ${config.USERS_PER_PAGE} offset ${offset}`;
+    var sql = `select * from users where Permission = 1 limit ${config.USERS_PER_PAGE} offset ${offset}`;
     return db.load(sql);
 }
 
+exports.loadAllCustomersbyLimit = (offset) => {
+    var sql = `select * from users where Permission = 0 limit ${config.USERS_PER_PAGE} offset ${offset} `;
+    return db.load(sql);
+}
 
 exports.countUsers = () => {
-	var sql = `select count(*) as total from users`;
+	var sql = `select count(*) as total from users where Permission = 1`;
     return db.load(sql);
 }
 
+exports.countCustomers = () => {
+	var sql = `select count(*) as total from users where Permission = 0`;
+    return db.load(sql);
+}
 
 exports.login = user => {
-    var sql = `select * from users where Username = '${user.username}' and Password = '${user.password}' and Actived = 1`;
+    var sql = `select * from users where Username = '${user.username}' and Password = '${user.password}' and Actived = 1 and Permission = 1`;
     return db.load(sql);
 }

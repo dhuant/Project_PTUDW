@@ -1,11 +1,8 @@
+
+
 <div class="panel" id="spy5">
     <div class="panel-heading">
-        <span class="panel-title">admin</span>
-    </div>
-    <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
-        <a id="add-new-user" href="/admin/users/add" title="add new user" class="btn btn-primary">new admin
-            <i class="fa fa-plus"></i>
-        </a>
+        <span class="panel-title">customers</span>
     </div>
     <div class="panel-body pn">
         <div class="table-responsive">
@@ -21,8 +18,6 @@
                         <col width="120px" />
                         <col width="200px" />
                         <col width="60px" />
-                        <col width="60px" />
-                        <col width="100px" />
                     </colgroup>
                     <thead>
                         <tr class="bg-primary">
@@ -34,13 +29,7 @@
                             <th>Phone</th>
                             <th>Email</th>
                             <th>
-                                <i class="fa fa-pencil"></i>
-                            </th>
-                            <th>
                                 <i class="fa fa-undo"></i>
-                            </th>
-                            <th>
-                                <i class="fa fa-flag"></i>
                             </th>
                         </tr>
                     </thead>
@@ -55,28 +44,10 @@
                             <td>{{Phone}}</td>
                             <td>{{Email}}</td>
                             <td>
-                                <a href="/admin/users/edit?id={{id}}" title="edit" class="btn btn-xs btn-info">
-                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                </a>
-                            </td>
-                            <td>
                                 <a href="/admin/users/resetpassword?id={{id}}" title="reset password" class="btn btn-xs btn-danger">
                                     <i class="fa fa-undo"></i>
                                 </a>
                             </td>
-                            {{#if check}}
-                            <td>
-                                <button title="actived" class="btn btn-xs btn-success" disabled>
-                                    actived
-                                </button>
-                            </td>
-                            {{else}}
-                            <td>
-                                <button title="blocked" class="btn btn-xs btn-danger" disabled>
-                                    blocked
-                                </button>
-                            </td>
-                            {{/if}}
                         </tr>
                         {{/each}}
                     </tbody>

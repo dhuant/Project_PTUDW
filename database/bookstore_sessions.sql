@@ -36,7 +36,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('tty2TU_qaGtJIiuFjZBBRgtwPEgtKkS5',1528212303,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"isLogged\":true,\"user\":{\"id\":1,\"Username\":\"nnlinh97\",\"Password\":\"e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77\",\"Fullname\":\"Nguyễn Ngọc Linh\",\"CMND\":\"212481093\",\"DOB\":\"1997-07-13T17:00:00.000Z\",\"Sex\":\"Other\",\"Address\":\"Quận 10\",\"Phone\":\"0978289014\",\"Email\":\"nnlinh97it@gmail.com\",\"Permission\":1,\"Actived\":1}}'),('x_T2X0ymNABymUiKrxgxKvAzGBr3aP79',1528217900,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"isLogged\":true,\"user\":{\"id\":1,\"Username\":\"nnlinh97\",\"Password\":\"e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77\",\"Fullname\":\"Nguyễn Ngọc Linh\",\"CMND\":\"212481093\",\"DOB\":\"1997-07-13T17:00:00.000Z\",\"Sex\":\"Other\",\"Address\":\"Quận 10\",\"Phone\":\"0978289014\",\"Email\":\"nnlinh97it@gmail.com\",\"Permission\":1,\"Actived\":1}}');
+INSERT INTO `sessions` VALUES ('d-sHnhrXrTI_vCmuCWklDoJ1LStcIwe_',1528368270,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"isLogged\":true,\"user\":{\"id\":1,\"Username\":\"nnlinh97\",\"Password\":\"e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77\",\"Fullname\":\"Nguyễn Ngọc Linh\",\"CMND\":\"212481093\",\"DOB\":\"1997-07-13T17:00:00.000Z\",\"Sex\":\"Male\",\"Address\":\"Quận 10\",\"Phone\":\"0978289014\",\"Email\":\"nnlinh97it@gmail.com\",\"Permission\":2,\"Actived\":1}}'),('ps-2w8MV4DICfkiN3jNU7hePfCuYH1V_',1528389054,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"isLogged\":true,\"user\":{\"id\":1,\"Username\":\"nnlinh97\",\"Password\":\"e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77\",\"Fullname\":\"Nguyễn Ngọc Linh\",\"CMND\":\"212481093\",\"DOB\":\"1997-07-13T17:00:00.000Z\",\"Sex\":\"Male\",\"Address\":\"Quận 10\",\"Phone\":\"0978289014\",\"Email\":\"nnlinh97it@gmail.com\",\"Permission\":1,\"Actived\":1}}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-05  0:01:13
+-- Dump completed on 2018-06-06 23:32:17

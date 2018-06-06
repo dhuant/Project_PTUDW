@@ -91,6 +91,7 @@ router.get('/', restrict, (req, res) => {
         // console.log(lastPage);
         /*obj vm để đẩy ra giao diện */
         var vm = {
+            pagination: nPage !== 1,
             categories: pRows,
             noUser: pRows.length === 0,
             page_numbers: numbers,

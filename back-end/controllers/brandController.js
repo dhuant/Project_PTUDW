@@ -92,6 +92,7 @@ router.get('/',  (req, res) => {
       
         /*obj vm để đẩy ra giao diện */
         var vm = {
+            pagination: nPage !== 1,
             brands: pRows,
             noUser: pRows.length === 0,
             page_numbers: numbers,

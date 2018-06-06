@@ -31,8 +31,9 @@
 
 <body>
 
+
     <div class="limiter">
-        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+        <div class="container-login100" style="background-image: url('/assets/admin/login/images/bg-01.jpg');">
             <div class="wrap-login100">
                 <form class="login100-form validate-form" method="post" action="">
                     <span class="login100-form-logo">
@@ -69,8 +70,18 @@
             </div>
         </div>
     </div>
-
-
+    {{#if error}}
+    <div class="alert alert-danger" id="notify" style="
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 99999;
+                display: none;
+                ">
+        <strong>ERROR!!!</strong>
+        username or password is incorrect
+    </div>
+    {{/if}}
     <div id="dropDownSelect1"></div>
 
     <!--===============================================================================================-->
@@ -89,6 +100,15 @@
     <script src="/assets/admin/login/vendor/countdowntime/countdowntime.js"></script>
     <!--===============================================================================================-->
     <script src="/assets/admin/login/js/main.js"></script>
+    <script>
+        $('#notify').fadeIn('slow');
+        setTimeout(() => {
+            $('#notify').fadeOut(2500);
+            setTimeout(() => {
+                $('#notify').remove();
+            }, 1500);
+        }, 3000);
+    </script>
 
 </body>
 

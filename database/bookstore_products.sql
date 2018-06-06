@@ -43,7 +43,7 @@ CREATE TABLE `products` (
   CONSTRAINT `FK_Brand` FOREIGN KEY (`Brand`) REFERENCES `brands` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_Cat` FOREIGN KEY (`Category`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_Creator` FOREIGN KEY (`Creator`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,7 +52,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Bé Trổ Tài Tô Màu','be-tro-tai-to-mau.jpg','','2018-06-04 00:00:00',0,20,80000,1,1,'Nguyễn Nhật Ánh','Việt Nam',1);
+INSERT INTO `products` VALUES (1,'Bé Trổ Tài Tô Màu','be-tro-tai-to-mau.jpg','','2018-06-04 00:00:00',0,20,80000,2,1,'Nguyễn Nhật Ánh','Việt Nam',1),(4,'Chuyện Ông Gióng','chuyen-ong-giong.jpg','nothing','2018-06-06 00:00:00',0,39,105000,1,4,'Nguyễn Ngọc Ngạn','Việt Nam',2),(5,'Kính Vạn Hoa','kinh-van-hoa.jpg','no000000','2018-06-06 00:00:00',0,35,85000,3,2,'Nguyễn Linh','Việt Nam',4);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -65,4 +65,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-05  0:01:13
+-- Dump completed on 2018-06-06 23:32:17

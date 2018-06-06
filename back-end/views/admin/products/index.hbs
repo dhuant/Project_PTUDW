@@ -3,7 +3,7 @@
         <span class="panel-title">products list</span>
     </div>
     <div class="col-md-12 text-right" style="padding-right: 1px; margin-bottom: 5px;">
-        <a id="add-new-user" href="/admin/users/add" title="add new product" class="btn btn-primary">new product
+        <a id="add-new-user" href="/admin/products/add" title="add new product" class="btn btn-primary">new product
             <i class="fa fa-plus"></i>
         </a>
     </div>
@@ -51,13 +51,13 @@
                             <td>{{Price}}</td>
                             <td>{{Creator}}</td>
                             <td>
-                                <a href="/admin/users/edit?id={{id}}" title="edit" class="btn btn-xs btn-info">
+                                <a href="/admin/products/edit?id={{id}}" title="edit" class="btn btn-xs btn-info">
                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
                                 </a>
                             </td>
                             <td>
                                 <a href="" title="delete" class="btn btn-xs btn-danger">
-                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    <i class="ace-icon fa fa-trash bigger-120"></i>
                                 </a>
                             </td>
                         </tr>
@@ -69,6 +69,7 @@
     </div>
 </div>
 
+{{#if pagination}}
 <div class="text-center">
     <ul class="pagination text-center">
         {{#with firstPage}}
@@ -110,3 +111,4 @@
         {{/with}}
     </ul>
 </div>
+{{/if}}

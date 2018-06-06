@@ -27,7 +27,7 @@ CREATE TABLE `categories` (
   `Name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Thiếu Nhi','Dành cho trẻ em'),(2,'Trinh Thám','Sách trinh thám rất hay'),(3,'Tiếng Anh','Tiếng anh dành cho người Mỹ không biết tiếng anh :v '),(4,'Hoạt Hình','Truyện hoạt hình Nhật Bản');
+INSERT INTO `categories` VALUES (1,'Thiếu Nhi','Dành cho trẻ em'),(2,'Văn Học','văn học việt nam'),(3,'Tiếng Anh','Tiếng anh dành cho người Mỹ không biết tiếng anh :v '),(4,'Nước Ngoài','văn học nước ngoài và nhiều loại khác'),(5,'Kinh Tế','chính trị gia, tùm lum thứ chuyện trên đời');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-05  0:01:14
+-- Dump completed on 2018-06-06 23:32:17
