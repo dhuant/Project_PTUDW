@@ -6,7 +6,7 @@ var config = require('../config/config');
 
 exports.loadAll = () => {
     var sql = `select pros.id as id, pros.Name as Name, cates.Name as Category, brs.Name as Brand,
-    pros.Date as Date, pros.Sale as Sale, pros.Price as Price, users.Fullname as Creator 
+    pros.Amount as Amount, pros.Date as Date, pros.Sale as Sale, pros.Price as Price, users.Fullname as Creator 
     from products pros, users, brands brs, categories cates
     where pros.Category = cates.id and pros.Brand = brs.id and pros.Creator = users.id`;
     return db.load(sql);
@@ -19,16 +19,17 @@ exports.add = (c) => {
     console.log(date);
 
     var sql = `insert into products(Name, Picture, Description, Date, View,
-         Sale, Price, Category, Brand, Author, Origin, Creator) 
+         Sale, Price, Category, Brand, Author, Origin, Creator, Amount) 
     values('${c.name}', '${c.img}', '${c.description}', '${date}', 0,
-     ${+c.sale}, ${+c.price}, ${+c.category}, ${+c.brand}, '${c.author}', '${c.origin}', ${+c.creator})`;
+     ${+c.sale}, ${+c.price}, ${+c.category}, ${+c.brand}, '${c.author}', '${c.origin}',
+      ${+c.creator}, ${+c.amount})`;
     return db.save(sql);
 }
 
 
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = `select pros.id as id, pros.Name as Name, pros.Picture as Picture,
+        var sql = `select pros.id as id, pros.Name as Name, pros.Picture as Picture, pros.Amount as Amount,
          cates.id as CateId, pros.Description as Description, pros.Author as Author, pros.Origin as Origin,
         cates.Name as CatName,brs.id as BraId, brs.Name as BraName,
         pros.Sale as Sale, pros.Price as Price, users.Fullname as Creator, users.id as userId
@@ -52,14 +53,14 @@ exports.update = (c) => {
     if(c.img !== '')
         picture = c.img;
     var date = moment(new Date()).format("YYYY-MM-DD");
-    var sql = `update products set Name = '${c.name}', Picture = '${picture}',  Description = '${c.description}',
+    var sql = `update products set Name = '${c.name}', Picture = '${picture}', Amount = ${+c.amount},  Description = '${c.description}',
                 Date = '${date}', Sale = ${+c.sale}, Price = ${+c.price}, Category = ${+c.category}, Brand = ${+c.brand},
                 Author = '${c.author}', Origin = '${c.origin}', Creator = ${+c.creator}  where id = ${c.id}`;
     return db.save(sql);
 }
 
 exports.loadAllProductsbyLimit = (offset) => {
-    var sql = `select pros.id as id, pros.Name as Name, cates.Name as Category, brs.Name as Brand,
+    var sql = `select pros.id as id, pros.Name as Name, pros.Amount as Amount, cates.Name as Category, brs.Name as Brand,
     pros.Date as Date, pros.Sale as Sale, pros.Price as Price, users.Fullname as Creator 
     from products pros, users, brands brs, categories cates
     where pros.Category = cates.id and pros.Brand = brs.id and pros.Creator = users.id 
@@ -69,6 +70,11 @@ exports.loadAllProductsbyLimit = (offset) => {
 
 exports.countProducts = () => {
 	var sql = `select count(*) as total from products`;
+    return db.load(sql);
+}
+
+exports.loadAllbyCategory = (id) => {
+	var sql = `select * from products where Category = ${id}`;
     return db.load(sql);
 }
 

@@ -37,6 +37,26 @@ exports.single = (id) => {
     });
 }
 
+exports.search = (searchname, permission) => {
+    var sql = `select * from users where Username like '%${searchname}%' and Permission = ${permission}`;
+    return db.load(sql);
+}
+
+exports.checkUsername = (username) => {
+    return new Promise((resolve, reject) => {
+        var sql = `select * from users where Username = '${username}'`;
+        db.load(sql).then(rows => {
+            if (rows.length === 0) {
+                resolve(null);
+            } else {
+                resolve(rows[0]);
+            }
+        }).catch(err => {
+            reject(err);
+        });
+    });
+}
+
 exports.update = (c) => {
     var actived = 0;
     if(c.checkbox === '')

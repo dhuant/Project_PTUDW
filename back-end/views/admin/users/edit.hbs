@@ -91,7 +91,9 @@
                                 <i style="cursor:pointer" class="fa fa-save"></i>
                                 SAVE
                             </button>
-                            <a href="/admin/users" id="" type="button" class="btn btn-default">
+                            {{/with}}
+
+                            <a href="{{layoutVM.preUrl}}" id="" type="button" class="btn btn-default">
                                 <i class="fa fa-arrow-circle-left"></i>
                                 BACK
                             </a>
@@ -99,7 +101,6 @@
                     </div>
                 </footer>
             </form>
-            {{/with}}
         </section>
     </div>
 </div>

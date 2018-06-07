@@ -106,7 +106,37 @@ router.get('/', restrict, (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.redirect('/admin/dashboard');
+    var searchname = req.body.searchname;
+    userRepo.search(searchname, 1).then(rows => {
+        //console.log(rows);
+        for (let i = 0; i < rows.length; i++) {
+            var active = true;
+            var block = true;
+            if (rows[i].Actived === 0)
+                active = false;
+            if (rows[i].Actived === 1)
+                block = false;
+            rows[i].active = active;
+            rows[i].block = block;
+            rows[i].isAdmin = true;
+            rows[i].DOB = moment(rows[i].DOB).format("DD/MM/YYYY");
+        }
+        if (rows.length == 0) {
+            vm = {
+                noUser: true,
+                count: 0,
+            }
+        }
+        else {
+            vm = {
+                result: rows,
+                count: rows.length,
+                admin: true
+            }
+        }
+        vm.searchname = searchname;
+        res.render('admin/users/search', vm);
+    });
 });
 router.get('/add', restrict, (req, res) => {
     userRepo.loadAll().then(rows => {
@@ -118,15 +148,25 @@ router.get('/add', restrict, (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    req.body.password = SHA256(req.body.password).toString();
-    userRepo.add(req.body).then(value => {
-        var vm = {
-            alert: true
-        };
-        res.redirect('/admin/users');
-    }).catch(err => {
-        console.log(err);
-        res.end('fail');
+    var obj = req.body;
+    userRepo.checkUsername(obj.username).then(c => {
+        if (c == null && obj.username != '') {
+            userRepo.add(obj).then(value => {
+                var vm = {
+                    error: false
+                };
+                res.redirect('/admin/users');
+            }).catch(err => {
+                console.log(err);
+                res.end('fail');
+            });
+        }
+        else {
+            vm = {
+                error: true
+            }
+            res.render('admin/users/add', vm);
+        }
     });
 });
 

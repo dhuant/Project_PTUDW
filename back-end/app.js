@@ -76,7 +76,7 @@ app.use(handleLayout);
 
 app.use('/admin/users', userController);
 app.use('/admin/dashboard', dashboardController);
-app.use('/admin', accountController);
+app.use('/', accountController);
 app.use('/admin/brands', brandController);
 app.use('/admin/category', categoryController);
 app.use('/admin/products', productController);

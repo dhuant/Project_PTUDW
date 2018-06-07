@@ -6,17 +6,21 @@ var express = require('express'),
 var router = express.Router();
 var config = require('../config/config');
 
-var userRepo = require('../repos/userRepo');
+var userRepo = require('../repos/userRepo'),
+    categoryRepo = require('../repos/categoryRepo'),
+    brandRepo = require('../repos/brandRepo'),
+    productRepo = require('../repos/productRepo');
+
 var restrict = require('../middle-wares/restrict');
 
-router.get('/', (req, res) => {
+router.get('/admin', (req, res) => {
     var vm = {
         layout: false
     }
     res.render('admin/users/login', vm);
 });
 
-router.post('/', (req, res) => {
+router.post('/admin', (req, res) => {
     var user = {
         username: req.body.username,
         password: SHA256(req.body.password).toString()
@@ -46,7 +50,7 @@ router.post('/', (req, res) => {
 
 });
 
-router.get('/customers', restrict, (req, res) => {
+router.get('/admin/customers', restrict, (req, res) => {
 
     /*kiểm tra đang ở trang nào của phân trang */
     var page = req.query.page;
@@ -139,6 +143,48 @@ router.get('/customers', restrict, (req, res) => {
         /*end obj vm */
 
         res.render('admin/users/customer', vm);
+    });
+});
+
+router.post('/admin/customers', (req, res) => {
+    var searchname = req.body.searchname;
+    userRepo.search(searchname, 0).then(rows => {
+        //console.log(rows);
+        for (let i = 0; i < rows.length; i++) {
+            rows[i].DOB = moment(rows[i].DOB).format("DD/MM/YYYY");
+        }
+        if (rows.length == 0) {
+            vm = {
+                noUser: true,
+                count: 0,
+            }
+        }
+        else {
+            vm = {
+                result: rows,
+                count: rows.length
+            }
+        }
+        vm.searchname = searchname;
+        res.render('admin/users/search', vm);
+    });
+});
+
+/*booktore */
+router.get('/', (req, res) => {
+    categoryRepo.loadAll().then(rows =>{
+        vm = {
+            layout: 'index.handlebars',
+            categories: rows
+        }
+        res.render('bookstore/index/index', vm);
+    });
+});
+
+router.get('/category', (req, res) => {
+    productRepo.loadAllbyCategory(req.query.id).then(rows =>{
+        console.log(rows);
+        res.redirect('/');
     });
 });
 module.exports = router;
