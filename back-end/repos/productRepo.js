@@ -11,7 +11,15 @@ exports.loadAll = () => {
     where pros.Category = cates.id and pros.Brand = brs.id and pros.Creator = users.id`;
     return db.load(sql);
 }
+exports.productbestview = () => {
+    var sql = `select * from products order by View DESC limit 10`;
+    return db.load(sql);
+}
 
+exports.productlatest = () => {
+    var sql = `select * from products order by Date DESC limit 10`;
+    return db.load(sql);
+}
 
 exports.add = (c) => {
     console.log(c);

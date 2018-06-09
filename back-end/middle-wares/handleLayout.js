@@ -59,6 +59,7 @@ module.exports = (req, res, next) => {
             curUser: req.session.user,
             preUrl: preUrl
         };
+       // console.log(req.session.user);
         next();
     });
     userRepo.loadAll().then(rows => {

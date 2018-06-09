@@ -172,10 +172,99 @@ router.post('/admin/customers', (req, res) => {
 
 /*booktore */
 router.get('/', (req, res) => {
-    categoryRepo.loadAll().then(rows =>{
+    var p1 = productRepo.productlatest();
+    var p2 = productRepo.productbestview();
+    Promise.all([p1, p2]).then(([latestRows, viewRows])=>{
+        for(let i = 0; i < latestRows.length; i++){
+            latestRows[i].Saling = false;
+            latestRows[i].New = false;
+            latestRows[i].Saleprice = latestRows[i].Price;
+            if(latestRows[i].Sale != 0){
+                latestRows[i].Saling = true;
+                latestRows[i].Saleprice = Math.floor(latestRows[i].Price * (100 - latestRows[i].Sale) / 100000) * 1000;
+                latestRows[i].Salenumber = latestRows[i].Sale;
+                latestRows[i].Oldprice = latestRows[i].Price;
+            }
+            var star = 0;
+            var today = new Date();
+            var date = latestRows[i].Date;
+            var time = (today.getTime() - date.getTime())/1000;
+            if(time < 2 * config.NEW_BOOK){
+                latestRows[i].New = true;
+            }
+            if(latestRows[i].View < 5){
+                star = 1;
+            }
+            else if(latestRows[i].View >= 5 && latestRows[i].View < 10){
+                star = 2;
+            }
+            else if(latestRows[i].View >= 10 && latestRows[i].View < 15){
+                star = 3;
+            }
+            else if(latestRows[i].View >= 15 && latestRows[i].View < 20){
+                star = 4; 
+            }
+            else{
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for(let i = 0; i< star; i++){
+                Star.push(1);
+            }
+            for(let i = 0;i < 5 - star; i++){
+                notStar.push(1);
+            }
+            latestRows[i].Star = Star;
+            latestRows[i].notStar = notStar;
+        }
+        for(let i = 0; i < viewRows.length; i++){
+            viewRows[i].Saling = false;
+            viewRows[i].New = false;
+            viewRows[i].Saleprice = viewRows[i].Price;
+            if(latestRows[i].Sale != 0){
+                viewRows[i].Saling = true;
+                viewRows[i].Saleprice = Math.floor(viewRows[i].Price * (100 - viewRows[i].Sale) / 100000) * 1000;
+                viewRows[i].Salenumber = viewRows[i].Sale;
+                viewRows[i].Oldprice = viewRows[i].Price;
+            }
+            var star = 0;
+            var today = new Date();
+            var date = viewRows[i].Date;
+            var time = (today.getTime() - date.getTime())/1000;
+            if(time < 2 * config.NEW_BOOK){
+                viewRows[i].New = true;
+            }
+            if(viewRows[i].View < 5){
+                star = 1;
+            }
+            else if(viewRows[i].View >= 5 && viewRows[i].View < 10){
+                star = 2;
+            }
+            else if(viewRows[i].View >= 10 && viewRows[i].View < 15){
+                star = 3;
+            }
+            else if(viewRows[i].View >= 15 && viewRows[i].View < 20){
+                star = 4; 
+            }
+            else{
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for(let i = 0; i< star; i++){
+                Star.push(1);
+            }
+            for(let i = 0;i < 5 - star; i++){
+                notStar.push(1);
+            }
+            viewRows[i].Star = Star;
+            viewRows[i].notStar = notStar;
+        }
         vm = {
             layout: 'index.handlebars',
-            categories: rows
+            bestview: viewRows,
+            latest: latestRows
         }
         res.render('bookstore/index/index', vm);
     });
