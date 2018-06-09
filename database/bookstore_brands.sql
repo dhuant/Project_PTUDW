@@ -27,7 +27,7 @@ CREATE TABLE `brands` (
   `Name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `Description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `brands` (
 
 LOCK TABLES `brands` WRITE;
 /*!40000 ALTER TABLE `brands` DISABLE KEYS */;
-INSERT INTO `brands` VALUES (1,'Kim Đồng','NXB Kim Đồng tên thật là Nông Văn Dền'),(2,'Nhã Nam','NXB Nhã Nam quê ở Bình Định'),(3,'Kim Mã','NXB này nghe nói đâu đó ở Hà Nội'),(4,'Trí Việt','họ Trí tên Việt');
+INSERT INTO `brands` VALUES (1,'Kim Đồng','NXB Kim Đồng tên thật là Nông Văn Dền'),(2,'Nhã Nam','NXB Nhã Nam quê ở Bình Định'),(3,'Bách Việt','NXB này nghe nói đâu đó ở Hà Nội'),(4,'Đinh Tị','nothing'),(5,'Trẻ','tuổi trẻ tài cao'),(6,'Minh Long','Truyện hoạt hình Nhật Bản'),(9,'LimBooks','ở Áo'),(10,'Parragon','nothing'),(11,'Sterling','nothing');
 /*!40000 ALTER TABLE `brands` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-06 23:32:17
+-- Dump completed on 2018-06-09  8:53:48

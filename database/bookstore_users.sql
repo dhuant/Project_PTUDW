@@ -36,7 +36,7 @@ CREATE TABLE `users` (
   `Permission` int(11) DEFAULT NULL COMMENT 'admin: 2\nnhanvien: 1\nkhachhang: 0',
   `Actived` int(11) DEFAULT NULL COMMENT 'actived: 1\nblocked: 0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'nnlinh97','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Nguyễn Ngọc Linh','212481093','1997-07-14 00:00:00','Male','Quận 10','0978289014','nnlinh97it@gmail.com',1,1),(2,'huantd','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Trần Đình Huân','212481095','1997-10-11 00:00:00','Female','Bình Thạnh','0976998997','huantd@gmail.com',1,1),(4,'huycao','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Cao Gia Huy','212234543','2018-06-20 00:00:00','Male','Quận 5','0987654322','huycao@gmail.com',1,0),(6,'hieuho','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Ho Chi Hieu','212652369','1997-10-23 00:00:00','Male','181/3 TP','0987654554','hieuho@gmail.com',0,1),(7,'tiendinh','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Nguyễn Đình Tiến','212111357','2018-06-27 00:00:00','Male','Quận 11','0987543754','tiendinh@gmail.com',0,1),(8,'thanglee','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Trần Lê Thăng','2122243336','2018-06-27 00:00:00','Other','606/12 Q10','0987654008','thanglee@gmail.com',0,1);
+INSERT INTO `users` VALUES (1,'nnlinh97','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Nguyễn Ngọc Linh','212481093','1997-07-14 00:00:00','Male','Quận 10','0978289014','nnlinh97it@gmail.com',1,1),(2,'huantd','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Trần Đình Huân','212481095','1997-10-11 00:00:00','Female','Bình Thạnh','0976998997','huantd@gmail.com',1,1),(4,'huycao','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Cao Gia Huy','212234543','2018-06-20 00:00:00','Male','Quận 5','0987654322','huycao@gmail.com',1,0),(6,'hieuho','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Ho Chi Hieu','212652369','1997-10-23 00:00:00','Male','181/3 TP','0987654554','hieuho@gmail.com',0,1),(7,'tiendinh','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Nguyễn Đình Tiến','212111357','2018-06-27 00:00:00','Male','Quận 11','0987543754','tiendinh@gmail.com',0,1),(8,'thanglee','e7042ac7d09c7bc41c8cfa5749e41858f6980643bc0db1a83cc793d3e24d3f77','Trần Lê Thăng','2122243336','2018-06-27 00:00:00','Other','606/12 Q10','0987654008','thanglee@gmail.com',0,1),(9,'tradat','9c31e4a36195f37bb6804015199277eae880c6643588c9b3a5c9e8263e1c8128','Trà Ngọc Tiến Đạt','2122243224','1997-08-14 00:00:00','Female','KTX Hòa Hảo','0987334597','tiendat97@gmail.com',1,1),(11,'minhdat','a57a2feae088870f5d340f23156b55045270ed2cff1a355a0597450f730833c3','Trần Minh Đạt','212224431','1997-07-30 00:00:00','Other','Quận 10','0987543754','datdat@gmail.com',1,0),(12,'anlee','9dbaa0f36388f66c058c2983697c48553c79f2ec44c0a2ff31541e4793a84ef7','Hoàng Lê An','2122243225','1997-10-21 00:00:00','Other','181/3 TP','0987654442','anlee@gmail.com',1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-06 23:32:17
+-- Dump completed on 2018-06-09  8:53:48
