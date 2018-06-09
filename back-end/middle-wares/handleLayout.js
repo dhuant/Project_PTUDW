@@ -22,16 +22,16 @@ module.exports = (req, res, next) => {
         var temp = [];
         var arr = [];
         for (let i = 0; i < brandRows.length; i++) {
-            if(i < b4){
+            if (i < b4) {
                 bra1.push(brandRows[i]);
             }
-            else if( i >= b4 && i < 2*b4){
+            else if (i >= b4 && i < 2 * b4) {
                 bra2.push(brandRows[i]);
             }
-            else if( i >= 2*b4 && i < 3 * b4){
+            else if (i >= 2 * b4 && i < 3 * b4) {
                 bra3.push(brandRows[i]);
             }
-            else if(i >= 3*b4 && i < 4*b4){
+            else if (i >= 3 * b4 && i < 4 * b4) {
                 bra4.push(brandRows[i]);
             }
             else temp.push(brandRows[i]);
@@ -40,7 +40,7 @@ module.exports = (req, res, next) => {
         arr.push(bra2);
         arr.push(bra3);
         arr.push(bra4);
-        for(let i = 0; i< temp.length; i++){
+        for (let i = 0; i < temp.length; i++) {
             arr[i].push(temp[i]);
         }
         // console.log(bra1);
@@ -59,11 +59,7 @@ module.exports = (req, res, next) => {
             curUser: req.session.user,
             preUrl: preUrl
         };
-       // console.log(req.session.user);
+         //console.log(cateRows);
         next();
-    });
-    userRepo.loadAll().then(rows => {
-
-
     });
 };

@@ -113,3 +113,8 @@ exports.login = user => {
     var sql = `select * from users where Username = '${user.username}' and Password = '${user.password}' and Actived = 1 and Permission = 1`;
     return db.load(sql);
 }
+
+exports.loginCustomer = user => {
+    var sql = `select * from users where Username = '${user.username}' and Password = '${user.password}'`;
+    return db.load(sql);
+}

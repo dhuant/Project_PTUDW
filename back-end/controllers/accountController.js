@@ -272,8 +272,55 @@ router.get('/', (req, res) => {
 
 router.get('/category', (req, res) => {
     productRepo.loadAllbyCategory(req.query.id).then(rows =>{
-        console.log(rows);
+        //console.log(rows);
         res.redirect('/');
     });
 });
+
+router.get('/login', (req, res) =>{
+    vm = {
+        layout: 'index.handlebars'
+    }
+    res.render('bookstore/index/login', vm);
+});
+router.post('/login', (req, res) =>{
+    var user = {
+        username: req.body.username,
+        password: SHA256(req.body.password).toString()
+    };
+    userRepo.loginCustomer(user).then(rows => {
+        //console.log(rows);
+        if(rows.length > 0){
+            req.session.isLogged = true;
+            //res.redirect('/admin/dashboard');
+
+            req.session.user = rows[0];
+            vm = {
+                layout: 'index.handlebars'
+            }
+            res.redirect('/');
+        }
+        else{
+            vm = {
+                layout: 'index.handlebars',
+                error: true
+            }
+            res.render('bookstore/index/login', vm);
+        }
+    });
+});
+router.get('/register', (req, res) =>{
+    vm = {
+        layout: 'index.handlebars'
+    }
+    res.render('bookstore/index/register', vm);
+});
+
+router.post('/logout', (req, res) =>{
+    req.session.isLogged = false;
+    req.session.user = null;
+    res.redirect(req.headers.referer);
+})
+
+
 module.exports = router;
