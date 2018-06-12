@@ -18,7 +18,8 @@ $(function () {
 
 
 	// =============== THÊM VÀO .CSS CHO TRANG PRODUCTS ===============
-	var htmlStyle = `<style>
+	var htmlStyle = `
+	<style>
 						.product.product-single .product-thumb a img {
 							width: 100%;
 							height: 360px;
@@ -39,7 +40,8 @@ $(function () {
 						.product.product-widget .product-thumb {
 							text-align: center;
 						}
-					</style>`;
+					</style>
+					`;
 	$('head').append(htmlStyle);
 	// ================================================================
 
@@ -51,14 +53,16 @@ $(function () {
 									<li><a >` + arrType[htmlType] + `</a></li>
 									<li class='active'>` + proName + `</li>
 								</ul>
-							</div>`;
+							</div>
+							`;
 	$('#breadcrumb').append(htmlBreadcrumb);
 	// ==================================================================
 
 
 
 	// =============== THÊM SECTION VÀO TRANG PRODUCTS ===============
-	var htmlSection = `	<!-- container -->
+	var htmlSection = `
+		<!-- container -->
 						<div class="container">
 							<!-- row -->
 							<div class="row">
@@ -131,7 +135,8 @@ $(function () {
 							</div>
 							<!-- /row -->
 						</div>
-						<!-- /container -->`;
+						<!-- /container -->
+						`;
 	$('#section').append(htmlSection);
 	// ===============================================================
 
@@ -199,7 +204,8 @@ $(function () {
 				}
 			}
 
-			var productSingle = `	<!-- Product Single -->
+			var productSingle = `
+				<!-- Product Single -->
 										<div class="col-md-4 col-sm-6 col-xs-6">
 											<div class="product product-single">
 												<div class="product-thumb">
@@ -220,7 +226,8 @@ $(function () {
 												</div>
 											</div>
 										</div>
-										<!-- /Product Single -->`;
+										<!-- /Product Single -->
+										`;
 
 			// Thêm vào mảng arrBook
 			arrBook.push(productSingle);

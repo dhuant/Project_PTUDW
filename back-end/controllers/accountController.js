@@ -174,12 +174,12 @@ router.post('/admin/customers', (req, res) => {
 router.get('/', (req, res) => {
     var p1 = productRepo.productlatest();
     var p2 = productRepo.productbestview();
-    Promise.all([p1, p2]).then(([latestRows, viewRows])=>{
-        for(let i = 0; i < latestRows.length; i++){
+    Promise.all([p1, p2]).then(([latestRows, viewRows]) => {
+        for (let i = 0; i < latestRows.length; i++) {
             latestRows[i].Saling = false;
             latestRows[i].New = false;
             latestRows[i].Saleprice = latestRows[i].Price;
-            if(latestRows[i].Sale != 0){
+            if (latestRows[i].Sale != 0) {
                 latestRows[i].Saling = true;
                 latestRows[i].Saleprice = Math.floor(latestRows[i].Price * (100 - latestRows[i].Sale) / 100000) * 1000;
                 latestRows[i].Salenumber = latestRows[i].Sale;
@@ -188,41 +188,41 @@ router.get('/', (req, res) => {
             var star = 0;
             var today = new Date();
             var date = latestRows[i].Date;
-            var time = (today.getTime() - date.getTime())/1000;
-            if(time < 2 * config.NEW_BOOK){
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 2 * config.NEW_BOOK) {
                 latestRows[i].New = true;
             }
-            if(latestRows[i].View < 5){
+            if (latestRows[i].View < 5) {
                 star = 1;
             }
-            else if(latestRows[i].View >= 5 && latestRows[i].View < 10){
+            else if (latestRows[i].View >= 5 && latestRows[i].View < 10) {
                 star = 2;
             }
-            else if(latestRows[i].View >= 10 && latestRows[i].View < 15){
+            else if (latestRows[i].View >= 10 && latestRows[i].View < 15) {
                 star = 3;
             }
-            else if(latestRows[i].View >= 15 && latestRows[i].View < 20){
-                star = 4; 
+            else if (latestRows[i].View >= 15 && latestRows[i].View < 20) {
+                star = 4;
             }
-            else{
+            else {
                 star = 5;
             }
             var Star = [];
             var notStar = [];
-            for(let i = 0; i< star; i++){
+            for (let i = 0; i < star; i++) {
                 Star.push(1);
             }
-            for(let i = 0;i < 5 - star; i++){
+            for (let i = 0; i < 5 - star; i++) {
                 notStar.push(1);
             }
             latestRows[i].Star = Star;
             latestRows[i].notStar = notStar;
         }
-        for(let i = 0; i < viewRows.length; i++){
+        for (let i = 0; i < viewRows.length; i++) {
             viewRows[i].Saling = false;
             viewRows[i].New = false;
             viewRows[i].Saleprice = viewRows[i].Price;
-            if(latestRows[i].Sale != 0){
+            if (latestRows[i].Sale != 0) {
                 viewRows[i].Saling = true;
                 viewRows[i].Saleprice = Math.floor(viewRows[i].Price * (100 - viewRows[i].Sale) / 100000) * 1000;
                 viewRows[i].Salenumber = viewRows[i].Sale;
@@ -231,31 +231,31 @@ router.get('/', (req, res) => {
             var star = 0;
             var today = new Date();
             var date = viewRows[i].Date;
-            var time = (today.getTime() - date.getTime())/1000;
-            if(time < 2 * config.NEW_BOOK){
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 2 * config.NEW_BOOK) {
                 viewRows[i].New = true;
             }
-            if(viewRows[i].View < 5){
+            if (viewRows[i].View < 5) {
                 star = 1;
             }
-            else if(viewRows[i].View >= 5 && viewRows[i].View < 10){
+            else if (viewRows[i].View >= 5 && viewRows[i].View < 10) {
                 star = 2;
             }
-            else if(viewRows[i].View >= 10 && viewRows[i].View < 15){
+            else if (viewRows[i].View >= 10 && viewRows[i].View < 15) {
                 star = 3;
             }
-            else if(viewRows[i].View >= 15 && viewRows[i].View < 20){
-                star = 4; 
+            else if (viewRows[i].View >= 15 && viewRows[i].View < 20) {
+                star = 4;
             }
-            else{
+            else {
                 star = 5;
             }
             var Star = [];
             var notStar = [];
-            for(let i = 0; i< star; i++){
+            for (let i = 0; i < star; i++) {
                 Star.push(1);
             }
-            for(let i = 0;i < 5 - star; i++){
+            for (let i = 0; i < 5 - star; i++) {
                 notStar.push(1);
             }
             viewRows[i].Star = Star;
@@ -270,27 +270,76 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/category', (req, res) => {
-    productRepo.loadAllbyCategory(req.query.id).then(rows =>{
-        //console.log(rows);
-        res.redirect('/');
+router.get('/category/:id', (req, res) => {
+    productRepo.loadAllbyCategory(req.params.id).then(rows => {
+        var products = rows;
+        categoryRepo.single(req.params.id).then(c => {
+            for (let i = 0; i < products.length; i++) {
+                products[i].New = false;
+                products[i].Saling = false;
+                if (products[i].Sale != 0) {
+                    products[i].Saling = true;
+                    products[i].Saleprice = Math.floor(products[i].Price * (100 - products[i].Sale) / 100000) * 1000;
+                }
+                var star = 0;
+                var today = new Date();
+                var date = products[i].Date;
+                var time = (today.getTime() - date.getTime()) / 1000;
+                if (time < 5 * config.NEW_BOOK) {
+                    products[i].New = true;
+                }
+                if (products[i].View < 5) {
+                    star = 1;
+                }
+                else if (products[i].View >= 5 && products[i].View < 10) {
+                    star = 2;
+                }
+                else if (products[i].View >= 10 && products[i].View < 15) {
+                    star = 3;
+                }
+                else if (products[i].View >= 15 && products[i].View < 20) {
+                    star = 4;
+                }
+                else {
+                    star = 5;
+                }
+                var Star = [];
+                var notStar = [];
+                for (let i = 0; i < star; i++) {
+                    Star.push(1);
+                }
+                for (let i = 0; i < 5 - star; i++) {
+                    notStar.push(1);
+                }
+                products[i].Star = Star;
+                products[i].notStar = notStar;
+            }
+            vm = {
+                layout: 'index.handlebars',
+                products: products,
+                CateName: c.Name
+            }
+            res.render('bookstore/category/index', vm);
+        });
     });
+
+
 });
 
-router.get('/login', (req, res) =>{
+router.get('/login', (req, res) => {
     vm = {
         layout: 'index.handlebars'
     }
     res.render('bookstore/index/login', vm);
 });
-router.post('/login', (req, res) =>{
+router.post('/login', (req, res) => {
     var user = {
         username: req.body.username,
         password: SHA256(req.body.password).toString()
     };
     userRepo.loginCustomer(user).then(rows => {
         //console.log(rows);
-        if(rows.length > 0){
+        if (rows.length > 0) {
             req.session.isLogged = true;
             //res.redirect('/admin/dashboard');
 
@@ -300,7 +349,7 @@ router.post('/login', (req, res) =>{
             }
             res.redirect('/');
         }
-        else{
+        else {
             vm = {
                 layout: 'index.handlebars',
                 error: true
@@ -309,18 +358,17 @@ router.post('/login', (req, res) =>{
         }
     });
 });
-router.get('/register', (req, res) =>{
+router.get('/register', (req, res) => {
     vm = {
         layout: 'index.handlebars'
     }
     res.render('bookstore/index/register', vm);
 });
 
-router.post('/logout', (req, res) =>{
+router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
     res.redirect(req.headers.referer);
-})
-
+});
 
 module.exports = router;
