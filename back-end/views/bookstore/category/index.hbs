@@ -29,7 +29,13 @@
 {{/section}} {{#section 'js'}}
 <script src="/assets/bookstore/js/JSbookstore/index.js"></script>
 <script type="text/javascript">
+    $('#cbb1').change(function () {
+        $('#frm1').submit();
+    });
 
+    $('#cbb2').change(function () {
+        $('#frm2').submit();
+    });
 </script> {{/section}}
 
 
@@ -76,10 +82,15 @@
                 <div class="store-filter clearfix">
                     <div class="pull-right">
                         <div class="page-filter">
-                            <span class="text-uppercase">Show:</span>
-                            <select class="input">
-                                <!-- <option value="0">9</option>-->
-                            </select>
+                            <form id="frm1" action="" method="post">
+                                <span class="text-uppercase">Show:</span>
+                                <select name="limit" id="cbb1" class="input">
+                                    <option value="{{limit}}">{{limit}}</option>
+                                    <option value="9">9</option>
+                                    <option value="18">18</option>
+                                    <option value="27">27</option>
+                                </select>
+                            </form>
                         </div>
                         <ul class="store-pages">
                             <li>
@@ -87,12 +98,19 @@
                             </li>
                             <span id="page-number">
                                 <!-- Page number -->
+                                <li>
+                                    {{#each page_numbers}} {{#if isCurPage}}
+                                    <li>
+                                        <a class="cur-page" href="?page={{value}}" style="color:#F8694A">{{value}}</a>
+                                    </li>
+                                    {{else}}
+                                    <li>
+                                        <a href="?page={{value}}">{{value}}</a>
+                                    </li>
+                                    {{/if}} {{/each}}
+                                </li>
                             </span>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-caret-right"></i>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -112,8 +130,7 @@
                                         <span class="sale">
                                             -{{Sale}}%
                                         </span>
-                                        {{/if}}
-                                        {{#if New}}
+                                        {{/if}} {{#if New}}
                                         <span>New</span>
                                         {{/if}}
                                     </div>
@@ -129,13 +146,12 @@
                                         {{else}}
                                         <a>{{number_format Price}}đ</a>
                                         {{/if}}
-                                        
+
                                     </h3>
                                     <div class="product-rating">
                                         {{#each Star}}
                                         <i class="fa fa-star"></i>
-                                        {{/each}}
-                                        {{#each notStar}}
+                                        {{/each}} {{#each notStar}}
                                         <i class="fa fa-star-o empty"></i>
                                         {{/each}}
                                     </div>
@@ -161,10 +177,15 @@
                 <div class="store-filter clearfix">
                     <div class="pull-right">
                         <div class="page-filter">
-                            <span class="text-uppercase">Show:</span>
-                            <select class="input">
-                                <!-- <option value="0">9</option>-->
-                            </select>
+                            <form id="frm2" action="" method="post">
+                                <span class="text-uppercase">Show:</span>
+                                <select class="input" name="limit" id="cbb2">
+                                    <option value="{{limit}}">{{limit}}</option>
+                                    <option value="9">9</option>
+                                    <option value="18">18</option>
+                                    <option value="27">27</option>
+                                </select>
+                            </form>
                         </div>
                         <ul class="store-pages">
                             <li>
@@ -172,12 +193,20 @@
                             </li>
                             <span id="page-number">
                                 <!-- Page number -->
+                                <li>
+                                    {{#each page_numbers}} 
+                                    {{#if isCurPage}}
+                                    <li>
+                                        <a class="cur-page" href="?page={{value}}" style="color:#F8694A">{{value}}</a>
+                                    </li>
+                                    {{else}}
+                                    <li>
+                                        <a href="?page={{value}}">{{value}}</a>
+                                    </li>
+                                    {{/if}} {{/each}}
+                                </li>
                             </span>
-                            <li>
-                                <a href="">
-                                    <i class="fa fa-caret-right"></i>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>

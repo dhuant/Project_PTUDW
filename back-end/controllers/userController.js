@@ -42,6 +42,7 @@ router.get('/', restrict, (req, res) => {
             });
         }
         /*end mảng số lượng page */
+       
         var firstPage = {};
         var lastPage = {};
         for (let i = 0; i < numbers.length; i++) {

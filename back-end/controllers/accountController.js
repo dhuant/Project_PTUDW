@@ -271,61 +271,262 @@ router.get('/', (req, res) => {
 });
 
 router.get('/category/:id', (req, res) => {
-    productRepo.loadAllbyCategory(req.params.id).then(rows => {
-        var products = rows;
-        categoryRepo.single(req.params.id).then(c => {
-            for (let i = 0; i < products.length; i++) {
-                products[i].New = false;
-                products[i].Saling = false;
-                if (products[i].Sale != 0) {
-                    products[i].Saling = true;
-                    products[i].Saleprice = Math.floor(products[i].Price * (100 - products[i].Sale) / 100000) * 1000;
+
+    if (!req.session.limit)
+        req.session.limit = 9;
+
+    var limit = req.session.limit;
+
+    var page = req.query.page;
+    if (!page)
+        page = 1;
+    var offset = (page - 1) * limit;
+
+    var p1 = productRepo.countProductsbyCategory(req.params.id);
+    var p2 = productRepo.loadAllProductsbyCategory(req.params.id, limit, offset);
+    var p3 = categoryRepo.single(req.params.id);
+
+    Promise.all([p1, p2, p3]).then(([countRows, pRows, cRows]) => {
+        var total = countRows[0].total;
+
+        /*tính số page cần có */
+        var nPage = Math.floor(total / limit);
+        if (total % limit > 0)
+            nPage++;
+        /*end tính số page */
+
+        var numbers = [];
+        for (let i = 1; i <= nPage; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
+
+        var firstPage = {};
+        var lastPage = {};
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i].isCurPage) {
+                if (numbers[i].value === 1) {
+                    firstPage = {
+                        isFirstPage: true,
+                        value: numbers[i].value
+                    }
+                    lastPage = {
+                        isLastPage: false,
+                        value: numbers[i].value + 1
+                    }
                 }
-                var star = 0;
-                var today = new Date();
-                var date = products[i].Date;
-                var time = (today.getTime() - date.getTime()) / 1000;
-                if (time < 5 * config.NEW_BOOK) {
-                    products[i].New = true;
-                }
-                if (products[i].View < 5) {
-                    star = 1;
-                }
-                else if (products[i].View >= 5 && products[i].View < 10) {
-                    star = 2;
-                }
-                else if (products[i].View >= 10 && products[i].View < 15) {
-                    star = 3;
-                }
-                else if (products[i].View >= 15 && products[i].View < 20) {
-                    star = 4;
+                else if (numbers[i].value === nPage) {
+                    lastPage = {
+                        isLastPage: true,
+                        value: numbers[i].value
+                    }
+                    firstPage = {
+                        isFirstPage: false,
+                        value: numbers[i].value - 1
+                    }
                 }
                 else {
-                    star = 5;
+                    lastPage = {
+                        isLastPage: false,
+                        value: numbers[i].value + 1
+                    }
+                    firstPage = {
+                        isFirstPage: false,
+                        value: numbers[i].value - 1
+                    }
                 }
-                var Star = [];
-                var notStar = [];
-                for (let i = 0; i < star; i++) {
-                    Star.push(1);
-                }
-                for (let i = 0; i < 5 - star; i++) {
-                    notStar.push(1);
-                }
-                products[i].Star = Star;
-                products[i].notStar = notStar;
             }
-            vm = {
-                layout: 'index.handlebars',
-                products: products,
-                CateName: c.Name
+        }
+
+        for (let i = 0; i < pRows.length; i++) {
+            pRows[i].New = false;
+            pRows[i].Saling = false;
+            if (pRows[i].Sale != 0) {
+                pRows[i].Saling = true;
+                pRows[i].Saleprice = Math.floor(pRows[i].Price * (100 - pRows[i].Sale) / 100000) * 1000;
             }
-            res.render('bookstore/category/index', vm);
-        });
+            var star = 0;
+            var today = new Date();
+            var date = pRows[i].Date;
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 5 * config.NEW_BOOK) {
+                pRows[i].New = true;
+            }
+            if (pRows[i].View < 5) {
+                star = 1;
+            }
+            else if (pRows[i].View >= 5 && pRows[i].View < 10) {
+                star = 2;
+            }
+            else if (pRows[i].View >= 10 && pRows[i].View < 15) {
+                star = 3;
+            }
+            else if (pRows[i].View >= 15 && pRows[i].View < 20) {
+                star = 4;
+            }
+            else {
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for (let i = 0; i < star; i++) {
+                Star.push(1);
+            }
+            for (let i = 0; i < 5 - star; i++) {
+                notStar.push(1);
+            }
+            pRows[i].Star = Star;
+            pRows[i].notStar = notStar;
+        }
+
+        vm = {
+            layout: 'index.handlebars',
+            products: pRows,
+            CateName: cRows.Name,
+            page_numbers: numbers,
+            firstPage: firstPage,
+            lastPage: lastPage,
+            limit: limit
+        }
+        res.render('bookstore/category/index', vm);
     });
-
-
 });
+router.post('/category/:id', (req, res) => {
+    req.session.limit = req.body.limit;
+    var limit = req.session.limit;
 
+    var page = req.query.page;
+    if (!page || page !== 1)
+        page = 1;
+    if (req.query.page && limit == 9) {
+        page = req.query.page;
+    }
+    var offset = (page - 1) * limit;
+    //console.log(limit);
+
+    var p1 = productRepo.countProductsbyCategory(req.params.id);
+    var p2 = productRepo.loadAllProductsbyCategory(req.params.id, limit, offset);
+    var p3 = categoryRepo.single(req.params.id);
+
+    Promise.all([p1, p2, p3]).then(([countRows, pRows, cRows]) => {
+        var total = countRows[0].total;
+
+        /*tính số page cần có */
+        var nPage = Math.floor(total / limit);
+        if (total % limit > 0)
+            nPage++;
+        /*end tính số page */
+        var numbers = [];
+        for (let i = 1; i <= nPage; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
+        // console.log(numbers);
+        //console.log(nPage);
+        var firstPage = {};
+        var lastPage = {};
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i].isCurPage) {
+                if (numbers[i].value === 1) {
+                    firstPage = {
+                        isFirstPage: true,
+                        value: numbers[i].value
+                    }
+                    lastPage = {
+                        isLastPage: false,
+                        value: numbers[i].value + 1
+                    }
+                }
+                else if (numbers[i].value === nPage) {
+                    lastPage = {
+                        isLastPage: true,
+                        value: numbers[i].value
+                    }
+                    firstPage = {
+                        isFirstPage: false,
+                        value: numbers[i].value - 1
+                    }
+                }
+                else {
+                    lastPage = {
+                        isLastPage: false,
+                        value: numbers[i].value + 1
+                    }
+                    firstPage = {
+                        isFirstPage: false,
+                        value: numbers[i].value - 1
+                    }
+                }
+            }
+        }
+        if (nPage === 1) {
+            lastPage = {
+                isLastPage: true,
+                value: 1
+            }
+            firstPage = {
+                isFirstPage: true,
+                value: 1
+            }
+        }
+        for (let i = 0; i < pRows.length; i++) {
+            pRows[i].New = false;
+            pRows[i].Saling = false;
+            if (pRows[i].Sale != 0) {
+                pRows[i].Saling = true;
+                pRows[i].Saleprice = Math.floor(pRows[i].Price * (100 - pRows[i].Sale) / 100000) * 1000;
+            }
+            var star = 0;
+            var today = new Date();
+            var date = pRows[i].Date;
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 5 * config.NEW_BOOK) {
+                pRows[i].New = true;
+            }
+            if (pRows[i].View < 5) {
+                star = 1;
+            }
+            else if (pRows[i].View >= 5 && pRows[i].View < 10) {
+                star = 2;
+            }
+            else if (pRows[i].View >= 10 && pRows[i].View < 15) {
+                star = 3;
+            }
+            else if (pRows[i].View >= 15 && pRows[i].View < 20) {
+                star = 4;
+            }
+            else {
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for (let i = 0; i < star; i++) {
+                Star.push(1);
+            }
+            for (let i = 0; i < 5 - star; i++) {
+                notStar.push(1);
+            }
+            pRows[i].Star = Star;
+            pRows[i].notStar = notStar;
+        }
+
+        vm = {
+            layout: 'index.handlebars',
+            products: pRows,
+            CateName: cRows.Name,
+            page_numbers: numbers,
+            firstPage: firstPage,
+            lastPage: lastPage,
+            limit: limit,
+            isPagination: nPage !== 1
+        }
+        res.render('bookstore/category/index', vm);
+    });
+});
 router.get('/login', (req, res) => {
     vm = {
         layout: 'index.handlebars'
