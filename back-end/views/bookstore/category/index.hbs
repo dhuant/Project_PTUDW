@@ -36,6 +36,15 @@
     $('#cbb2').change(function () {
         $('#frm2').submit();
     });
+    var option = [9, 18, 27];
+    for(let i = 0; i< option.length; i++){
+        if(option[i] != $('#cbb1').val()){
+            $('#cbb1').append(`<option value="${option[i]}">${option[i]}</option>`);
+        }
+        if(option[i] != $('#cbb2').val()){
+            $('#cbb2').append(`<option value="${option[i]}">${option[i]}</option>`);
+        }
+    }
 </script> {{/section}}
 
 
@@ -86,9 +95,6 @@
                                 <span class="text-uppercase">Show:</span>
                                 <select name="limit" id="cbb1" class="input">
                                     <option value="{{limit}}">{{limit}}</option>
-                                    <option value="9">9</option>
-                                    <option value="18">18</option>
-                                    <option value="27">27</option>
                                 </select>
                             </form>
                         </div>
@@ -110,7 +116,7 @@
                                     {{/if}} {{/each}}
                                 </li>
                             </span>
-                            
+
                         </ul>
                     </div>
                 </div>
@@ -181,9 +187,6 @@
                                 <span class="text-uppercase">Show:</span>
                                 <select class="input" name="limit" id="cbb2">
                                     <option value="{{limit}}">{{limit}}</option>
-                                    <option value="9">9</option>
-                                    <option value="18">18</option>
-                                    <option value="27">27</option>
                                 </select>
                             </form>
                         </div>
@@ -194,8 +197,7 @@
                             <span id="page-number">
                                 <!-- Page number -->
                                 <li>
-                                    {{#each page_numbers}} 
-                                    {{#if isCurPage}}
+                                    {{#each page_numbers}} {{#if isCurPage}}
                                     <li>
                                         <a class="cur-page" href="?page={{value}}" style="color:#F8694A">{{value}}</a>
                                     </li>
@@ -206,7 +208,7 @@
                                     {{/if}} {{/each}}
                                 </li>
                             </span>
-                            
+
                         </ul>
                     </div>
                 </div>
