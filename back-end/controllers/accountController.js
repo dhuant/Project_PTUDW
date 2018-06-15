@@ -442,4 +442,51 @@ router.post('/logout', (req, res) => {
     res.redirect(req.headers.referer);
 });
 
+router.get('/products', (req,res)=>{
+    console.log(req.query);
+    productRepo.single(req.query.id).then(rows=>{
+        console.log(rows);
+
+        var isSaling = false;
+        var salePrice = 0;
+        if(rows.Sale != 0){
+            isSaling = true;
+            salePrice = Math.floor(rows.Price * (100 - rows.Sale) / 100000) * 1000;
+        }
+        rows.isSaling = isSaling;
+        rows.newPrice = salePrice;
+
+        if (rows.View < 5) {
+            star = 1;
+        }
+        else if (rows.View >= 5 && rows.View < 10) {
+            star = 2;
+        }
+        else if (rows.View >= 10 && rows.View < 15) {
+            star = 3;
+        }
+        else if (rows.View >= 15 && rows.View < 20) {
+            star = 4;
+        }
+        else {
+            star = 5;
+        }
+        var Star = [];
+        var notStar = [];
+        for (let i = 0; i < star; i++) {
+            Star.push(1);
+        }
+        for (let i = 0; i < 5 - star; i++) {
+            notStar.push(1);
+        }
+        rows.Star = Star;
+        rows.notStar = notStar;
+        vm = {
+            layout: 'index.handlebars',
+            product: rows
+        }
+        res.render('bookstore/product/index', vm);
+    });
+});
+
 module.exports = router;

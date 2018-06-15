@@ -31,7 +31,8 @@ $(function () {
 
 
 	// =============== THÊM VÀO .CSS CHO TRANG PRODUCT-PAGE ===============
-	var htmlStyle = `<style>
+	var htmlStyle = `
+	<style>
 						.product.product-details .col-md-4 {
 							text-align: center;
 						}
@@ -71,7 +72,8 @@ $(function () {
 						.product.product-widget .product-thumb {
 							text-align: center;
 						}
-					</style>`;
+					</style>
+					`;
 	$('head').append(htmlStyle);
 	// ====================================================================
 
