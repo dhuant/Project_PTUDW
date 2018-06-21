@@ -36,7 +36,7 @@ CREATE TABLE `brands` (
 
 LOCK TABLES `brands` WRITE;
 /*!40000 ALTER TABLE `brands` DISABLE KEYS */;
-INSERT INTO `brands` VALUES (1,'Kim Đồng','NXB Kim Đồng tên thật là Nông Văn Dền'),(2,'Nhã Nam','NXB Nhã Nam quê ở Bình Định'),(3,'Bách Việt','NXB này nghe nói đâu đó ở Hà Nội'),(4,'Đinh Tị','nothing'),(5,'Trẻ','tuổi trẻ tài cao'),(6,'Minh Long','Truyện hoạt hình Nhật Bản'),(9,'LimBooks','ở Áo'),(10,'Parragon','nothing'),(11,'Sterling','nothing'),(12,'q',''),(13,'a','');
+INSERT INTO `brands` VALUES (1,'Kim Đồng','NXB Kim Đồng tên thật là Nông Văn Dền'),(2,'Nhã Nam','NXB Nhã Nam quê ở Bình Định'),(3,'Bách Việt','NXB này nghe nói đâu đó ở Hà Nội'),(4,'Đinh Tị','nothing'),(5,'Trẻ','tuổi trẻ tài cao'),(6,'Minh Long','Truyện hoạt hình Nhật Bản'),(9,'LimBooks','ở Áo'),(10,'Parragon','nothing'),(11,'Sterling','nothing'),(12,'Trí Việt',''),(13,'Thái Hà','');
 /*!40000 ALTER TABLE `brands` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-09 14:53:33
+-- Dump completed on 2018-06-21 20:16:00

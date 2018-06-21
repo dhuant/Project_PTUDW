@@ -36,7 +36,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('NEpnS_aCfK-ftQgLhZntkHaptYJePfNb',1528617126,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"isLogged\":false,\"user\":null}');
+INSERT INTO `sessions` VALUES ('Cb5yID4maFOrtJlqiEMc60v9BKNDT7yB',1529666172,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"isLogged\":true,\"user\":{\"id\":18,\"Username\":\"longk\",\"Password\":\"6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b\",\"Fullname\":\"Thai Ba Long\",\"CMND\":\"null\",\"DOB\":\"0000-00-00 00:00:00\",\"Sex\":\"Unknown\",\"Address\":\"null\",\"Phone\":\"0987654559\",\"Email\":\"longk@gmail.com\",\"Permission\":0,\"Actived\":1}}');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-09 14:53:33
+-- Dump completed on 2018-06-21 20:16:00
