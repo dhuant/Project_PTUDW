@@ -21,6 +21,11 @@ exports.productlatest = () => {
     return db.load(sql);
 }
 
+exports.bestsell = () => {
+    var sql = `select * from products order by Sell DESC limit 10`;
+    return db.load(sql);
+}
+
 exports.add = (c) => {
     console.log(c);
     var date = moment(new Date()).format("YYYY-MM-DD");
@@ -37,7 +42,7 @@ exports.add = (c) => {
 
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = `select pros.id as id, pros.Name as Name, pros.View as View, pros.Amount as Amount, pros.Picture as Picture, pros.Amount as Amount,
+        var sql = `select pros.id as id, pros.Name as Name,pros.Date as Date, pros.View as View, pros.Amount as Amount, pros.Picture as Picture, pros.Amount as Amount,
          cates.id as CateId, pros.Description as Description, pros.Author as Author, pros.Origin as Origin,
         cates.Name as CatName,brs.id as BraId, brs.Name as BraName,
         pros.Sale as Sale, pros.Price as Price, users.Fullname as Creator, users.id as userId

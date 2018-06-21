@@ -175,7 +175,52 @@ router.post('/admin/customers', (req, res) => {
 router.get('/', (req, res) => {
     var p1 = productRepo.productlatest();
     var p2 = productRepo.productbestview();
-    Promise.all([p1, p2]).then(([latestRows, viewRows]) => {
+    var p3 = productRepo.bestsell();
+    Promise.all([p1, p2, p3]).then(([latestRows, viewRows, sellRows]) => {
+        //console.log(sellRows);
+        for (let i = 0; i < sellRows.length; i++) {
+            sellRows[i].Saling = false;
+            sellRows[i].New = false;
+            sellRows[i].Saleprice = sellRows[i].Price;
+            if (sellRows[i].Sale != 0) {
+                sellRows[i].Saling = true;
+                sellRows[i].Saleprice = Math.floor(sellRows[i].Price * (100 - sellRows[i].Sale) / 100000) * 1000;
+                sellRows[i].Salenumber = sellRows[i].Sale;
+                sellRows[i].Oldprice = sellRows[i].Price;
+            }
+            var star = 0;
+            var today = new Date();
+            var date = sellRows[i].Date;
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 15 * config.NEW_BOOK) {
+                sellRows[i].New = true;
+            }
+            if (sellRows[i].View < 5) {
+                star = 1;
+            }
+            else if (sellRows[i].View >= 5 && sellRows[i].View < 10) {
+                star = 2;
+            }
+            else if (sellRows[i].View >= 10 && sellRows[i].View < 15) {
+                star = 3;
+            }
+            else if (sellRows[i].View >= 15 && sellRows[i].View < 20) {
+                star = 4;
+            }
+            else {
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for (let i = 0; i < star; i++) {
+                Star.push(1);
+            }
+            for (let i = 0; i < 5 - star; i++) {
+                notStar.push(1);
+            }
+            sellRows[i].Star = Star;
+            sellRows[i].notStar = notStar;
+        }
         for (let i = 0; i < latestRows.length; i++) {
             latestRows[i].Saling = false;
             latestRows[i].New = false;
@@ -190,7 +235,7 @@ router.get('/', (req, res) => {
             var today = new Date();
             var date = latestRows[i].Date;
             var time = (today.getTime() - date.getTime()) / 1000;
-            if (time < 2 * config.NEW_BOOK) {
+            if (time < 15 * config.NEW_BOOK) {
                 latestRows[i].New = true;
             }
             if (latestRows[i].View < 5) {
@@ -223,7 +268,7 @@ router.get('/', (req, res) => {
             viewRows[i].Saling = false;
             viewRows[i].New = false;
             viewRows[i].Saleprice = viewRows[i].Price;
-            if (latestRows[i].Sale != 0) {
+            if (viewRows[i].Sale != 0) {
                 viewRows[i].Saling = true;
                 viewRows[i].Saleprice = Math.floor(viewRows[i].Price * (100 - viewRows[i].Sale) / 100000) * 1000;
                 viewRows[i].Salenumber = viewRows[i].Sale;
@@ -233,7 +278,7 @@ router.get('/', (req, res) => {
             var today = new Date();
             var date = viewRows[i].Date;
             var time = (today.getTime() - date.getTime()) / 1000;
-            if (time < 2 * config.NEW_BOOK) {
+            if (time < 15 * config.NEW_BOOK) {
                 viewRows[i].New = true;
             }
             if (viewRows[i].View < 5) {
@@ -265,7 +310,8 @@ router.get('/', (req, res) => {
         vm = {
             layout: 'index.handlebars',
             bestview: viewRows,
-            latest: latestRows
+            latest: latestRows,
+            sell: sellRows
         }
         res.render('bookstore/index/index', vm);
     });
@@ -494,6 +540,7 @@ router.get('/products', (req, res) => {
         Promise.all([p1, p2, p3]).then(([cateRows, brandRows, value]) => {
             //console.log(cateRows);
             //console.log(brandRows);
+            console.log(rows);
             var arrCate = [];
             var arrBrand = [];
             if (cateRows.length > 6) {
@@ -523,6 +570,15 @@ router.get('/products', (req, res) => {
             rows.isSaling = isSaling;
             rows.newPrice = salePrice;
 
+
+            var today = new Date();
+            var date = rows.Date;
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 15 * config.NEW_BOOK) {
+                rows.New = true;
+            }
+
+
             if (rows.View < 5) {
                 star = 1;
             }
@@ -548,6 +604,43 @@ router.get('/products', (req, res) => {
             }
             rows.Star = Star;
             rows.notStar = notStar;
+            for (let i = 0; i < arrCate.length; i++) {
+                arrCate[i].Saling = false;
+                arrCate[i].New = false;
+                arrCate[i].Saleprice = arrCate[i].Price;
+                if (arrCate[i].Sale != 0) {
+                    arrCate[i].Saling = true;
+                    arrCate[i].Saleprice = Math.floor(arrCate[i].Price * (100 - arrCate[i].Sale) / 100000) * 1000;
+                    arrCate[i].Salenumber = arrCate[i].Sale;
+                    arrCate[i].Oldprice = arrCate[i].Price;
+                }
+                var star = 0;
+                var today = new Date();
+                var date = arrCate[i].Date;
+                var time = (today.getTime() - date.getTime()) / 1000;
+                if (time < 15 * config.NEW_BOOK) {
+                    arrCate[i].New = true;
+                }
+            }
+
+            for (let i = 0; i < arrBrand.length; i++) {
+                arrBrand[i].Saling = false;
+                arrBrand[i].New = false;
+                arrBrand[i].Saleprice = arrBrand[i].Price;
+                if (arrBrand[i].Sale != 0) {
+                    arrBrand[i].Saling = true;
+                    arrBrand[i].Saleprice = Math.floor(arrBrand[i].Price * (100 - arrBrand[i].Sale) / 100000) * 1000;
+                    arrBrand[i].Salenumber = arrBrand[i].Sale;
+                    arrBrand[i].Oldprice = arrBrand[i].Price;
+                }
+                var star = 0;
+                var today = new Date();
+                var date = arrBrand[i].Date;
+                var time = (today.getTime() - date.getTime()) / 1000;
+                if (time < 15 * config.NEW_BOOK) {
+                    arrBrand[i].New = true;
+                }
+            }
             vm = {
                 layout: 'index.handlebars',
                 product: rows,
@@ -582,7 +675,7 @@ router.get('/profile', checklogout, (req, res) => {
             layout: 'index.handlebars',
             user: c
         }
-         res.render('bookstore/index/profile', vm);
+        res.render('bookstore/index/profile', vm);
     });
 });
 router.post('/profile', (req, res) => {
@@ -590,7 +683,7 @@ router.post('/profile', (req, res) => {
     console.log(req.body);
     var obj = req.body;
     //res.redirect('/profile');
-    userRepo.updateCustomer(obj).then(value=>{
+    userRepo.updateCustomer(obj).then(value => {
         res.redirect('/profile');
     });
 });
