@@ -1,6 +1,4 @@
 
 
-var obj = {
-    name: 'linh',
-    mssv: 1512288
-}
+var n = '1';
+console.log(+n + 1);

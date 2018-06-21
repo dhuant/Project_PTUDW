@@ -25,7 +25,7 @@ exports.add = (c) => {
 exports.addCustomer = (c) => {
     var password = SHA256(c.password).toString();
     var sql = `insert into users(Username, Password, Fullname, CMND, DOB, Sex, Address, Phone, Email, Permission, Actived)
-    values('${c.username}', '${password}', '${c.name}', null, null, null, null, '${c.phone}', '${c.email}', 0, 1)`;
+    values('${c.username}', '${password}', '${c.name}', 'null', 'null','Unknown', 'null', '${c.phone}', '${c.email}', 0, 1)`;
     return db.save(sql);
 }
 exports.single = (id) => {
@@ -123,4 +123,22 @@ exports.login = user => {
 exports.loginCustomer = user => {
     var sql = `select * from users where Username = '${user.username}' and Password = '${user.password}'`;
     return db.load(sql);
+}
+
+exports.updateCustomer = (c) => {
+    if(c.dob == ''){
+        c.dob = 'null';
+    }
+    else{
+        c.dob = moment(c.dob, "DD/MM/YYYY").format("YYYY-MM-DD");
+    }
+    if(c.cmnd == ''){
+        c.cmnd = 'null';
+    }
+    if(c.address == ''){
+        c.address = 'null';
+    }
+    var sql = `update users set Fullname='${c.name}', CMND = '${c.cmnd}',
+     DOB = '${c.dob}', Sex = '${c.sex}', Address = '${c.address}', Phone = '${c.phone}', Email = '${c.email}' where id = ${c.id}`;
+    return db.save(sql);
 }

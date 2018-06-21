@@ -11,7 +11,8 @@ var userRepo = require('../repos/userRepo'),
     brandRepo = require('../repos/brandRepo'),
     productRepo = require('../repos/productRepo');
 
-var restrict = require('../middle-wares/restrict');
+var restrict = require('../middle-wares/restrict'),
+    checklogout = require('../middle-wares/checklogout');
 
 router.get('/admin', (req, res) => {
     var vm = {
@@ -415,10 +416,11 @@ router.post('/login', (req, res) => {
             //res.redirect('/admin/dashboard');
 
             req.session.user = rows[0];
-            vm = {
-                layout: 'index.handlebars'
+            var url = '/';
+            if (req.query.retUrl) {
+                url = req.query.retUrl;
             }
-            res.redirect('/');
+            res.redirect(url);
         }
         else {
             vm = {
@@ -557,4 +559,71 @@ router.get('/products', (req, res) => {
     });
 });
 
+
+router.get('/profile', checklogout, (req, res) => {
+    userRepo.single(req.session.user.id).then(c => {
+        c.DOB = moment(c.DOB).format("DD/MM/YYYY");
+        c.dob = true;
+        c.cmnd = true;
+        c.address = true;
+        if (c.DOB == 'Invalid date') {
+            c.DOB = 'should be updated';
+            c.dob = false;
+        }
+        if (c.CMND == 'null') {
+            c.CMND = 'should be updated';
+            c.cmnd = false;
+        }
+        if (c.Address == 'null') {
+            c.Address = 'should be updated';
+            c.address = false;
+        }
+        vm = {
+            layout: 'index.handlebars',
+            user: c
+        }
+         res.render('bookstore/index/profile', vm);
+    });
+});
+router.post('/profile', (req, res) => {
+    req.body.id = req.session.user.id;
+    console.log(req.body);
+    var obj = req.body;
+    //res.redirect('/profile');
+    userRepo.updateCustomer(obj).then(value=>{
+        res.redirect('/profile');
+    });
+});
+
+router.get('/changepassword', checklogout, (req, res) => {
+    vm = {
+        layout: 'index.handlebars'
+    }
+    res.render('bookstore/index/password', vm);
+});
+
+router.post('/changepassword', (req, res) => {
+    req.body.id = req.session.user.id;
+    var obj = req.body;
+    userRepo.single(obj.id).then(c => {
+        if (c.Password === SHA256(req.body.curPassword).toString() && obj.newPassword === obj.confNewPassword) {
+            userRepo.updatepassword(obj).then(value => {
+                vm = {
+                    error: false,
+                    success: true,
+                    layout: 'index.handlebars'
+                }
+                res.render('bookstore/index/password', vm);
+            });
+        }
+        else {
+            vm = {
+                error: true,
+                success: false,
+                layout: 'index.handlebars'
+            }
+            res.render('bookstore/index/password', vm);
+        }
+    });
+});
 module.exports = router;
