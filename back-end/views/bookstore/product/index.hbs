@@ -101,23 +101,24 @@
             </div>
             <!-- section title -->
 
+            {{#each category}}
             <!-- Product Single -->
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="product product-single">
                     <div class="product-thumb">
                         <div class="product-label">
-                            <span class="sale">-31%</span>
+                            <span class="sale">-{{Sale}}%</span>
                         </div>
-                        <a href="../product-page/03.html">
-                            <img src="../../assets/img/books/03.jpg" alt="">
+                        <a href="/products?id={{id}}">
+                            <img src="/assets/img/1/{{Picture}}" alt="">
                         </a>
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">31.050đ
-                            <del class="product-old-price">45.000đ</del>
+                            <del class="product-old-price">{{Price}}đ</del>
                         </h3>
                         <h2 class="product-name">
-                            <a href="../product-page/03.html">Truyện Kể Về Danh Nhân Thế Giới - Ludwig Van Beethoven</a>
+                            <a href="/products?id={{id}}">{{Name}}</a>
                         </h2>
                         <div class="product-btns">
                             <button class="primary-btn add-to-cart" id="03">
@@ -126,126 +127,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                        </div>
-                        <a href="../product-page/nhanam-10.html">
-                            <img src="../../assets/img/books/nhanam-10.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">35.000đ
-                            <del class="product-old-price">50.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/nhanam-10.html">Đời về cơ bản là buồn cười</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="nhanam-10">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                        </div>
-                        <a href="../product-page/04.html">
-                            <img src="../../assets/img/books/04.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">17.500đ
-                            <del class="product-old-price">25.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/04.html">Danh Nhân Thế Giới - Napôlêông (2014)</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="04">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                        </div>
-                        <a href="../product-page/nhanam-08.html">
-                            <img src="../../assets/img/books/nhanam-08.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">63.000đ
-                            <del class="product-old-price">90.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/nhanam-08.html">Sau lưng gió bấc</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="nhanam-08">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                        </div>
-                        <a href="../product-page/nhanam-03.html">
-                            <img src="../../assets/img/books/nhanam-03.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">40.600đ
-                            <del class="product-old-price">58.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/nhanam-03.html">Việt Nam danh tác - Tinh Huyết</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="nhanam-03">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-32%</span>
-                        </div>
-                        <a href="../product-page/01.html">
-                            <img src="../../assets/img/books/01.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">74.800đ
-                            <del class="product-old-price">110.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/01.html">Không Gia Đình (Ấn Bản Kỉ Niệm 60 Năm Thành Lập NXB Kim Đồng)</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="01">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
             <!-- /Product Single -->
         </div>
         <!-- /row -->
@@ -261,23 +143,24 @@
             </div>
             <!-- section title -->
 
+{{#each brand}}
             <!-- Product Single -->
             <div class="col-md-2 col-sm-6 col-xs-6">
                 <div class="product product-single">
                     <div class="product-thumb">
                         <div class="product-label">
-                            <span class="sale">-31%</span>
+                            <span class="sale">-{{Sale}}%</span>
                         </div>
-                        <a href="../product-page/02.html">
-                            <img src="../../assets/img/books/02.jpg" alt="">
+                        <a href="/products?id={{id}}">
+                            <img src="/assets/img/1/{{Picture}}" alt="">
                         </a>
                     </div>
                     <div class="product-body">
                         <h3 class="product-price">37.950đ
-                            <del class="product-old-price">55.000đ</del>
+                            <del class="product-old-price">{{Price}}đ</del>
                         </h3>
                         <h2 class="product-name">
-                            <a href="../product-page/02.html">33 Bài Thực Hành Theo Phương Pháp Shichida</a>
+                            <a href="/products?id={{id}}">{{Name}}</a>
                         </h2>
                         <div class="product-btns">
                             <button class="primary-btn add-to-cart" id="02">
@@ -286,127 +169,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-34%</span>
-                        </div>
-                        <a href="../product-page/09.html">
-                            <img src="../../assets/img/books/09.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">14.520đ
-                            <del class="product-old-price">22.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/09.html">Cánh Buồm Đỏ Thắm (Tái Bản 2014)</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="09">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                        </div>
-                        <a href="../product-page/05.html">
-                            <img src="../../assets/img/books/05.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">17.500đ
-                            <del class="product-old-price">25.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/05.html">Danh Nhân Thế Giới - Anhxtanh (2014)</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="05">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-30%</span>
-                        </div>
-                        <a href="../product-page/04.html">
-                            <img src="../../assets/img/books/04.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">17.500đ
-                            <del class="product-old-price">25.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/04.html">Danh Nhân Thế Giới - Napôlêông (2014)</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="04">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-31%</span>
-                        </div>
-                        <a href="../product-page/03.html">
-                            <img src="../../assets/img/books/03.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">31.050đ
-                            <del class="product-old-price">45.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/03.html">Truyện Kể Về Danh Nhân Thế Giới - Ludwig Van Beethoven</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="03">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-6 col-xs-6">
-                <div class="product product-single">
-                    <div class="product-thumb">
-                        <div class="product-label">
-                            <span class="sale">-32%</span>
-                        </div>
-                        <a href="../product-page/01.html">
-                            <img src="../../assets/img/books/01.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="product-body">
-                        <h3 class="product-price">74.800đ
-                            <del class="product-old-price">110.000đ</del>
-                        </h3>
-                        <h2 class="product-name">
-                            <a href="../product-page/01.html">Không Gia Đình (Ấn Bản Kỉ Niệm 60 Năm Thành Lập NXB Kim Đồng)</a>
-                        </h2>
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="01">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- /Product Single -->
+            {{/each}}
         </div>
         <!-- /row -->
     </div>

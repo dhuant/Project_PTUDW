@@ -1,8 +1,5 @@
  {{#section 'css'}}
- <link type="text/css" rel="stylesheet" href="/assets/bookstore/css/register.css">
-  {{/section}} 
- 
- {{#section 'js'}}
+<link type="text/css" rel="stylesheet" href="/assets/bookstore/css/register.css"> {{/section}} {{#section 'js'}}
 <script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
@@ -11,6 +8,39 @@
         registerBtn.removeAttribute('disabled');
         registerBtn.style.cursor = 'pointer';
     }
+    $('#checkpass').hide();
+    var password = $('#password').val();
+    var confirm = $('#confirm').val();
+
+    $('#confirm').keyup(function () {
+        var password = $('#password').val();
+        var confirm = $('#confirm').val();
+        if (password === confirm && password !== '' && confirm !== '') {
+            $('#checkpass').show();
+        }
+        else {
+            $('#checkpass').hide();
+        }
+    });
+
+    $('#password').keyup(function () {
+        var password = $('#password').val();
+        var confirm = $('#confirm').val();
+        if (password === confirm && password !== '' && confirm !== '') {
+            $('#checkpass').show();
+        }
+        else {
+            $('#checkpass').hide();
+        }
+    });
+
+    $('#notify').fadeIn('slow');
+    setTimeout(() => {
+        $('#notify').fadeOut(2500);
+        setTimeout(() => {
+            $('#notify').remove();
+        }, 1500);
+    }, 3000);
 </script> {{/section}}
 
 <!-- BREADCRUMB -->
@@ -34,10 +64,9 @@
         <div class="row">
             <div class="main-login main-center">
                 <h5 style="text-align: center;font-size: 18px; font-weight: 700;text-transform: uppercase">Sign Up</h5>
-                <form class="" method="post" action="#">
+                <form class="" method="post" action="">
 
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Your Name</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -49,19 +78,28 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Your Email</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="fa fa-envelope fa" aria-hidden="true"></i>
                                 </span>
-                                <input type="text" class="form-control" name="email" id="email" required="true" placeholder="Enter your Email" />
+                                <input type="text" class="form-control" name="email" id="" required="true" placeholder="Enter your Email" />
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                                </span>
+                                <input type="number" class="form-control" name="phone" id="email" required="true" placeholder="Enter your Phone Number" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -73,7 +111,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -86,7 +123,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon">
@@ -95,10 +131,12 @@
 
                                 <input type="password" class="form-control" name="confirm" id="confirm" required="true" placeholder="Confirm your Password"
                                 />
+                                <span id="checkpass" class="input-group-addon">
+                                    <i style="color: green;" class="fa fa-check" aria-hidden="true"></i>
+                                </span>
                             </div>
                         </div>
                     </div>
-
                     <!-- reCaptcha -->
 
                     <div class="form-group">
@@ -106,10 +144,8 @@
                     </div>
 
                     <div class="form-group text-center mt-5">
-                        <!-- <input id="register-btn" type="submit" class="btn btn-success" onclick="window.open('index.html')" value="Register"  disabled> -->
-                        <button id="register-btn" class="btn btn-success" disabled onclick="window.open('index.html')">Register</button>
+                        <button type="submit" id="register-btn" class="btn btn-success" disabled>Register</button>
                     </div>
-
                 </form>
             </div>
         </div>
@@ -118,3 +154,17 @@
     <!-- /container -->
 </div>
 <!-- /section -->
+
+
+{{#if error}}
+<div class="alert alert-danger" id="notify" style="
+                position: fixed;
+                top: 100px;
+                right: 0px;
+                z-index: 99999;
+                display: none;
+                ">
+    <strong>ERROR!!!</strong>
+    error occurred
+</div>
+{{/if}}

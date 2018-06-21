@@ -12,9 +12,9 @@ exports.loadAll = () => {
 
 exports.add = (c) => {
     var temp = 0;
-    if(c.checkbox === '')
+    if (c.checkbox === '')
         temp = 1;
-    c.dob = moment(c.dob,"DD/MM/YYYY").format("YYYY-MM-DD");
+    c.dob = moment(c.dob, "DD/MM/YYYY").format("YYYY-MM-DD");
     var password = SHA256(c.cmnd).toString();
     var sql = `insert into users(Username, Password, Fullname, CMND, DOB, Sex, Address, Phone, Email, Permission, Actived) 
     values('${c.username}', '${password}', '${c.fullname}', '${c.cmnd}', '${c.dob}', '${c.sex}', '${c.address}',
@@ -22,6 +22,12 @@ exports.add = (c) => {
     return db.save(sql);
 }
 
+exports.addCustomer = (c) => {
+    var password = SHA256(c.password).toString();
+    var sql = `insert into users(Username, Password, Fullname, CMND, DOB, Sex, Address, Phone, Email, Permission, Actived)
+    values('${c.username}', '${password}', '${c.name}', null, null, null, null, '${c.phone}', '${c.email}', 0, 1)`;
+    return db.save(sql);
+}
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
         var sql = `select * from users where id = ${id}`;
@@ -59,9 +65,9 @@ exports.checkUsername = (username) => {
 
 exports.update = (c) => {
     var actived = 0;
-    if(c.checkbox === '')
+    if (c.checkbox === '')
         actived = 1;
-    c.dob = moment(c.dob,"DD/MM/YYYY").format("YYYY-MM-DD");
+    c.dob = moment(c.dob, "DD/MM/YYYY").format("YYYY-MM-DD");
     var sql = `update users set Username = '${c.username}', Fullname='${c.fullname}',  CMND='${c.cmnd}',
                 DOB='${c.dob}',Sex='${c.sex}',Address='${c.address}',Phone='${c.phone}',
                 Email='${c.email}',Actived='${actived}'  where id = ${c.id}`;
@@ -70,7 +76,7 @@ exports.update = (c) => {
 
 
 exports.updateinfo = (c) => {
-    c.dob = moment(c.dob,"DD/MM/YYYY").format("YYYY-MM-DD");
+    c.dob = moment(c.dob, "DD/MM/YYYY").format("YYYY-MM-DD");
     var sql = `update users set Fullname='${c.fullname}',  CMND='${c.cmnd}',
                 DOB='${c.dob}', Sex ='${c.sex}', Address='${c.address}', Phone='${c.phone}',
                 Email='${c.email}'  where id = ${c.id}`;
@@ -100,12 +106,12 @@ exports.loadAllCustomersbyLimit = (offset) => {
 }
 
 exports.countUsers = () => {
-	var sql = `select count(*) as total from users where Permission = 1`;
+    var sql = `select count(*) as total from users where Permission = 1`;
     return db.load(sql);
 }
 
 exports.countCustomers = () => {
-	var sql = `select count(*) as total from users where Permission = 0`;
+    var sql = `select count(*) as total from users where Permission = 0`;
     return db.load(sql);
 }
 

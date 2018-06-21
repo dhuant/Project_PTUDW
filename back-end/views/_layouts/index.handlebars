@@ -66,17 +66,16 @@
 								<div class="header-btns-icon">
 									<i class="fa fa-user-o"></i>
 								</div>
-								<strong class="text-uppercase">{{layoutVM.curUser.Username}}
+								<strong class="text-uppercase">&nbsp;{{layoutVM.curUser.Username}}
 									<i class="fa fa-caret-down"></i>
 								</strong>
 							</div>
-							<form id="frmLogout" action="/logout" method="post"></form>
 							<a id="btnLogout" class="text-uppercase btn btn-xs">logout</a>
+							<form id="frmLogout" action="/logout" method="post"></form>
 							{{else}}
-								<a href="/login" class="text-uppercase btn btn-default">Login</a>/
-								<a href="/register" class="text-uppercase btn btn-default">join</a>
-							{{/if}} 
-							{{#if layoutVM.isLogged}}
+							<a href="/login" class="text-uppercase btn btn-default">Login</a>/
+							<a href="/register" class="text-uppercase btn btn-default">join</a>
+							{{/if}} {{#if layoutVM.isLogged}}
 							<ul class="custom-menu">
 								<li>
 									<a href="/info">
@@ -93,8 +92,9 @@
 							</ul>
 							{{/if}}
 						</li>
+
 						<!-- /Account -->
-						
+
 						{{#if layoutVM.isLogged}}
 						<!-- Cart -->
 						<li class="header-cart dropdown default-dropdown">
@@ -347,11 +347,10 @@
 
 	<script src="/assets/bookstore/js/main.js"></script>
 	<script>
-		$('#btnLogout').click(function(){
+		$('#btnLogout').click(function () {
 			$('#frmLogout').submit();
 		});
-	</script>
-	 {{{_sections.js}}}
+	</script> {{{_sections.js}}}
 
 </body>
 

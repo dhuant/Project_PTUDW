@@ -436,56 +436,124 @@ router.get('/register', (req, res) => {
     res.render('bookstore/index/register', vm);
 });
 
+router.post('/register', (req, res) => {
+    req.body.Username = req.body.username;
+    var obj = req.body;
+    if (obj.password != obj.confirm || obj.name == '' || obj.email == '' || obj.username == '' || obj.password == '' || obj.phone == '') {
+        vm = {
+            error: true,
+            layout: 'index.handlebars'
+        };
+        res.render('bookstore/index/register', vm);
+    }
+    else {
+        userRepo.loadAll().then(rows => {
+            var error = false;
+            for (let i = 0; i < rows.length; i++) {
+                if (obj.username == rows[i].Username || obj.email == rows[i].Email || obj.phone == rows[i].Phone) {
+                    error = true;
+                    break;
+                }
+            }
+            if (error) {
+                vm = {
+                    error: true,
+                    layout: 'index.handlebars'
+                };
+                res.render('bookstore/index/register', vm);
+            }
+            else {
+                userRepo.addCustomer(obj).then(value => {
+                    req.session.isLogged = true;
+                    req.session.user = obj;
+                    res.redirect('/');
+                }).catch(err => {
+                    res.end('fail');
+                });
+            }
+
+        })
+    }
+});
+
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
     res.redirect(req.headers.referer);
 });
 
-router.get('/products', (req,res)=>{
-    console.log(req.query);
-    productRepo.single(req.query.id).then(rows=>{
-        console.log(rows);
+router.get('/products', (req, res) => {
+    productRepo.single(req.query.id).then(rows => {
+        rows.View++;
+        var rows = rows;
+        var p1 = productRepo.loadAllbyCategory(rows.CateId);
+        var p2 = productRepo.loadAllbyBrand(rows.BraId);
+        var p3 = productRepo.updateViewProduct(rows.id, rows.View);
+        Promise.all([p1, p2, p3]).then(([cateRows, brandRows, value]) => {
+            //console.log(cateRows);
+            //console.log(brandRows);
+            var arrCate = [];
+            var arrBrand = [];
+            if (cateRows.length > 6) {
+                for (let i = 0; i < 6; i++) {
+                    arrCate.push(cateRows[i]);
+                }
+            }
+            else {
+                arrCate = cateRows;
+            }
 
-        var isSaling = false;
-        var salePrice = 0;
-        if(rows.Sale != 0){
-            isSaling = true;
-            salePrice = Math.floor(rows.Price * (100 - rows.Sale) / 100000) * 1000;
-        }
-        rows.isSaling = isSaling;
-        rows.newPrice = salePrice;
+            if (brandRows.length > 6) {
+                for (let i = 0; i < 6; i++) {
+                    arrBrand.push(brandRows[i]);
+                }
+            }
+            else {
+                arrBrand = brandRows;
+            }
 
-        if (rows.View < 5) {
-            star = 1;
-        }
-        else if (rows.View >= 5 && rows.View < 10) {
-            star = 2;
-        }
-        else if (rows.View >= 10 && rows.View < 15) {
-            star = 3;
-        }
-        else if (rows.View >= 15 && rows.View < 20) {
-            star = 4;
-        }
-        else {
-            star = 5;
-        }
-        var Star = [];
-        var notStar = [];
-        for (let i = 0; i < star; i++) {
-            Star.push(1);
-        }
-        for (let i = 0; i < 5 - star; i++) {
-            notStar.push(1);
-        }
-        rows.Star = Star;
-        rows.notStar = notStar;
-        vm = {
-            layout: 'index.handlebars',
-            product: rows
-        }
-        res.render('bookstore/product/index', vm);
+            var isSaling = false;
+            var salePrice = 0;
+            if (rows.Sale != 0) {
+                isSaling = true;
+                salePrice = Math.floor(rows.Price * (100 - rows.Sale) / 100000) * 1000;
+            }
+            rows.isSaling = isSaling;
+            rows.newPrice = salePrice;
+
+            if (rows.View < 5) {
+                star = 1;
+            }
+            else if (rows.View >= 5 && rows.View < 10) {
+                star = 2;
+            }
+            else if (rows.View >= 10 && rows.View < 15) {
+                star = 3;
+            }
+            else if (rows.View >= 15 && rows.View < 20) {
+                star = 4;
+            }
+            else {
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for (let i = 0; i < star; i++) {
+                Star.push(1);
+            }
+            for (let i = 0; i < 5 - star; i++) {
+                notStar.push(1);
+            }
+            rows.Star = Star;
+            rows.notStar = notStar;
+            vm = {
+                layout: 'index.handlebars',
+                product: rows,
+                category: arrCate,
+                brand: arrBrand
+            }
+            res.render('bookstore/product/index', vm);
+        });
     });
 });
 

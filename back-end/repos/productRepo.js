@@ -86,6 +86,11 @@ exports.loadAllbyCategory = (id) => {
     return db.load(sql);
 }
 
+exports.loadAllbyBrand = (id) => {
+	var sql = `select * from products where Brand = ${id}`;
+    return db.load(sql);
+}
+
 exports.countProductsbyCategory = (id) => {
 	var sql = `select count(*) as total from products where Category = ${id}`;
     return db.load(sql);
@@ -95,4 +100,11 @@ exports.loadAllProductsbyCategory = (id, limit, offset) => {
 	var sql = `select * from products where Category = ${id} limit ${limit} offset ${offset}`;
     return db.load(sql);
 }
+
+
+exports.updateViewProduct = (id, view) => {
+	var sql = `update products set View = ${view} where id = ${id}`;
+    return db.load(sql);
+}
+
 

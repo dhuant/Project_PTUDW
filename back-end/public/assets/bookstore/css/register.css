@@ -21,7 +21,7 @@ hr{
 }
 
 .form-group{
-   margin-bottom: 15px;
+   margin-bottom: 25px;
 }
 
 label{
@@ -104,6 +104,10 @@ span.input-group-addon i {
 }
 #register-btn{
     cursor: not-allowed;
+}
+
+#checkpass{
+    background-color: #FFF;
 }
 
     
