@@ -626,4 +626,133 @@ router.post('/changepassword', (req, res) => {
         }
     });
 });
+
+router.get('/brands/:id', (req, res) => {
+
+    if (!req.session.limit)
+        req.session.limit = 9;
+
+    var limit = req.session.limit;
+
+    var page = req.query.page;
+    if (!page)
+        page = 1;
+    var offset = (page - 1) * limit;
+
+    var p1 = productRepo.countProductsbyBrand(req.params.id);
+    var p2 = productRepo.loadAllProductsbyBrand(req.params.id, limit, offset);
+    var p3 = brandRepo.single(req.params.id);
+
+    Promise.all([p1, p2, p3]).then(([countRows, pRows, cRows]) => {
+        var total = countRows[0].total;
+
+        /*tính số page cần có */
+        var nPage = Math.floor(total / limit);
+        if (total % limit > 0)
+            nPage++;
+        /*end tính số page */
+
+        var numbers = [];
+        for (let i = 1; i <= nPage; i++) {
+            numbers.push({
+                value: i,
+                isCurPage: i === +page
+            });
+        }
+
+        var firstPage = {};
+        var lastPage = {};
+        for (let i = 0; i < numbers.length; i++) {
+            if (numbers[i].isCurPage) {
+                if (numbers[i].value === 1) {
+                    firstPage = {
+                        isFirstPage: true,
+                        value: numbers[i].value
+                    }
+                    lastPage = {
+                        isLastPage: false,
+                        value: numbers[i].value + 1
+                    }
+                }
+                else if (numbers[i].value === nPage) {
+                    lastPage = {
+                        isLastPage: true,
+                        value: numbers[i].value
+                    }
+                    firstPage = {
+                        isFirstPage: false,
+                        value: numbers[i].value - 1
+                    }
+                }
+                else {
+                    lastPage = {
+                        isLastPage: false,
+                        value: numbers[i].value + 1
+                    }
+                    firstPage = {
+                        isFirstPage: false,
+                        value: numbers[i].value - 1
+                    }
+                }
+            }
+        }
+
+        for (let i = 0; i < pRows.length; i++) {
+            pRows[i].New = false;
+            pRows[i].Saling = false;
+            if (pRows[i].Sale != 0) {
+                pRows[i].Saling = true;
+                pRows[i].Saleprice = Math.floor(pRows[i].Price * (100 - pRows[i].Sale) / 100000) * 1000;
+            }
+            var star = 0;
+            var today = new Date();
+            var date = pRows[i].Date;
+            var time = (today.getTime() - date.getTime()) / 1000;
+            if (time < 5 * config.NEW_BOOK) {
+                pRows[i].New = true;
+            }
+            if (pRows[i].View < 5) {
+                star = 1;
+            }
+            else if (pRows[i].View >= 5 && pRows[i].View < 10) {
+                star = 2;
+            }
+            else if (pRows[i].View >= 10 && pRows[i].View < 15) {
+                star = 3;
+            }
+            else if (pRows[i].View >= 15 && pRows[i].View < 20) {
+                star = 4;
+            }
+            else {
+                star = 5;
+            }
+            var Star = [];
+            var notStar = [];
+            for (let i = 0; i < star; i++) {
+                Star.push(1);
+            }
+            for (let i = 0; i < 5 - star; i++) {
+                notStar.push(1);
+            }
+            pRows[i].Star = Star;
+            pRows[i].notStar = notStar;
+        }
+
+        vm = {
+            layout: 'index.handlebars',
+            products: pRows,
+            CateName: cRows.Name,
+            page_numbers: numbers,
+            firstPage: firstPage,
+            lastPage: lastPage,
+            limit: limit
+        }
+        res.render('bookstore/brands/index', vm);
+    });
+});
+router.post('/brands/:id', (req, res) => {
+    req.session.limit = req.body.limit;
+    res.redirect('/brands/' + req.params.id);
+});
+
 module.exports = router;

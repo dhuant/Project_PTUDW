@@ -107,4 +107,13 @@ exports.updateViewProduct = (id, view) => {
     return db.load(sql);
 }
 
+exports.countProductsbyBrand = (id) => {
+    var sql = `select count(*) as total from products where Brand = ${id}`;
+    return db.load(sql);
+}
+
+exports.loadAllProductsbyBrand = (id, limit, offset) => {
+    var sql = `select * from products where Brand = ${id} limit ${limit} offset ${offset}`;
+    return db.load(sql);
+}
 

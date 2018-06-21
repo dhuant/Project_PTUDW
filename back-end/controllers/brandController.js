@@ -20,7 +20,7 @@ var router = express.Router();
 //     });
 // });
 
-router.get('/',  (req, res) => {
+router.get('/', restrict,  (req, res) => {
 
     /*kiểm tra đang ở trang nào của phân trang */
     var page = req.query.page;
