@@ -110,7 +110,7 @@ router.get('/', restrict, (req, res) => {
     });
 });
 
-router.get('/result/:page', (req, res) => {
+router.get('/result', (req, res) => {
     var key = req.query.key;
     if (req.query.key == '') {
         res.redirect(req.headers.referer)
