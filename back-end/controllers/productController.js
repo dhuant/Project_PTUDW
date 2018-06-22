@@ -1,7 +1,8 @@
 
 var express = require('express'),
     moment = require('moment'),
-    SHA256 = require('crypto-js/sha256');
+    SHA256 = require('crypto-js/sha256'),
+    multer = require('multer');
 var brandRepo = require('../repos/brandRepo'),
     productRepo = require('../repos/productRepo'),
     categoryRepo = require('../repos/categoryRepo');
@@ -11,6 +12,17 @@ var config = require('../config/config');
 var restrict = require('../middle-wares/restrict');
 
 var router = express.Router();
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/assets/img/1')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+});
+
+var upload = multer({ storage: storage });
 
 router.get('/', restrict, (req, res) => {
     /*kiểm tra đang ở trang nào của phân trang */
@@ -110,7 +122,10 @@ router.get('/add', restrict, (req, res) => {
     });
 });
 
-router.post('/add', (req, res) => {
+router.post('/add', upload.single("img"), (req, res) => {
+    //console.log(req.body);
+    //console.log(req.file);
+   req.body.img = req.file.originalname;
     productRepo.add(req.body).then(value => {
         var vm = {
             alert: true
