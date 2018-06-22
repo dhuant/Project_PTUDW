@@ -17,8 +17,8 @@
                         <col width="150px" />
                         <col width="80px" />
                         <col />
-                        <col width="80px" />
-                        <col width="100px"/>
+                        <col width="100px" />
+                        <col width="110px"/>
                         <col width="80px" />
                         <col width="80px" />
                     </colgroup>
@@ -51,7 +51,9 @@
                                 {{/each}}
                             </td>
                             <td>{{number_format Total}} đ</td>
-                            <td>{{Status}}</td>
+                            {{#is Status 0}}<td style="color: red">CHƯA GIAO</td>{{/is}}
+                            {{#is Status 1}}<td style="color: orange">ĐANG GIAO</td>{{/is}}
+                            {{#is Status 2}}<td style="color: green">ĐÃ GIAO</td>{{/is}}
                             <td>
                                 <a href="/admin/orders/edit?id={{id}}" title="edit {{id}}" class="btn btn-xs btn-info">
                                     <i class="ace-icon fa fa-pencil bigger-120"></i>

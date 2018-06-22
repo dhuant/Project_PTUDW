@@ -55,3 +55,10 @@ exports.loadAllDetail = () => {
                 where o.product = p.id`;
     return db.load(sql);
 }
+
+exports.loadDetailByOrderID = (id) => {
+    var sql = ` select * 
+                    from order_detail o, products p
+                    where o.product = p.id and o.Order = ${id}`;
+    return db.load(sql);
+}
