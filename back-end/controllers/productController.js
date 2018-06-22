@@ -5,7 +5,8 @@ var express = require('express'),
     multer = require('multer');
 var brandRepo = require('../repos/brandRepo'),
     productRepo = require('../repos/productRepo'),
-    categoryRepo = require('../repos/categoryRepo');
+    categoryRepo = require('../repos/categoryRepo'),
+    userRepo = require('../repos/userRepo');
 
 var config = require('../config/config');
 
@@ -109,6 +110,54 @@ router.get('/', restrict, (req, res) => {
     });
 });
 
+router.get('/result/:page', (req, res) => {
+    var key = req.query.key;
+    if (req.query.key == '') {
+        res.redirect(req.headers.referer)
+    }
+    else {
+        productRepo.searchProduct(req.query).then(rows => {
+            var arrCates = [];
+            var arrBras = [];
+            var arrUsers = [];
+            var result = rows;
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].Date = moment(rows[i].Date).format("DD/MM/YYYY");
+                var cate = categoryRepo.single(rows[i].Category);
+                arrCates.push(cate);
+
+                var brand = brandRepo.single(rows[i].Brand);
+                arrBras.push(brand);
+
+                var user = userRepo.single(rows[i].Creator);
+                arrUsers.push(user);
+            }
+            Promise.all(arrCates).then(pCates => {
+                for (let i = 0; i < pCates.length; i++) {
+                    result[i].cateName = pCates[i].Name;
+                }
+                Promise.all(arrBras).then(pBras => {
+                    for (let i = 0; i < pBras.length; i++) {
+                        result[i].braName = pBras[i].Name;
+                    }
+                    Promise.all(arrUsers).then(pUsers => {
+                        for (let i = 0; i < pUsers.length; i++) {
+                            result[i].creatorName = pUsers[i].Fullname;
+                        }
+                        console.log(result);
+                        vm = {
+                            products: rows,
+                            count: result.length,
+                            key: key
+                        }
+                        res.render('admin/products/search', vm);
+                    });
+                });
+            });
+
+        });
+    }
+});
 router.get('/add', restrict, (req, res) => {
     var brands = brandRepo.loadAll();
     var categories = categoryRepo.loadAll();
@@ -125,7 +174,7 @@ router.get('/add', restrict, (req, res) => {
 router.post('/add', upload.single("img"), (req, res) => {
     //console.log(req.body);
     //console.log(req.file);
-   req.body.img = req.file.originalname;
+    req.body.img = req.file.originalname;
     productRepo.add(req.body).then(value => {
         var vm = {
             alert: true

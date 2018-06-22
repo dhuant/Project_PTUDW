@@ -1,5 +1,5 @@
 module.exports = {
-    PRODUCTS_PER_PAGE: 4,
+    PRODUCTS_PER_PAGE: 10,
     USERS_PER_PAGE: 4,
     CATEGORIES_PER_PAGE: 4,
     BRANDS_PER_PAGE: 3,
