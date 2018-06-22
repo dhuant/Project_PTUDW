@@ -998,14 +998,23 @@ router.get('/history', checklogout, (req, res) => {
     });
 });
 
-router.post('/history', (req, res) => {
-    req.body.id = req.session.user.id;
-    var obj = req.body;
-    // orderRepo.single("1").then(c => {
-    //     vm = {
-    //         order: c
-    //     }
-    //     res.render('bookstore/index/history', vm);
-    // });
+
+router.get('/order', (req, res) => {
+    var p1 = orderRepo.single(req.query.id);
+    var p2 = orderRepo.loadDetailByOrderID(req.query.id);
+
+    Promise.all([p1, p2]).then(([pRows, cRows]) => {
+        vm = {
+            layout: 'index.handlebars',
+            order: pRows,
+            order_detail: cRows,
+        }
+        res.render('bookstore/order/index', vm);
+    });
 });
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 3cbe84d9409944ec579bf39ec1ea78c2c582f602
 module.exports = router;

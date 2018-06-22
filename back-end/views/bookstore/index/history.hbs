@@ -1,45 +1,4 @@
 
-{{!--  {{#section 'css'}}
-<link type="text/css" rel="stylesheet" href="/assets/bookstore/css/register.css"> {{/section}} {{#section 'js'}}
-<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<script type="text/javascript">
-    $('#ok').hide();
-    $('#confirm').keyup(function () {
-        var password = $('#password').val();
-        var confirm = $('#confirm').val();
-        if (password === confirm && password !== '' && confirm !== '') {
-            $('#ok').show();
-            $('#diff').hide();
-        }
-        else {
-            $('#ok').hide();
-            $('#diff').show();
-        }
-    });
-
-    $('#password').keyup(function () {
-        var password = $('#password').val();
-        var confirm = $('#confirm').val();
-        if (password === confirm && password !== '' && confirm !== '') {
-            $('#ok').show();
-            $('#diff').hide();
-        }
-        else {
-            $('#ok').hide();
-            $('#diff').show();
-        }
-    });
-
-    $('#notify').fadeIn('slow');
-    setTimeout(() => {
-        $('#notify').fadeOut(2500);
-        setTimeout(() => {
-            $('#notify').remove();
-        }, 1500);
-    }, 3000);
-</script> {{/section}} --}}
-
 <div id="breadcrumb">
     <div class="container">
         <ul class="breadcrumb">
@@ -112,7 +71,7 @@
                                 {{#each order}}
                                     <tbody>
                                     <tr>
-                                        <td><a class="text-center" href="mh001.html" style="color: #F8694A">{{id}}</td>
+                                        <td><a class="text-center" href="/order?id={{id}}" style="color: #F8694A">{{id}}</td>
                                         <td>{{moment Date format="DD/MM/YYYY"}}</td>
                                         <td>
                                             {{#each ../order_detail}}
