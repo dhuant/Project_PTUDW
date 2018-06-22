@@ -978,12 +978,10 @@ router.get('/result/:page', (req, res) => {
     }
 
 });
-<<<<<<< HEAD
 router.post('/result/:page', (req, res) => {
     req.session.limit = req.body.limit;
     res.redirect('/result/1?key=' + req.query.key);
 });
-=======
 
 router.get('/history', checklogout, (req, res) => {
     var p1 = orderRepo.loadOrderByID(req.session.user.id);
@@ -1010,6 +1008,4 @@ router.post('/history', (req, res) => {
     //     res.render('bookstore/index/history', vm);
     // });
 });
-
->>>>>>> 8e4415174688a397cdcc010f66991ff63bd8c922
 module.exports = router;
