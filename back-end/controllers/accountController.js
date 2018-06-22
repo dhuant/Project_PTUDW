@@ -9,7 +9,8 @@ var config = require('../config/config');
 var userRepo = require('../repos/userRepo'),
     categoryRepo = require('../repos/categoryRepo'),
     brandRepo = require('../repos/brandRepo'),
-    productRepo = require('../repos/productRepo');
+    productRepo = require('../repos/productRepo'),
+    orderRepo = require('../repos/orderRepo');
 
 var restrict = require('../middle-wares/restrict'),
     checklogout = require('../middle-wares/checklogout');
@@ -847,5 +848,32 @@ router.post('/brands/:id', (req, res) => {
     req.session.limit = req.body.limit;
     res.redirect('/brands/' + req.params.id);
 });
+
+router.get('/history', checklogout, (req, res) => {
+    var p1 = orderRepo.loadOrderByID(req.session.user.id);
+    var p2 = orderRepo.loadAllDetail();
+
+    Promise.all([p1, p2]).then(([pRows, cRows]) => {
+        vm = {
+            layout: 'index.handlebars',
+            order: pRows,
+            order_detail: cRows,
+        }
+        console.log(cRows);
+        res.render('bookstore/index/history', vm);
+    });
+});
+
+router.post('/history', (req, res) => {
+    req.body.id = req.session.user.id;
+    var obj = req.body;
+    // orderRepo.single("1").then(c => {
+    //     vm = {
+    //         order: c
+    //     }
+    //     res.render('bookstore/index/history', vm);
+    // });
+});
+
 
 module.exports = router;
