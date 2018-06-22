@@ -20,11 +20,6 @@
         }
     }
 </script> {{/section}}
-
-
-
-
-
 <!-- BREADCRUMB -->
 <div id="breadcrumb">
     <div class="container">
@@ -33,9 +28,9 @@
                 <a href="/">Home</a>
             </li>
             <li>
-                <a href="javascript:;">Category</a>
+                <a href="javascript:;">Search</a>
             </li>
-            <li class='active'>{{CateName}}</li>
+            <li class='active'>Result</li>
         </ul>
     </div>
 </div>
@@ -81,11 +76,11 @@
                                 <li>
                                     {{#each page_numbers}} {{#if isCurPage}}
                                     <li>
-                                        <a class="cur-page" href="?page={{value}}" style="color:#F8694A">{{value}}</a>
+                                        <a class="cur-page" href="/result/{{value}}?key={{key}}" style="color:#F8694A">{{value}}</a>
                                     </li>
                                     {{else}}
                                     <li>
-                                        <a href="?page={{value}}">{{value}}</a>
+                                        <a href="/result/{{value}}?key={{key}}">{{value}}</a>
                                     </li>
                                     {{/if}} {{/each}}
                                 </li>
@@ -173,11 +168,11 @@
                                 <li>
                                     {{#each page_numbers}} {{#if isCurPage}}
                                     <li>
-                                        <a class="cur-page" href="?page={{value}}" style="color:#F8694A">{{value}}</a>
+                                        <a class="cur-page" href="/result/{{value}}?key={{key}}" style="color:#F8694A">{{value}}</a>
                                     </li>
                                     {{else}}
                                     <li>
-                                        <a href="?page={{value}}">{{value}}</a>
+                                        <a href="/result/{{value}}?key={{key}}">{{value}}</a>
                                     </li>
                                     {{/if}} {{/each}}
                                 </li>
