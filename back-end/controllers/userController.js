@@ -106,40 +106,6 @@ router.get('/', restrict, (req, res) => {
     });
 });
 
-// router.post('/', (req, res) => {
-//     var searchname = req.body.searchname;
-//     userRepo.search(searchname, 1).then(rows => {
-//         //console.log(rows);
-//         for (let i = 0; i < rows.length; i++) {
-//             var active = true;
-//             var block = true;
-//             if (rows[i].Actived === 0)
-//                 active = false;
-//             if (rows[i].Actived === 1)
-//                 block = false;
-//             rows[i].active = active;
-//             rows[i].block = block;
-//             rows[i].isAdmin = true;
-//             rows[i].DOB = moment(rows[i].DOB).format("DD/MM/YYYY");
-//         }
-//         if (rows.length == 0) {
-//             vm = {
-//                 noUser: true,
-//                 count: 0,
-//             }
-//         }
-//         else {
-//             vm = {
-//                 result: rows,
-//                 count: rows.length,
-//                 admin: true
-//             }
-//         }
-//         vm.searchname = searchname;
-//         res.render('admin/users/search', vm);
-//     });
-// });
-
 router.get('/result', (req, res) => {
     console.log(req.query);
     var key = req.query.key;
@@ -208,7 +174,6 @@ router.post('/add', (req, res) => {
     });
 });
 
-
 router.get('/edit', restrict, (req, res) => {
     userRepo.single(req.query.id).then(c => {
         if (c.Actived === 0)
@@ -226,7 +191,6 @@ router.post('/edit', (req, res) => {
         res.redirect('/admin/users');
     });
 });
-
 
 router.get('/resetpassword', restrict, (req, res) => {
     userRepo.single(req.query.id).then(c => {
