@@ -148,9 +148,9 @@ router.get('/admin/customers', restrict, (req, res) => {
     });
 });
 
-router.post('/admin/customers', (req, res) => {
-    var searchname = req.body.searchname;
-    userRepo.search(searchname, 0).then(rows => {
+router.get('/admin/customers/result', (req, res) => {
+    var key = req.query.key;
+    userRepo.search(key, 0).then(rows => {
         //console.log(rows);
         for (let i = 0; i < rows.length; i++) {
             rows[i].DOB = moment(rows[i].DOB).format("DD/MM/YYYY");
@@ -167,7 +167,7 @@ router.post('/admin/customers', (req, res) => {
                 count: rows.length
             }
         }
-        vm.searchname = searchname;
+        vm.key = key;
         res.render('admin/users/search', vm);
     });
 });
@@ -1012,9 +1012,4 @@ router.get('/order', (req, res) => {
         res.render('bookstore/order/index', vm);
     });
 });
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 3cbe84d9409944ec579bf39ec1ea78c2c582f602
 module.exports = router;

@@ -42,7 +42,7 @@ router.get('/', restrict, (req, res) => {
             });
         }
         /*end mảng số lượng page */
-       
+
         var firstPage = {};
         var lastPage = {};
         for (let i = 0; i < numbers.length; i++) {
@@ -106,10 +106,44 @@ router.get('/', restrict, (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
-    var searchname = req.body.searchname;
-    userRepo.search(searchname, 1).then(rows => {
-        //console.log(rows);
+// router.post('/', (req, res) => {
+//     var searchname = req.body.searchname;
+//     userRepo.search(searchname, 1).then(rows => {
+//         //console.log(rows);
+//         for (let i = 0; i < rows.length; i++) {
+//             var active = true;
+//             var block = true;
+//             if (rows[i].Actived === 0)
+//                 active = false;
+//             if (rows[i].Actived === 1)
+//                 block = false;
+//             rows[i].active = active;
+//             rows[i].block = block;
+//             rows[i].isAdmin = true;
+//             rows[i].DOB = moment(rows[i].DOB).format("DD/MM/YYYY");
+//         }
+//         if (rows.length == 0) {
+//             vm = {
+//                 noUser: true,
+//                 count: 0,
+//             }
+//         }
+//         else {
+//             vm = {
+//                 result: rows,
+//                 count: rows.length,
+//                 admin: true
+//             }
+//         }
+//         vm.searchname = searchname;
+//         res.render('admin/users/search', vm);
+//     });
+// });
+
+router.get('/result', (req, res) => {
+    console.log(req.query);
+    var key = req.query.key;
+    userRepo.search(req.query.key, 1).then(rows => {
         for (let i = 0; i < rows.length; i++) {
             var active = true;
             var block = true;
@@ -132,13 +166,15 @@ router.post('/', (req, res) => {
             vm = {
                 result: rows,
                 count: rows.length,
-                admin: true
+                admin: true,
+                key: key
             }
         }
-        vm.searchname = searchname;
         res.render('admin/users/search', vm);
     });
 });
+
+
 router.get('/add', restrict, (req, res) => {
     userRepo.loadAll().then(rows => {
         var vm = {
@@ -147,6 +183,7 @@ router.get('/add', restrict, (req, res) => {
         res.render('admin/users/add', vm);
     });
 });
+
 
 router.post('/add', (req, res) => {
     var obj = req.body;
