@@ -146,16 +146,28 @@ router.post('/add', (req, res) => {
 // });
 
 router.get('/edit', (req, res) => {
-    brandRepo.single(req.query.id).then(c => {
+
+    var p1 = orderRepo.single(req.query.id);
+    var p2 = orderRepo.loadDetailByOrderID(req.query.id);
+
+    Promise.all([p1, p2]).then(([pRows, cRows]) => {
         var vm = {
-            brand: c
+            order: pRows,
+            order_detail: cRows,
         };
         res.render('admin/orders/edit', vm);
     });
+
+    // orderRepo.single(req.query.id).then(c => {
+    //     var vm = {
+    //         order: c
+    //     };
+    //     res.render('admin/orders/edit', vm);
+    // });
 });
 
 router.post('/edit', (req, res) => {
-    brandRepo.update(req.body).then(value => {
+    orderRepo.update(req.body).then(value => {
         res.redirect('/admin/orders');
     });
 });
