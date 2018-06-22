@@ -848,12 +848,82 @@ router.post('/brands/:id', (req, res) => {
     req.session.limit = req.body.limit;
     res.redirect('/brands/' + req.params.id);
 });
-router.post('/result', (req, res) => {
-    if (req.body.key == '') {
+
+router.get('/result/:page', (req, res) => {
+    var key = req.query.key;
+    if (req.query.key == '') {
         res.redirect(req.headers.referer);
     }
     else {
-        productRepo.searchProduct(req.body).then(pRows => {
+        if (!req.session.limit)
+            req.session.limit = 9;
+
+        var limit = req.session.limit;
+        var page = req.params.page;
+        if (!page)
+            page = 1;
+        var offset = (page - 1) * limit;
+        productRepo.searchProduct(req.query).then(pRows => {
+            var total = pRows.length;
+            /*tính số page cần có */
+            var nPage = Math.floor(total / limit);
+            if (total % limit > 0)
+                nPage++;
+            /*end tính số page */
+
+            var numbers = [];
+            for (let i = 1; i <= nPage; i++) {
+                numbers.push({
+                    value: i,
+                    key: key,
+                    isCurPage: i === +page
+                });
+            }
+
+            var firstPage = {};
+            var lastPage = {};
+            for (let i = 0; i < numbers.length; i++) {
+                if (numbers[i].isCurPage) {
+                    if (numbers[i].value === 1) {
+                        firstPage = {
+                            isFirstPage: true,
+                            value: numbers[i].value
+                        }
+                        lastPage = {
+                            isLastPage: false,
+                            value: numbers[i].value + 1
+                        }
+                    }
+                    else if (numbers[i].value === nPage) {
+                        lastPage = {
+                            isLastPage: true,
+                            value: numbers[i].value
+                        }
+                        firstPage = {
+                            isFirstPage: false,
+                            value: numbers[i].value - 1
+                        }
+                    }
+                    else {
+                        lastPage = {
+                            isLastPage: false,
+                            value: numbers[i].value + 1
+                        }
+                        firstPage = {
+                            isFirstPage: false,
+                            value: numbers[i].value - 1
+                        }
+                    }
+                }
+            }
+            var result = [];
+            var len = +offset + +limit;
+            console.log(len);
+            if (len >= pRows.length)
+                len = pRows.length;
+            for (let i = offset; i < len; i++) {
+                result.push(pRows[i]);
+            }
             for (let i = 0; i < pRows.length; i++) {
                 pRows[i].New = false;
                 pRows[i].Saling = false;
@@ -896,12 +966,21 @@ router.post('/result', (req, res) => {
             }
             vm = {
                 layout: 'index.handlebars',
-                result: pRows
+                result: result,
+                page_numbers: numbers,
+                firstPage: firstPage,
+                lastPage: lastPage,
+                limit: limit,
+                key: key
             }
             res.render('bookstore/index/result', vm);
         });
     }
 
+});
+router.post('/result/:page', (req, res) => {
+    req.session.limit = req.body.limit;
+    res.redirect('/result/1?key=' + req.query.key);
 });
 
 router.get('/history', checklogout, (req, res) => {
@@ -933,6 +1012,9 @@ router.get('/order', (req, res) => {
         res.render('bookstore/order/index', vm);
     });
 });
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3cbe84d9409944ec579bf39ec1ea78c2c582f602
 module.exports = router;

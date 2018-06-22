@@ -123,7 +123,6 @@ exports.loadAllProductsbyBrand = (id, limit, offset) => {
 }
 
 exports.searchProduct = (c) => {
-    console.log(c);
     var sql = `select * from products where Name like '%${c.key}%'`;
     return db.load(sql);
 }
