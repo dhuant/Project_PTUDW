@@ -40,7 +40,13 @@
                     <tbody>
                         {{#each orders}}
                         <tr>
-                            <td>{{Customer}}</td>
+                            <td>
+                                {{#each ../userName}}
+                                    {{#is id ../Customer}}
+                                        {{Fullname}}
+                                    {{/is}}
+                                {{/each}}
+                            </td>
                             <td>{{moment Date format="DD/MM/YYYY"}}</td>
                             <td>
                                 {{#each ../order_detail}}

@@ -1,8 +1,9 @@
 
 var express = require('express');
 
-var orderRepo = require('../repos/orderRepo')
-var productRepo = require('../repos/orderRepo')
+var orderRepo = require('../repos/orderRepo');
+var productRepo = require('../repos/orderRepo');
+var userRepo = require('../repos/userRepo');
 
 var helpers = require('handlebars-helpers')();
 
@@ -36,9 +37,10 @@ router.get('/',  (req, res) => {
     var p1 = orderRepo.loadAllbyLimit(offset); //load các order trong khoảng phù hợp
     var p2 = orderRepo.countOrders(); //đếm tổng số order
     var p3 = orderRepo.loadAllDetail();
+    var p4 = userRepo.loadAll();
 
     //vì không thể chạy lồng promise nên phải chạy song song
-    Promise.all([p1, p2, p3]).then(([pRows, countRows, cRows]) => {
+    Promise.all([p1, p2, p3, p4]).then(([pRows, countRows, cRows, uRows]) => {
 
         var total = countRows[0].total;//total là số lượng user
 
@@ -103,7 +105,8 @@ router.get('/',  (req, res) => {
             page_numbers: numbers,
             firstPage: firstPage,
             lastPage: lastPage,
-            order_detail: cRows
+            order_detail: cRows,
+            userName: uRows,
         }
         /*end obj vm */
 
@@ -147,7 +150,7 @@ router.post('/add', (req, res) => {
 
 router.get('/edit', (req, res) => {
 
-    var p1 = orderRepo.single(req.query.id);
+    var p1 = orderRepo.singleWithName(req.query.id);
     var p2 = orderRepo.loadDetailByOrderID(req.query.id);
 
     Promise.all([p1, p2]).then(([pRows, cRows]) => {
@@ -157,13 +160,6 @@ router.get('/edit', (req, res) => {
         };
         res.render('admin/orders/edit', vm);
     });
-
-    // orderRepo.single(req.query.id).then(c => {
-    //     var vm = {
-    //         order: c
-    //     };
-    //     res.render('admin/orders/edit', vm);
-    // });
 });
 
 router.post('/edit', (req, res) => {

@@ -1012,9 +1012,4 @@ router.get('/order', (req, res) => {
         res.render('bookstore/order/index', vm);
     });
 });
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 3cbe84d9409944ec579bf39ec1ea78c2c582f602
 module.exports = router;
