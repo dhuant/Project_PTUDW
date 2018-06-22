@@ -3,7 +3,7 @@ var db = require('../fn/db');
 var config = require('../config/config');
 
 exports.loadAll = () => {
-    var sql = 'select * from orders';
+    var sql = 'select * from orders order by o.Date desc';
     return db.load(sql);
 }
 
@@ -39,7 +39,7 @@ exports.update = (c) => {
 
 
 exports.loadAllbyLimit = (offset) => {
-    var sql = `select * from orders limit ${config.CATEGORIES_PER_PAGE} offset ${offset}`;
+    var sql = `select * from orders order by Date desc limit ${config.CATEGORIES_PER_PAGE} offset ${offset}`;
     return db.load(sql);
 }
 
@@ -66,7 +66,8 @@ exports.loadDetailByOrderID = (id) => {
 exports.loadOrderByID = (id) => {
     var sql = ` select * 
                 from orders o
-                where o.Customer = ${id}`;
+                where o.Customer = ${id}
+                order by o.Date desc`;
     return db.load(sql);
 }
 

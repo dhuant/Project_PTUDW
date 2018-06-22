@@ -11,7 +11,7 @@
  Target Server Version : 100131
  File Encoding         : 65001
 
- Date: 22/06/2018 12:54:20
+ Date: 23/06/2018 00:07:24
 */
 
 SET NAMES utf8mb4;
@@ -35,7 +35,7 @@ CREATE TABLE `orders`  (
 -- ----------------------------
 -- Records of orders
 -- ----------------------------
-INSERT INTO `orders` VALUES (1, 4, '2018-06-22 00:26:12', 1, 185000);
+INSERT INTO `orders` VALUES (1, 1, '2018-06-22 00:26:12', 0, 185000);
 INSERT INTO `orders` VALUES (2, 6, '2018-06-20 11:45:00', 2, 273000);
 
 SET FOREIGN_KEY_CHECKS = 1;

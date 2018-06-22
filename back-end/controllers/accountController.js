@@ -993,7 +993,6 @@ router.get('/history', checklogout, (req, res) => {
             order: pRows,
             order_detail: cRows,
         }
-        console.log(cRows);
         res.render('bookstore/index/history', vm);
     });
 });
