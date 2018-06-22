@@ -899,8 +899,11 @@ router.post('/result', (req, res) => {
                 result: pRows
             }
             res.render('bookstore/index/result', vm);
+        });
+    }
 
-<<<<<<< HEAD
+});
+
 router.get('/history', checklogout, (req, res) => {
     var p1 = orderRepo.loadOrderByID(req.session.user.id);
     var p2 = orderRepo.loadAllDetail();
@@ -927,11 +930,4 @@ router.post('/history', (req, res) => {
     // });
 });
 
-
-=======
-        });
-    }
-
-});
->>>>>>> 51eb53dd2b839c0d85317018b25da06abc9ffae6
 module.exports = router;
