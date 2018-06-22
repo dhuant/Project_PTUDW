@@ -41,7 +41,6 @@ router.get('/',  (req, res) => {
 
     //vì không thể chạy lồng promise nên phải chạy song song
     Promise.all([p1, p2, p3, p4]).then(([pRows, countRows, cRows, uRows]) => {
-
         var total = countRows[0].total;//total là số lượng user
 
         /*tính số page cần có */
