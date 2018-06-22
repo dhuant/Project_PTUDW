@@ -848,7 +848,59 @@ router.post('/brands/:id', (req, res) => {
     req.session.limit = req.body.limit;
     res.redirect('/brands/' + req.params.id);
 });
+router.post('/result', (req, res) => {
+    if (req.body.key == '') {
+        res.redirect(req.headers.referer);
+    }
+    else {
+        productRepo.searchProduct(req.body).then(pRows => {
+            for (let i = 0; i < pRows.length; i++) {
+                pRows[i].New = false;
+                pRows[i].Saling = false;
+                if (pRows[i].Sale != 0) {
+                    pRows[i].Saling = true;
+                    pRows[i].Saleprice = Math.floor(pRows[i].Price * (100 - pRows[i].Sale) / 100000) * 1000;
+                }
+                var star = 0;
+                var today = new Date();
+                var date = pRows[i].Date;
+                var time = (today.getTime() - date.getTime()) / 1000;
+                if (time < 5 * config.NEW_BOOK) {
+                    pRows[i].New = true;
+                }
+                if (pRows[i].View < 5) {
+                    star = 1;
+                }
+                else if (pRows[i].View >= 5 && pRows[i].View < 10) {
+                    star = 2;
+                }
+                else if (pRows[i].View >= 10 && pRows[i].View < 15) {
+                    star = 3;
+                }
+                else if (pRows[i].View >= 15 && pRows[i].View < 20) {
+                    star = 4;
+                }
+                else {
+                    star = 5;
+                }
+                var Star = [];
+                var notStar = [];
+                for (let i = 0; i < star; i++) {
+                    Star.push(1);
+                }
+                for (let i = 0; i < 5 - star; i++) {
+                    notStar.push(1);
+                }
+                pRows[i].Star = Star;
+                pRows[i].notStar = notStar;
+            }
+            vm = {
+                layout: 'index.handlebars',
+                result: pRows
+            }
+            res.render('bookstore/index/result', vm);
 
+<<<<<<< HEAD
 router.get('/history', checklogout, (req, res) => {
     var p1 = orderRepo.loadOrderByID(req.session.user.id);
     var p2 = orderRepo.loadAllDetail();
@@ -876,4 +928,10 @@ router.post('/history', (req, res) => {
 });
 
 
+=======
+        });
+    }
+
+});
+>>>>>>> 51eb53dd2b839c0d85317018b25da06abc9ffae6
 module.exports = router;
