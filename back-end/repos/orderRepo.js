@@ -73,7 +73,7 @@ exports.loadOrderByID = (id) => {
 
 exports.singleWithName = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = ` select * 
+        var sql = ` select o.*, u.Fullname
                     from orders o, users u
                     where o.id = ${id} and o.Customer = u.id`;
         db.load(sql).then(rows => {
