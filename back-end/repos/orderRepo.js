@@ -59,7 +59,7 @@ exports.loadAllDetail = () => {
 exports.loadDetailByOrderID = (id) => {
     var sql = ` select * 
                 from order_detail o, products p
-                where o.product = p.id and o.Order = ${id}`;
+                where o.product = p.id and o.OrderID = ${id}`;
     return db.load(sql);
 }
 
@@ -86,4 +86,20 @@ exports.singleWithName = (id) => {
             reject(err);
         });
     });
+}
+
+exports.add = (user, cart) => {
+    var totalPrice = 0;
+    for (let i = 0; i < cart.length; i++) {
+        totalPrice += cart[i].Price * cart[i].Count;
+    }
+    var sql = `insert into orders(Customer, Date, Status, Total) values('${user.id}', NOW(),'0', '${totalPrice}')`;
+    return db.save(sql);
+}
+
+exports.addDetail = (order, cart) => {
+    for (let i = 0; i < cart.length; i++) {
+        var sql = `insert into order_detail (OrderID, Product, Count, Price) values(${+order.insertId}, ${+cart[i].id}, ${+cart[i].Count}, ${+cart[i].Price})`;
+        db.save(sql);
+    }
 }

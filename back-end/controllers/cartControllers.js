@@ -151,4 +151,14 @@ router.post('/remove', (req, res) => {
     res.locals.layoutVM.cartLayout = req.session.cartLayout;
     res.redirect(req.headers.referer);
 });
+router.get('/checkout', (req, res) => {
+    var myUser = req.session.user;
+    var myCart = req.session.cartLayout;
+
+    orderRepo.add(myUser,myCart).then(order => {
+        orderRepo.addDetail(order,myCart);
+            res.redirect(`../history`);
+    });
+});
+
 module.exports = router;

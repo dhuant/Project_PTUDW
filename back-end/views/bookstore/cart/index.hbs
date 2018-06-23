@@ -6,14 +6,19 @@
         $('#txtProId_R').val(id);
         $('#frmRemoveItem').submit();
     });
+    
     $('.touchspin').TouchSpin({
         min: 0
     });
     $('.btn btn-primary bootstrap-touchspin-down').hide();
+
+
 </script> {{/section}} {{#section 'css'}} {{/section}}
 <form id="frmRemoveItem" method="post" action="/cart/remove">
     <input id="txtProId_R" type="hidden" name="id">
 </form>
+{{!-- <form id="frmCheckout" method="post" action="/cart/checkout">
+</form> --}}
 <div id="breadcrumb">
     <div class="container">
         <ul class="breadcrumb">
@@ -127,7 +132,7 @@
                         </table>
                         <div class="pull-right">
                             <button class="primary-btn" type="submit">update cart</button>
-                            <button class="primary-btn">check out</button>
+                            <a class="primary-btn" href="/cart/checkout">check out</a>
                         </div>
                     </div>
 
