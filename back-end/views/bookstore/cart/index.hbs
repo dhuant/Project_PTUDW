@@ -8,11 +8,17 @@
     });
     
     $('.touchspin').TouchSpin({
-        min: 0
+        min: 0,
+        max: 100,
+        boostat: 5,
+        maxboostedstep: 10,
     });
+<<<<<<< HEAD
     $('.btn btn-primary bootstrap-touchspin-down').hide();
 
 
+=======
+>>>>>>> 2fef8965967de636ad7c02fc3124baa5af2588ce
 </script> {{/section}} {{#section 'css'}} {{/section}}
 <form id="frmRemoveItem" method="post" action="/cart/remove">
     <input id="txtProId_R" type="hidden" name="id">
@@ -107,7 +113,7 @@
                                     </td>
                                     {{/if}}
                                     <td id="nhanam-09" class="qty text-center">
-                                        <input id="nhanam-09" name="count" class="touchspin" type="text" value="{{Count}}" min="0" required>
+                                        <input id="nhanam-09" name="count" class="touchspin" type="text" value="{{Count}}" required>
                                         <input type="hidden" name="id" value="{{id}}">
                                     </td>
                                     <td id="nhanam-09" class="total text-center">

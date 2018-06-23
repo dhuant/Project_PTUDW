@@ -1,6 +1,4 @@
 
-
-
 var express = require('express'),
     SHA256 = require('crypto-js/sha256'),
     moment = require('moment');
@@ -70,24 +68,38 @@ router.get('/', (req, res) => {
     });
 });
 router.post('/', (req, res) => {
-    // console.log(req.session.cart);
-    var Items = [];
-    for (let i = 0; i < req.body.id.length; i++) {
-        var item = {
-            id: req.body.id[i],
-            count: +req.body.count[i]
-        }
-        Items.push(item);
-    }
-    for (let i = 0; i < req.session.cart.length; i++) {
-
-        if (Items[i].count == 0) {
-            req.session.cart.splice(i, 1);
-            req.session.cartLayout.splice(i, 1);
+    console.log(req.session.cart);
+    console.log(req.body);
+    if (typeof (req.body.id) == 'string') {
+        if (req.body.count == 0) {
+            req.session.cart = [];
+            req.session.cartLayout = [];
         }
         else {
-            req.session.cart[i].count = Items[i].count;
-            req.session.cartLayout[i].Count = Items[i].count;
+            req.session.cart[0].count = +req.body.count;
+            req.session.cartLayout[0].Count = +req.body.count;
+        }
+    }
+    else {
+        var Items = [];
+        for (let i = 0; i < req.body.id.length; i++) {
+            var item = {
+                id: req.body.id[i],
+                count: +req.body.count[i]
+            }
+            Items.push(item);
+        }
+        console.log(Items);
+        for (let i = 0; i < req.session.cart.length; i++) {
+
+            if (Items[i].count == 0) {
+                req.session.cart.splice(i, 1);
+                req.session.cartLayout.splice(i, 1);
+            }
+            else {
+                req.session.cart[i].count = Items[i].count;
+                req.session.cartLayout[i].Count = Items[i].count;
+            }
         }
     }
     res.locals.layoutVM.cartLayout = req.session.cartLayout;
