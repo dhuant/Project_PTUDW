@@ -127,3 +127,7 @@ exports.searchProduct = (c) => {
     return db.load(sql);
 }
 
+exports.deleteProduct = (id) => {
+    var sql = `delete from products where id = ${id}`;
+    return db.save(sql);
+}

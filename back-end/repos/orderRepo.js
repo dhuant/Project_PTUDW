@@ -103,3 +103,8 @@ exports.addDetail = (order, cart) => {
         db.save(sql);
     }
 }
+
+exports.loadProductUsed = (id) => {
+    var sql = ` select * from order_detail where Product = ${id}`;
+    return db.load(sql);
+}

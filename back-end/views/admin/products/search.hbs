@@ -2,6 +2,8 @@
     <div class="panel-heading">
         <span class="panel-title"><i style="color: red;">{{count}} </i> result for <i style="color: red;">{{key}}</i> </span>
     </div>
+    {{#if isEmpty}}
+    {{else}}
     <div class="panel-body pn">
         <div class="table-responsive">
 
@@ -54,7 +56,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="" title="delete" class="btn btn-xs btn-danger">
+                                <a href="/admin/products/delete?id={{id}}" title="delete" class="btn btn-xs btn-danger">
                                     <i class="ace-icon fa fa-trash bigger-120"></i>
                                 </a>
                             </td>
@@ -65,4 +67,5 @@
             </div>
         </div>
     </div>
+    {{/if}}
 </div>
