@@ -1,6 +1,5 @@
  {{#section 'css'}}
-<link rel="stylesheet" href="/assets/bookstore/css/productCategory.css">
-{{/section}} {{#section 'js'}}
+<link rel="stylesheet" href="/assets/bookstore/css/productCategory.css"> {{/section}} {{#section 'js'}}
 <script src="/assets/bookstore/js/JSbookstore/index.js"></script>
 <script type="text/javascript">
     $('#cbb1').change(function () {
@@ -11,11 +10,11 @@
         $('#frm2').submit();
     });
     var option = [9, 18, 27];
-    for(let i = 0; i< option.length; i++){
-        if(option[i] != $('#cbb1').val()){
+    for (let i = 0; i < option.length; i++) {
+        if (option[i] != $('#cbb1').val()) {
             $('#cbb1').append(`<option value="${option[i]}">${option[i]}</option>`);
         }
-        if(option[i] != $('#cbb2').val()){
+        if (option[i] != $('#cbb2').val()) {
             $('#cbb2').append(`<option value="${option[i]}">${option[i]}</option>`);
         }
     }
@@ -58,6 +57,17 @@
             <div id="main" class="col-md-9">
                 <!-- store top filter -->
                 <div class="store-filter clearfix">
+                    <div class="pull-left">
+                        <span style="font-size: 24px; text-align: center;">
+                            <i style="color: red !important;">
+                                <strong>{{count}}</strong>
+                            </i>
+                            result for
+                            <i style="color: red !important;">
+                                <strong>{{key}}</strong>
+                            </i>
+                        </span>
+                    </div>
                     <div class="pull-right">
                         <div class="page-filter">
                             <form id="frm1" action="" method="post">

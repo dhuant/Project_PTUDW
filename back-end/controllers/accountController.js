@@ -920,7 +920,6 @@ router.get('/result/:page', (req, res) => {
             }
             var result = [];
             var len = +offset + +limit;
-            console.log(len);
             if (len >= pRows.length)
                 len = pRows.length;
             for (let i = offset; i < len; i++) {
@@ -973,7 +972,8 @@ router.get('/result/:page', (req, res) => {
                 firstPage: firstPage,
                 lastPage: lastPage,
                 limit: limit,
-                key: key
+                key: key,
+                count: total
             }
             res.render('bookstore/index/result', vm);
         });

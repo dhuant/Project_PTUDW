@@ -80,8 +80,15 @@ router.post('/', (req, res) => {
         Items.push(item);
     }
     for (let i = 0; i < req.session.cart.length; i++) {
-        req.session.cart[i].count = Items[i].count;
-        req.session.cartLayout[i].Count = Items[i].count;
+
+        if (Items[i].count == 0) {
+            req.session.cart.splice(i, 1);
+            req.session.cartLayout.splice(i, 1);
+        }
+        else {
+            req.session.cart[i].count = Items[i].count;
+            req.session.cartLayout[i].Count = Items[i].count;
+        }
     }
     res.locals.layoutVM.cartLayout = req.session.cartLayout;
     res.redirect(req.headers.referer)
