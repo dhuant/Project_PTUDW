@@ -976,7 +976,8 @@ router.get('/result/:page', (req, res) => {
                 lastPage: lastPage,
                 limit: limit,
                 key: key,
-                count: total
+                count: total,
+                empty: total == 0
             }
             res.render('bookstore/index/result', vm);
         });

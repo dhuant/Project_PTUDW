@@ -1,7 +1,8 @@
 
 
 var express = require('express');
-var categoryRepo = require('../repos/categoryRepo');
+var categoryRepo = require('../repos/categoryRepo'),
+    productRepo = require('../repos/productRepo');
 
 var config = require('../config/config');
 
@@ -152,6 +153,33 @@ router.post('/edit', (req, res) => {
         res.redirect('/admin/category');
     });
 });
+router.get('/delete', (req, res) => {
+    var id = req.query.id;
+    categoryRepo.single(id).then(c => {
+        vm = {
+            category: c
+        }
+        res.render('admin/category/delete', vm);
+    });
+});
 
-
+router.post('/delete', (req, res) => {
+    var id = req.body.id;
+    productRepo.loadAllbyCategory(id).then(c => {
+        if (c.length != 0) {
+            categoryRepo.single(id).then(c => {
+                vm = {
+                    category: c,
+                    error: true
+                }
+                res.render('admin/category/delete', vm);
+            });
+        }
+        else {
+            categoryRepo.deleteCategory(id).then(value => {
+                res.redirect('/admin/category');
+            });
+        }
+    });
+});
 module.exports = router;

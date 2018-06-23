@@ -6,7 +6,8 @@ var express = require('express'),
 var brandRepo = require('../repos/brandRepo'),
     productRepo = require('../repos/productRepo'),
     categoryRepo = require('../repos/categoryRepo'),
-    userRepo = require('../repos/userRepo');
+    userRepo = require('../repos/userRepo'),
+    orderRepo = require('../repos/orderRepo');
 
 var config = require('../config/config');
 
@@ -148,7 +149,8 @@ router.get('/result', (req, res) => {
                         vm = {
                             products: rows,
                             count: result.length,
-                            key: key
+                            key: key,
+                            isEmpty: result.length == 0
                         }
                         res.render('admin/products/search', vm);
                     });
@@ -219,5 +221,33 @@ router.post('/edit', (req, res) => {
     });
 });
 
+router.get('/delete', (req, res) => {
+    var id = req.query.id;
+    productRepo.single(id).then(c => {
+        vm = {
+            product: c
+        }
+        res.render('admin/products/delete', vm);
+    });
+});
 
+router.post('/delete', (req, res) => {
+    var id = req.body.id;
+    orderRepo.loadProductUsed(id).then(c => {
+        if (c.length != 0) {
+            productRepo.single(id).then(rows => {
+                vm = {
+                    product: rows,
+                    error: true
+                }
+                res.render('admin/products/delete', vm);
+            });
+        }
+        else {
+            productRepo.deleteProduct(id).then(value => {
+                res.redirect('/admin/products');
+            });
+        }
+    });
+});
 module.exports = router;

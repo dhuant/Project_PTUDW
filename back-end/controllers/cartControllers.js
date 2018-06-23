@@ -167,11 +167,23 @@ router.post('/remove', (req, res) => {
 router.get('/checkout', (req, res) => {
     var myUser = req.session.user;
     var myCart = req.session.cartLayout;
+<<<<<<< HEAD
     
     orderRepo.add(myUser,myCart).then(order => {
         orderRepo.addDetail(order,myCart);
         productRepo.updateCartAmount(myCart);
         res.redirect(`../history`); 
+=======
+
+    orderRepo.add(myUser, myCart).then(order => {
+        req.session.cartLayout = [];
+        req.session.cart = [];
+        res.locals.layoutVM.cartLayout = req.session.cartLayout;
+        req.session.Total = 0;
+        //res.locals.layoutVM.total = 0;
+        orderRepo.addDetail(order, myCart);
+        res.redirect(`../history`);
+>>>>>>> 4f67f99ba8f8fdbb8b4eca66fb55fb4c0ef82eb6
     });
 });
 

@@ -68,6 +68,7 @@
                             </i>
                         </span>
                     </div>
+                    {{#if empty}} {{else}}
                     <div class="pull-right">
                         <div class="page-filter">
                             <form id="frm1" action="" method="post">
@@ -98,9 +99,11 @@
 
                         </ul>
                     </div>
+                    {{/if}}
                 </div>
                 <!-- /store top filter -->
-
+                    {{#if empty}}
+                    {{else}}
                 <!-- STORE -->
                 <div id="store">
                     <!-- row -->
@@ -157,9 +160,13 @@
                     <!-- /row -->
                 </div>
                 <!-- /STORE -->
-
+                    {{/if}}
+                
+                {{#if empty}}
+                {{else}}
                 <!-- store bottom filter -->
                 <div class="store-filter clearfix">
+                    
                     <div class="pull-right">
                         <div class="page-filter">
                             <form id="frm2" action="" method="post">
@@ -190,8 +197,10 @@
 
                         </ul>
                     </div>
+                    
                 </div>
                 <!-- /store bottom filter -->
+                {{/if}}
             </div>
             <!-- /MAIN -->
         </div>

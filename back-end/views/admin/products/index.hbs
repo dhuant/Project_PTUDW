@@ -64,7 +64,7 @@
                             <td>{{Brand}}</td>
                             <td>{{Date}}</td>
                             <td>{{Sale}}</td>
-                            <td>{{Price}}</td>
+                            <td>{{number_format Price}}đ</td>
                             <td>{{Creator}}</td>
                             <td>
                                 <a href="/admin/products/edit?id={{id}}" title="edit" class="btn btn-xs btn-info">
@@ -72,7 +72,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="" title="delete" class="btn btn-xs btn-danger">
+                                <a href="/admin/products/delete?id={{id}}" title="delete" class="btn btn-xs btn-danger">
                                     <i class="ace-icon fa fa-trash bigger-120"></i>
                                 </a>
                             </td>

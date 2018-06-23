@@ -3,7 +3,8 @@
 
 
 var express = require('express');
-var brandRepo = require('../repos/brandRepo');
+var brandRepo = require('../repos/brandRepo'),
+    productRepo = require('../repos/productRepo');
 
 var config = require('../config/config');
 
@@ -20,7 +21,7 @@ var router = express.Router();
 //     });
 // });
 
-router.get('/', restrict,  (req, res) => {
+router.get('/', restrict, (req, res) => {
 
     /*kiểm tra đang ở trang nào của phân trang */
     var page = req.query.page;
@@ -56,8 +57,8 @@ router.get('/', restrict,  (req, res) => {
         var firstPage = {};
         var lastPage = {};
         for (let i = 0; i < numbers.length; i++) {
-            if(numbers[i].isCurPage){
-                if(numbers[i].value === 1){
+            if (numbers[i].isCurPage) {
+                if (numbers[i].value === 1) {
                     firstPage = {
                         isFirstPage: true,
                         value: numbers[i].value
@@ -67,7 +68,7 @@ router.get('/', restrict,  (req, res) => {
                         value: numbers[i].value + 1
                     }
                 }
-                else if(numbers[i].value === nPage){
+                else if (numbers[i].value === nPage) {
                     lastPage = {
                         isLastPage: true,
                         value: numbers[i].value
@@ -77,7 +78,7 @@ router.get('/', restrict,  (req, res) => {
                         value: numbers[i].value - 1
                     }
                 }
-                else{
+                else {
                     lastPage = {
                         isLastPage: false,
                         value: numbers[i].value + 1
@@ -89,7 +90,7 @@ router.get('/', restrict,  (req, res) => {
                 }
             }
         }
-      
+
         /*obj vm để đẩy ra giao diện */
         var vm = {
             pagination: nPage !== 1,
@@ -101,7 +102,7 @@ router.get('/', restrict,  (req, res) => {
         }
         /*end obj vm */
 
-        res.render('admin/brands/index',  vm);
+        res.render('admin/brands/index', vm);
     });
 });
 
@@ -154,5 +155,33 @@ router.post('/edit', (req, res) => {
     });
 });
 
+router.get('/delete', (req, res) => {
+    var id = req.query.id;
+    brandRepo.single(id).then(c => {
+        vm = {
+            brand: c
+        }
+        res.render('admin/brands/delete', vm);
+    });
+});
 
+router.post('/delete', (req, res) => {
+    var id = req.body.id;
+    productRepo.loadAllbyBrand(id).then(c => {
+        if (c.length != 0) {
+            brandRepo.single(id).then(c => {
+                vm = {
+                    brand: c,
+                    error: true
+                }
+                res.render('admin/brands/delete', vm);
+            });
+        }
+        else {
+            brandRepo.deleteBrand(id).then(value => {
+                res.redirect('/admin/brands');
+            });
+        }
+    });
+});
 module.exports = router;
