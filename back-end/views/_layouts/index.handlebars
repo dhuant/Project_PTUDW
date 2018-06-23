@@ -108,34 +108,42 @@
 									{{number_format layoutVM.total}}đ
 								</div>
 							</a>
-							
+
 							<div class="custom-menu">
 								<div id="shopping-cart">
 									<div id="cart" class="shopping-cart-list">
-										{{#each layoutVM.cartLayout}}
+										{{#if layoutVM.isEmpty}} Cart is empty {{else}} {{#each layoutVM.cartLayout}}
 										<div id="divnb02" class="product product-widget">
-                                            <div class="product-thumb">
-        										<img id="imgCart" src="/assets/img/1/{{Picture}}" alt="">
-        									</div>
-        									<div class="product-body">
-        										<h3 class="product-price">{{number_format Price}}đ
-        											<span class="qty">x{{Count}}</span>
-        										</h3>
-        										<h2 class="product-name">
-        											<a href="/products?id={{id}}">{{Name}}</a>
-        										</h2>
-        									</div>
-        									{{!-- <button id="deletenb02" class="cancel-btn">
-        										<i class="fa fa-trash"></i>
-        									</button> --}}
-        								</div>
-										{{/each}}
+											<div class="product-thumb">
+												<img id="imgCart" src="/assets/img/1/{{Picture}}" alt="">
+											</div>
+											<div class="product-body">
+												<h3 class="product-price">{{number_format Price}}đ
+													<span class="qty">x{{Count}}</span>
+												</h3>
+												<h2 class="product-name">
+													<a href="/products?id={{id}}">{{Name}}</a>
+												</h2>
+											</div>
+											{{!--
+											<button id="deletenb02" class="cancel-btn">
+												<i class="fa fa-trash"></i>
+											</button> --}}
+										</div>
+										{{/each}} {{/if}}
 									</div>
 									<div class="shopping-cart-btns">
 										<a href="/cart" class="main-btn">View Cart</a>
+										{{#if layoutVM.isEmpty}}
+										<a href="javascript:;" class="primary-btn" disabled="disabled">Checkout
+											<i class="fa fa-arrow-circle-right"></i>
+										</a>
+										{{else}}
 										<a href="./checkout.html" class="primary-btn">Checkout
 											<i class="fa fa-arrow-circle-right"></i>
 										</a>
+										{{/if}}
+
 									</div>
 								</div>
 							</div>

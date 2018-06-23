@@ -1,11 +1,16 @@
 {{#section 'js'}}
+<script src="/assets/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
 <script type="text/javascript">
     $('.removeItem').on('click', function () {
         var id = $(this).data('proid');
         $('#txtProId_R').val(id);
         $('#frmRemoveItem').submit();
     });
-</script> {{/section}}
+    $('.touchspin').TouchSpin({
+        min: 0
+    });
+    $('.btn btn-primary bootstrap-touchspin-down').hide();
+</script> {{/section}} {{#section 'css'}} {{/section}}
 <form id="frmRemoveItem" method="post" action="/cart/remove">
     <input id="txtProId_R" type="hidden" name="id">
 </form>
@@ -56,6 +61,13 @@
                         </div>
                         <table class="shopping-cart-table table">
                             <thead>
+                                <colgroup>
+                                    <col />
+                                    <col />
+                                    <col />
+                                    <col width="110px" />
+                                    <col />
+                                </colgroup>
                                 <tr>
                                     <th>Hình ảnh</th>
                                     <th>Tên sản phẩm</th>
@@ -90,7 +102,7 @@
                                     </td>
                                     {{/if}}
                                     <td id="nhanam-09" class="qty text-center">
-                                        <input id="nhanam-09" name="count" class="input" type="number" value="{{Count}}" required>
+                                        <input id="nhanam-09" name="count" class="touchspin" type="text" value="{{Count}}" min="0" required>
                                         <input type="hidden" name="id" value="{{id}}">
                                     </td>
                                     <td id="nhanam-09" class="total text-center">

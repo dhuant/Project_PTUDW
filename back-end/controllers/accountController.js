@@ -467,6 +467,9 @@ router.post('/login', (req, res) => {
             if (req.query.retUrl) {
                 url = req.query.retUrl;
             }
+            if (!req.session.cartLayout)
+                req.session.cartLayout = [];
+            res.locals.layoutVM.isEmpty = true;
             res.redirect(url);
         }
         else {

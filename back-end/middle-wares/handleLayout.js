@@ -10,6 +10,8 @@ module.exports = (req, res, next) => {
     }
     if (!req.session.Total)
         req.session.Total = 0;
+    if (!req.session.cartLayout)
+        req.session.cartLayout = [];
     var p1 = categoryRepo.loadAll();
     var p2 = brandRepo.loadAll();
     var p3 = userRepo.loadAll();
@@ -61,7 +63,8 @@ module.exports = (req, res, next) => {
             curUser: req.session.user,
             preUrl: preUrl,
             total: req.session.Total,
-            cartLayout: req.session.cartLayout
+            cartLayout: req.session.cartLayout,
+            isEmpty: req.session.cartLayout.length == 0
         };
         //console.log(cateRows);
         next();
