@@ -41,8 +41,7 @@
                         <div class="product-label">
                             {{#if isSaling}}
                             <span class="sale">-{{Sale}}%</span>
-                            {{/if}}
-                            {{#if New}}
+                            {{/if}} {{#if New}}
                             <span>New</span>
                             {{/if}}
                         </div>
@@ -75,17 +74,21 @@
                         <p>
                             <strong>Nhà Xuất Bản:</strong> {{BraName}}</p>
                         <p>{{Description}}</p>
-                        <hr>
-
-                        <div class="product-btns">
-                            <button class="primary-btn add-to-cart" id="01">
-                                <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
+                        <hr> {{/with}} {{#if layoutVM.isLogged}}
+                        <form action="/cart/add" method="post">
+                            <div class="product-btns">
+                                <input type="hidden" name="proId" value="{{product.id}}">
+                                <input type="hidden" name="count" value="1">
+                                <button type="submit" class="primary-btn add-to-cart" id="01">
+                                    <i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                            </div>
+                        </form>
+                        {{/if}}
                     </div>
                 </div>
             </div>
             <!-- /Product Details -->
-            {{/with}}
+
         </div>
         <!-- /row -->
     </div>
@@ -132,10 +135,10 @@
                         <h2 class="product-name">
                             <a href="/products?id={{id}}">{{Name}}</a>
                         </h2>
-                        <div class="product-btns">
+                        {{!-- <div class="product-btns">
                             <button class="primary-btn add-to-cart" id="03">
                                 <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -183,10 +186,10 @@
                         <h2 class="product-name">
                             <a href="/products?id={{id}}">{{Name}}</a>
                         </h2>
-                        <div class="product-btns">
+                        {{!-- <div class="product-btns">
                             <button class="primary-btn add-to-cart" id="03">
                                 <i class="fa fa-shopping-cart"></i> Add to Cart</button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

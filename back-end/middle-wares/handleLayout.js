@@ -57,7 +57,8 @@ module.exports = (req, res, next) => {
             brand4: arr[3],
             isLogged: req.session.isLogged,
             curUser: req.session.user,
-            preUrl: preUrl
+            preUrl: preUrl,
+            total: req.session.Total
         };
          //console.log(cateRows);
         next();

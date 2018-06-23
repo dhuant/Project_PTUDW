@@ -541,7 +541,6 @@ router.get('/products', (req, res) => {
         Promise.all([p1, p2, p3]).then(([cateRows, brandRows, value]) => {
             //console.log(cateRows);
             //console.log(brandRows);
-            console.log(rows);
             var arrCate = [];
             var arrBrand = [];
             if (cateRows.length > 6) {
