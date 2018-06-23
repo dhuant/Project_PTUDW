@@ -127,3 +127,10 @@ exports.searchProduct = (c) => {
     return db.load(sql);
 }
 
+exports.updateCartAmount = (cart) => {
+    for (let i = 0; i < cart.length; i++) 
+    {
+        var sql = `update products set Amount = Amount - ${cart[i].Count} where id = ${cart[i].id}`;
+        db.save(sql);
+    }
+}
