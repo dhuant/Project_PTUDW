@@ -48,3 +48,7 @@ exports.countCategories = () => {
 	var sql = `select count(*) as total from categories`;
     return db.load(sql);
 }
+exports.deleteCategory = (id) => {
+    var sql = `delete from categories where id = ${id}`;
+    return db.save(sql);
+}
