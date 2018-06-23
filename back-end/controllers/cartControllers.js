@@ -69,6 +69,23 @@ router.get('/', (req, res) => {
         res.render('bookstore/cart/index', vm);
     });
 });
+router.post('/', (req, res) => {
+    // console.log(req.session.cart);
+    var Items = [];
+    for (let i = 0; i < req.body.id.length; i++) {
+        var item = {
+            id: req.body.id[i],
+            count: +req.body.count[i]
+        }
+        Items.push(item);
+    }
+    for (let i = 0; i < req.session.cart.length; i++) {
+        req.session.cart[i].count = Items[i].count;
+        req.session.cartLayout[i].Count = Items[i].count;
+    }
+    res.locals.layoutVM.cartLayout = req.session.cartLayout;
+    res.redirect(req.headers.referer)
+});
 router.post('/add', (req, res) => {
     if (!req.session.cart) {
         req.session.cart = [];

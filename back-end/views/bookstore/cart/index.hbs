@@ -48,7 +48,7 @@
     <div class="container">
         <!-- row -->
         <div class="row">
-            <form id="checkout-form" class="clearfix">
+            <form id="checkout-form" class="clearfix" method="POST">
                 <div class="col-md-12">
                     <div class="order-summary clearfix">
                         <div class="section-title">
@@ -90,7 +90,8 @@
                                     </td>
                                     {{/if}}
                                     <td id="nhanam-09" class="qty text-center">
-                                        <input id="nhanam-09" class="input" type="number" value="{{Count}}">
+                                        <input id="nhanam-09" name="count" class="input" type="number" value="{{Count}}" required>
+                                        <input type="hidden" name="id" value="{{id}}">
                                     </td>
                                     <td id="nhanam-09" class="total text-center">
                                         <strong id="total-price" class="primary-color">{{number_format Total}}</strong>
@@ -113,6 +114,7 @@
                             </tfoot>
                         </table>
                         <div class="pull-right">
+                            <button class="primary-btn" type="submit">update cart</button>
                             <button class="primary-btn">check out</button>
                         </div>
                     </div>
