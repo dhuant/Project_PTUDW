@@ -528,6 +528,9 @@ router.post('/register', (req, res) => {
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
+    req.session.Total = 0;
+    req.session.cart = [];
+    req.session.cartLayout = [];
     res.redirect(req.headers.referer);
 });
 
