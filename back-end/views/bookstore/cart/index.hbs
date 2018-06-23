@@ -1,3 +1,14 @@
+{{#section 'js'}}
+<script type="text/javascript">
+    $('.removeItem').on('click', function () {
+        var id = $(this).data('proid');
+        $('#txtProId_R').val(id);
+        $('#frmRemoveItem').submit();
+    });
+</script> {{/section}}
+<form id="frmRemoveItem" method="post" action="/cart/remove">
+    <input id="txtProId_R" type="hidden" name="id">
+</form>
 <div id="breadcrumb">
     <div class="container">
         <ul class="breadcrumb">
@@ -86,9 +97,9 @@
                                         <b class="primary-color">đ</b>
                                     </td>
                                     <td id="nhanam-09" class="text-right">
-                                        <button id="nhanam-09" class="main-btn icon-btn delete-item">
-                                            <i class="fa fa-close"></i>
-                                        </button>
+                                        <a data-proid="{{id}}" class="main-btn icon-btn delete-item removeItem" href="javascript:;" role="button">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 {{/each}}

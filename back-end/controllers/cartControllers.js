@@ -110,8 +110,21 @@ router.post('/add', (req, res) => {
         req.session.cartLayout = cartLayout;
         req.session.Total = total;
         res.locals.layoutVM.total = total;
-        res.locals.layoutVM.cartLayout =  req.session.cartLayout;
+        res.locals.layoutVM.cartLayout = req.session.cartLayout;
         res.redirect(req.headers.referer);
     });
+});
+
+router.post('/remove', (req, res) => {
+    var id = req.body.id;
+    cartRepo.remove(req.session.cart, id);
+    for (let i = 0; i < req.session.cartLayout.length; i++) {
+        if (id == req.session.cartLayout[i].id) {
+            req.session.cartLayout.splice(i, 1);
+            break;
+        }
+    }
+    res.locals.layoutVM.cartLayout = req.session.cartLayout;
+    res.redirect(req.headers.referer);
 });
 module.exports = router;
