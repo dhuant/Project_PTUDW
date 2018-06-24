@@ -167,17 +167,54 @@ router.post('/remove', (req, res) => {
 router.get('/checkout', (req, res) => {
     var myUser = req.session.user;
     var myCart = req.session.cartLayout;
-    
-    orderRepo.add(myUser, myCart).then(order => {
-        req.session.cartLayout = [];
-        req.session.cart = [];
-        res.locals.layoutVM.cartLayout = req.session.cartLayout;
-        req.session.Total = 0;
-        //res.locals.layoutVM.total = 0;
-        orderRepo.addDetail(order,myCart);
-        productRepo.updateCartAmount(myCart);
-        res.redirect(`../history`); 
+
+    productRepo.loadAll().then(pro => {
+        var check = true;
+        var Items = [];
+
+        for (let i=0; i<myCart.length; i++)
+        {
+            for (let j=0; j<pro.length; j++)
+            {
+                if (myCart[i].id == pro[j].id)
+                {
+                    if (myCart[i].Count > pro[j].Amount)
+                    {
+                        check = false;
+                        Items.push(pro[j]);
+                    }
+                }
+            }
+        }
+
+        vm = {
+            isSuccess: check,
+            layout: 'index.handlebars',
+            proList: Items,
+        };
+
+        if (check == false){
+            res.render(`bookstore/cart/checkout_result`, vm);
+        } else {
+            orderRepo.add(myUser, myCart).then(order => {
+                req.session.cartLayout = [];
+                req.session.cart = [];
+                res.locals.layoutVM.cartLayout = req.session.cartLayout;
+                req.session.Total = 0;
+                //res.locals.layoutVM.total = 0;
+                orderRepo.addDetail(order,myCart);
+                productRepo.updateCartAmount(myCart);
+                res.render(`bookstore/cart/checkout_result`, vm);
+            });
+        }
     });
+});
+
+router.get('/checkout_result', (req, res) => {
+    vm = {
+        layout: 'index.handlebars',
+    };
+    res.render(`bookstore/cart/checkout_result`, vm);
 });
 
 module.exports = router;
