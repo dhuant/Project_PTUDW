@@ -686,7 +686,7 @@ router.get('/profile', checklogout, (req, res) => {
 });
 router.post('/profile', (req, res) => {
     req.body.id = req.session.user.id;
-    console.log(req.body);
+    //console.log(req.body);
     var obj = req.body;
     //res.redirect('/profile');
     userRepo.updateCustomer(obj).then(value => {

@@ -145,7 +145,7 @@ router.get('/result', (req, res) => {
                         for (let i = 0; i < pUsers.length; i++) {
                             result[i].creatorName = pUsers[i].Fullname;
                         }
-                        console.log(result);
+                        //console.log(result);
                         vm = {
                             products: rows,
                             count: result.length,
@@ -215,7 +215,10 @@ router.get('/edit', restrict, (req, res) => {
     });
 });
 
-router.post('/edit', (req, res) => {
+router.post('/edit', upload.single("img"), (req, res) => {
+    if(req.file != undefined){
+        req.body.picture = req.file.originalname;
+    }
     productRepo.update(req.body).then(value => {
         res.redirect('/admin/products');
     });
@@ -233,17 +236,15 @@ router.get('/delete', (req, res) => {
 
 router.post('/delete', (req, res) => {
     var id = req.body.id;
-    orderRepo.loadProductUsed(id).then(c => {
-        if (c.length != 0) {
-            productRepo.single(id).then(rows => {
-                vm = {
-                    product: rows,
-                    error: true
-                }
-                res.render('admin/products/delete', vm);
-            });
+    productRepo.single(id).then(c =>{
+        if(c.Sell != 0){
+            vm = {
+                product: c,
+                error: true
+            }
+            res.render('admin/products/delete', vm);
         }
-        else {
+        else{
             productRepo.deleteProduct(id).then(value => {
                 res.redirect('/admin/products');
             });

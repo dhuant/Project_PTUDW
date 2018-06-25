@@ -27,22 +27,19 @@ exports.bestsell = () => {
 }
 
 exports.add = (c) => {
-    console.log(c);
     var date = moment(new Date()).format("YYYY-MM-DD");
-    console.log(date);
-
     var sql = `insert into products(Name, Picture, Description, Date, View,
-         Sale, Price, Category, Brand, Author, Origin, Creator, Amount) 
+         Sale, Price, Category, Brand, Author, Origin, Creator, Amount, Sell) 
     values('${c.name}', '${c.img}', '${c.description}', '${date}', 0,
      ${+c.sale}, ${+c.price}, ${+c.category}, ${+c.brand}, '${c.author}', '${c.origin}',
-      ${+c.creator}, ${+c.amount})`;
+      ${+c.creator}, ${+c.amount},0)`;
     return db.save(sql);
 }
 
 
 exports.single = (id) => {
     return new Promise((resolve, reject) => {
-        var sql = `select pros.id as id, pros.Name as Name,pros.Date as Date, pros.View as View, pros.Amount as Amount, pros.Picture as Picture, pros.Amount as Amount,
+        var sql = `select pros.id as id,pros.Sell as Sell, pros.Name as Name,pros.Date as Date, pros.View as View, pros.Amount as Amount, pros.Picture as Picture, pros.Amount as Amount,
          cates.id as CateId, pros.Description as Description, pros.Author as Author, pros.Origin as Origin,
         cates.Name as CatName,brs.id as BraId, brs.Name as BraName,
         pros.Sale as Sale, pros.Price as Price, users.Fullname as Creator, users.id as userId
@@ -61,12 +58,11 @@ exports.single = (id) => {
 }
 
 exports.update = (c) => {
-    console.log(c);
-    var picture = c.picture;
-    if(c.img !== '')
-        picture = c.img;
+    // var picture = c.picture;
+    // if(c.img !== '')
+    //     picture = c.img;
     var date = moment(new Date()).format("YYYY-MM-DD");
-    var sql = `update products set Name = '${c.name}', Picture = '${picture}', Amount = ${+c.amount},  Description = '${c.description}',
+    var sql = `update products set Name = '${c.name}', Picture = '${c.picture}', Amount = ${+c.amount},  Description = '${c.description}',
                 Date = '${date}', Sale = ${+c.sale}, Price = ${+c.price}, Category = ${+c.category}, Brand = ${+c.brand},
                 Author = '${c.author}', Origin = '${c.origin}', Creator = ${+c.creator}  where id = ${c.id}`;
     return db.save(sql);
