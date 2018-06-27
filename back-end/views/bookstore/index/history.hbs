@@ -58,6 +58,9 @@
                             <div class="section-title">
                                 <h3 class="title">ĐƠN HÀNG CỦA TÔI</h3>
                             </div>
+                            {{#if len}}
+                                Bạn chưa có đơn hàng nào.
+                            {{else}}
                             <table class="shopping-cart-table table"  style="font-size: 85%">
                                 <thead>
                                     <tr>
@@ -89,6 +92,7 @@
                                 </tbody>
                                 {{/each}}
                             </table>
+                            {{/if}}
                         </div>
 
                     </div>

@@ -516,9 +516,22 @@ router.post('/register', (req, res) => {
             }
             else {
                 userRepo.addCustomer(obj).then(value => {
-                    req.session.isLogged = true;
-                    req.session.user = obj;
-                    res.redirect('/');
+                    // req.session.isLogged = true;
+                        // req.session.user = obj;
+                        // console.log(obj);
+                        // res.redirect('/');
+                    // userRepo.getMaxID().then(r => {
+                    //     console.log("------" + r);
+                    // });
+                    console.log(obj.username);
+                    userRepo.singleByUsername(obj.username).then(r => {
+                        // console.log("-----" + obj.username);
+                        req.session.isLogged = true;
+                        req.session.user = r;
+                        res.redirect('/');
+                    });
+
+                    
                 }).catch(err => {
                     res.end('fail');
                 });
@@ -660,6 +673,7 @@ router.get('/products', (req, res) => {
 
 
 router.get('/profile', checklogout, (req, res) => {
+    console.log(req.session.user.id);
     userRepo.single(req.session.user.id).then(c => {
         c.DOB = moment(c.DOB).format("DD/MM/YYYY");
         c.dob = true;
@@ -854,6 +868,10 @@ router.post('/brands/:id', (req, res) => {
     res.redirect('/brands/' + req.params.id);
 });
 
+router.get('/result', (req,res) => {
+    res.redirect('/result/1');
+})
+
 router.get('/result/:page', (req, res) => {
     var key = req.query.key;
     if (req.query.key == '') {
@@ -998,13 +1016,14 @@ router.get('/history', checklogout, (req, res) => {
             layout: 'index.handlebars',
             order: pRows,
             order_detail: cRows,
+            len: pRows.length==0,
         }
         res.render('bookstore/index/history', vm);
     });
 });
 
 
-router.get('/order', (req, res) => {
+router.get('/order', checklogout, (req, res) => {
     var p1 = orderRepo.single(req.query.id);
     var p2 = orderRepo.loadDetailByOrderID(req.query.id);
 
